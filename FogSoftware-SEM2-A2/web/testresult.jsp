@@ -9,6 +9,6 @@
     </head>
     <body>
         <h1>Result</h1>
-        <p><c:out value="${'magictext'}"/></p>
+        <p><c:out value="${magictext}"/></p>
     </body>
 </html>
