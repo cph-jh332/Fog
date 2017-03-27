@@ -15,7 +15,7 @@
         <h1>Test this form</h1>
         
         <form action="FrontController" method="post">
-            <input name="magictext">
+            <input type="text" name="magictext">
             <button type="submit" name="action" value="hello">Send</button>
         </form>
         
