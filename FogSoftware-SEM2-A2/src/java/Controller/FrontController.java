@@ -1,5 +1,6 @@
 package Controller;
 
+import backend.TextFiles;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
+    TextFiles text = new TextFiles();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,8 +37,8 @@ public class FrontController extends HttpServlet {
         switch (action) {
             case "hello": {
                 String name = request.getParameter("magictext");
-                String hello = null;
-                request.setAttribute(name, hello+ "" + name);
+                String hello = text.getText();
+                request.setAttribute("magictext", hello+ " " + name);
                 rd = request.getRequestDispatcher("testresult.jsp");
                 rd.forward(request, response);
                 break;
