@@ -38,7 +38,7 @@ public class FrontController extends HttpServlet {
             case "hello": {
                 String name = request.getParameter("magictext");
                 String hello = text.getText();
-                request.setAttribute("magictext", hello+ "" + name);
+                request.setAttribute("magictext", hello+ " " + name);
                 rd = request.getRequestDispatcher("testresult.jsp");
                 rd.forward(request, response);
                 break;
