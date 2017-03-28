@@ -11,6 +11,7 @@ package backend;
  */
 public class TextFiles {
     private String welcomeMsg = "Hello World";
+    private String msg = "WOOO STUDYPOINTS";
     
     public String getText(){
         return welcomeMsg;
