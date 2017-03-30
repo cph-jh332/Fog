@@ -17,12 +17,8 @@ public class FogDummy {
     public static void main(String[] args) {
        dummy(780,800);
     }
-    static void dummy(int længde, int bredde){
-        
-        
-        
-        
-        
+    static void dummy(int længde, int bredde)
+    {
         int skurstolper = 4;
         int ekstraStolpe = 1;
         int num = 2;
@@ -40,6 +36,5 @@ public class FogDummy {
             num += temp/2;
         }
         System.out.println(num);
-        
     }
 }

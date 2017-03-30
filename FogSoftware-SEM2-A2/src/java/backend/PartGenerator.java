@@ -11,18 +11,42 @@ package backend;
  */
 public class PartGenerator
 {
+
+    private int rafterDistance = 550;
+
     // Længde i millimeter //
-    public int spærAmount(int length)
+    public int getRafterAmount(int length)
     {
-        length -= 275;
+        length -= 275; // udhæng bagved
         int spær = 1;
-        while (length > 550)
+        while (length > rafterDistance)
         {
             spær++;
-            length -= 550;
+            length -= rafterDistance;
         }
         return spær;
     }
-    
-    
+
+    public int getPillarAmount(int length, int width)
+    {
+        int shedPillars = 4;
+        int extraPillars = 1;
+        int num = 2;
+        while ((length - 100) >= 310)
+        {
+            num += 2;
+            length -= 310;
+        }
+        int temp = num;
+        num += shedPillars + extraPillars;
+
+        // width - pillarDistance
+        width -= 70;
+        if (width > 600)
+        {
+            num += temp / 2;
+        }
+        
+        return shedPillars;
+    }
 }
