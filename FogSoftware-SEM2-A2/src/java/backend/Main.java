@@ -15,6 +15,8 @@ public class Main
     {
         PartGenerator pg = new PartGenerator(7800, 6000);
         
-        System.out.println(pg.getRoofTiles());
+        int[] roofTiles = pg.getRoofTiles();
+        
+        System.out.println(roofTiles[0] + ", " + roofTiles[1]);
     }
 }
