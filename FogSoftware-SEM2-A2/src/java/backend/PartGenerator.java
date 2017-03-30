@@ -60,7 +60,7 @@ public class PartGenerator
             num += temp / 2;
         }
 
-        return shedPillars;
+        return num;
     }
 
     // index 0 is the 6000mm long tiles and index 1 is the 3600mm long tiles //
