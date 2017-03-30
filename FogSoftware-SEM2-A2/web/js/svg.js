@@ -69,6 +69,7 @@ cLength.setAttribute("y", "900");
 cLength.setAttribute("width", "900");
 cLength.setAttribute("stroke", "lightblue");
 cLength.setAttribute("stroke-width", "2");
+cLength.setAttribute("stroke-dasharray", "1,3");
 
 cLengthTxt.setAttribute("x", "400");
 cLengthTxt.setAttribute("y", "480");
