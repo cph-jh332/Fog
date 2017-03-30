@@ -30,12 +30,18 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd = null;
         String action = request.getParameter("action");
+
+        // If no form is submitted
+        if (action == null /*&& currentUser != null*/) {
+            //rd = goToShop(request);
+            response.sendRedirect("index.html");
+            return;
+        }
 
         switch (action) {
             case "hello": {
@@ -43,24 +49,29 @@ public class FrontController extends HttpServlet {
                 String hello = text.getText();
                 request.setAttribute("magictext", hello + " " + name);
                 rd = request.getRequestDispatcher("testresult.jsp");
+
                 break;
             }
-            
-            case "create_carport":{
-                int height = Integer.parseInt(request.getParameter("height"));
+
+            case "create_carport": {
+                //int height = Integer.parseInt(request.getParameter("height"));
+
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
-                
+
                 int pillars = pg.getPillarAmount(length, width);
-                
+
                 request.setAttribute("pillars", pillars);
-                
+
                 rd = request.getRequestDispatcher("materialList.jsp");
+
+                break;
+
             }
-            
-            default: {
-            response.sendRedirect("index.html");
-            }
+
+            //default: {
+            //response.sendRedirect("index.html");
+            //}
         }
         rd.forward(request, response);
     }
