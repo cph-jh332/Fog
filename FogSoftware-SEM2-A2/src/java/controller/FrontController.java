@@ -1,5 +1,6 @@
-package Controller;
+package controller;
 
+import backend.PartGenerator;
 import backend.TextFiles;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
+
     TextFiles text = new TextFiles();
+    PartGenerator pg = new PartGenerator();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,23 +30,50 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd = null;
         String action = request.getParameter("action");
 
+        // If no form is submitted
+        if (action == null /*&& currentUser != null*/) {
+            //rd = goToShop(request);
+            response.sendRedirect("index.html");
+            return;
+        }
+
         switch (action) {
             case "hello": {
                 String name = request.getParameter("magictext");
                 String hello = text.getText();
-                request.setAttribute("magictext", hello+ " " + name);
+                request.setAttribute("magictext", hello + " " + name);
                 rd = request.getRequestDispatcher("testresult.jsp");
-                rd.forward(request, response);
+
                 break;
             }
+
+            case "create_carport": {
+                //int height = Integer.parseInt(request.getParameter("height"));
+
+                int length = Integer.parseInt(request.getParameter("length"));
+                int width = Integer.parseInt(request.getParameter("width"));
+
+                int pillars = pg.getPillarAmount(length, width);
+
+                request.setAttribute("pillars", pillars);
+
+                rd = request.getRequestDispatcher("materialList.jsp");
+
+                break;
+
+            }
+
+            //default: {
+            //response.sendRedirect("index.html");
+            //}
         }
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
