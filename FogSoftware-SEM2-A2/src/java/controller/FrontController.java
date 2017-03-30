@@ -56,7 +56,7 @@ public class FrontController extends HttpServlet {
 
                 request.setAttribute("pillars", pillars);
 
-                rd = request.getRequestDispatcher("materialList.jsp");
+                rd = request.getRequestDispatcher("material-list.jsp");
 
                 break;
 
