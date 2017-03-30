@@ -11,20 +11,22 @@ package backend;
  */
 public class PartGenerator
 {
+
     private int carportLength;
     private int carportWidth;
-    
+
     public PartGenerator(int length, int width)
     {
         carportLength = length;
         carportWidth = width;
     }
-    
+
     // Length in millimeter //
-    public int getRafterAmount(int length)
+    public int getRafterAmount()
     {
+        int length = carportLength;
         int rafterDistance = 550;
-        
+
         length -= 275; // udhæng bagved
         int spær = 1;
         while (length > rafterDistance)
@@ -35,8 +37,11 @@ public class PartGenerator
         return spær;
     }
 
-    public int getPillarAmount(int length, int width)
+    public int getPillarAmount()
     {
+        int length = carportLength;
+        int width = carportWidth;
+        
         int shedPillars = 4;
         int extraPillars = 1;
         int num = 2;
@@ -54,26 +59,44 @@ public class PartGenerator
         {
             num += temp / 2;
         }
-        
+
         return shedPillars;
     }
-    
+
     // index 0 is the 6000mm long tiles and index 1 is the 3600mm long tiles //
-    public int[] getRoofTiles(int length, int width)
+    public int[] getRoofTiles()
     {
-        int tileWidth = 1090;
-        int[] tiles = new int[2];
+        int length = carportLength;
+        int width = carportWidth;
         
+        int tileWidth = 1090;
+        int[] tileLengths =
+        {
+            6000, 3600
+        };
+        int typeChosen = 0;
+
+        int[] tiles = new int[tileLengths.length];
+
         int widthCounter = 0;
         int lengthCounter = 0;
+
         while (lengthCounter < length)
         {
+            while (lengthCounter + tileLengths[typeChosen] > length && typeChosen < tileLengths.length)
+            {
+                typeChosen++;
+            }
+            
+            lengthCounter += tileLengths[typeChosen];
+            
             while (widthCounter < width)
             {
-                
+                widthCounter += tileWidth;
+                tiles[typeChosen]++;
             }
         }
-        
-        return null;
+
+        return tiles;
     }
 }
