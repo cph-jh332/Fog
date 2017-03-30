@@ -47,6 +47,6 @@ public class PartGenerator
             num += temp / 2;
         }
         
-        return shedPillars;
+        return num;
     }
 }
