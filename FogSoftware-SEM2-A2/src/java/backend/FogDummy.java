@@ -20,8 +20,10 @@ public class FogDummy {
         oversternBrædder(780,600);
     }
 
-    static void dummy(int længde, int bredde) {
 
+
+
+    static void dummy(int længde, int bredde){
         int skurstolper = 4;
         int ekstraStolpe = 1;
         int num = 2;
@@ -38,6 +40,7 @@ public class FogDummy {
             num += temp / 2;
         }
         System.out.println(num);
+
 
     }
     static void understernBrædder(int længde, int bredde){
