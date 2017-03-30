@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet {
 
     TextFiles text = new TextFiles();
-    PartGenerator pg = new PartGenerator();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -46,11 +45,14 @@ public class FrontController extends HttpServlet {
 
             case "create_carport": {
                 //int height = Integer.parseInt(request.getParameter("height"));
-
+               
+                
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
+                
+                PartGenerator pg = new PartGenerator(length, width);
 
-                int pillars = pg.getPillarAmount(length, width);
+                int pillars = pg.getPillarAmount();
 
                 request.setAttribute("pillars", pillars);
 

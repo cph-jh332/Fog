@@ -83,7 +83,8 @@ public class PartGenerator
 
         while (lengthCounter < length)
         {
-            while (lengthCounter + tileLengths[typeChosen] > length && typeChosen < tileLengths.length)
+            widthCounter = 0;
+            while (lengthCounter + tileLengths[typeChosen] > length && typeChosen < tileLengths.length - 1)
             {
                 typeChosen++;
             }
