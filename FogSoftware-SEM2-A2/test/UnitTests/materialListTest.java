@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
 
 public class materialListTest
 {
-    PartGenerator pg = new PartGenerator();
+    PartGenerator pg = new PartGenerator(780, 600);
     
     @Test
     public void pillarsTest(){
-        int pillars = pg.getPillarAmount(780, 600);
+        int pillars = pg.getPillarAmount();
         int expected = 11;
         assertEquals(expected, pillars);
     }
