@@ -18,18 +18,18 @@
         <h1>Understern</h1>
         <c:forEach var="entry" items="${understern}">
             <p><c:out value ="${entry}"/></p>
-        </c:forEach>
+        </c:forEach><hr>
         <h1>Overstern</h1>
         <c:forEach var="entry" items="${overstern}">
             <p><c:out value ="${entry}"/></p>
-        </c:forEach>
+        </c:forEach><hr>
         <h1>Roof Tiles</h1>
         <c:forEach var="entry" items="${roofTiles}">
             <p><c:out value ="${entry}"/></p>
-        </c:forEach>
+        </c:forEach><hr>
         <h1>Water Boards</h1>
         <c:forEach var="entry" items="${waterBoards}">
             <p><c:out value ="${entry}"/></p>
-        </c:forEach>
+        </c:forEach><hr>
     </body>
 </html>
