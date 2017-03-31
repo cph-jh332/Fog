@@ -97,10 +97,11 @@ public class PartGenerator
         return tiles;
     }
     
-    public int[] getRafters()
+    public int[] getRem()
     {
-        int[] rafters = new int[2];
-        
+        int[] rafterLengths = {6000, 4800};
+        int[] rafters = new int[rafterLengths.length];
+     
         
         
         return rafters;
@@ -128,8 +129,8 @@ public class PartGenerator
     {   
         int[] understern = new int[2];
 
-        int temp360 = ((carportWidth / 3600) + 10) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
-        int temp540 = ((carportLength / 5400) + 10) * 2;
+        int temp360 = ((carportWidth / 3600) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
+        int temp540 = ((carportLength / 5400) + 1) * 2;
         understern[0] = temp360;
         understern[1] = temp540;
 
@@ -140,8 +141,8 @@ public class PartGenerator
     {
         int[] overstern = new int[2];
 
-        int temp360 = ((carportWidth / 3600) + 10); //no boards in the back 
-        int temp540 = ((carportLength / 5400) + 10) * 2;
+        int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
+        int temp540 = ((carportLength / 5400) + 1) * 2;
         overstern[0] = temp360;
         overstern[1] = temp540;
 
