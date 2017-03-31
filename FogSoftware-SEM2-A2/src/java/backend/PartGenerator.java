@@ -97,13 +97,41 @@ public class PartGenerator
         return tiles;
     }
 
+    // Hardcoded sludge at it's best //
     public int[] getRem()
     {
         int[] rafterLengths =
         {
             6000, 4800
         };
+        
         int[] rafters = new int[rafterLengths.length];
+        rafters[1] = 1;
+        
+        int length = carportLength - 2400;
+        while (length > 0)
+        {
+            if (length >= 5400)
+            {
+                rafters[0] += 2;
+                length -= 6000;
+            }
+            else if (length >= 4800)
+            {
+                rafters[1] += 2;
+                length -= 4800;
+            }
+            else if (length / 2 < 3000) // a 6000 rafter divided by 2 //
+            {
+                rafters[0] += 1;
+                length -= 3000;
+            }
+            else
+            {
+                rafters[1] += 1;
+                length -= 2400;
+            }
+        }
 
         return rafters;
     }
@@ -154,11 +182,11 @@ public class PartGenerator
         return waterBoards;
     }
 
-    public int perforatedBand()
+    public int getPerforatedBand()
     {
         int pyth = (int) Math.sqrt(Math.pow(carportWidth, 2) + Math.pow(carportLength, 2));  //we find the length from front left pillar to the back right pillar c^2 = a^2 + b^2
         int band = 2;
-        if (pyth > 1000)
+        if (pyth > 10000)
         {
             band += 1;
         }
