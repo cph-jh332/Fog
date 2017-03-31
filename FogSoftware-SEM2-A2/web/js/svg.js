@@ -17,10 +17,6 @@ var shed = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
-// Objects
-var post = {
-    console.log("ping");
-};
 
 // Position elements
 frontPost.setAttribute("x", "120");

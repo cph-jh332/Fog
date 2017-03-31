@@ -9,9 +9,6 @@
     </head>
     <body>
         <h1>Result</h1>
-        <h1>Pillars</h1>
-        <p><c:out value="${pillars}"/></p><hr>
-        <h1>Rafters</h1>
-        <p><c:out value="${rafters}"/></p><hr>
+        <p><c:out value="${pillars}"/></p>
     </body>
 </html>
