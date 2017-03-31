@@ -20,7 +20,7 @@ public class FogDummy {
         //oversternBrædder(780, 600);
         //perforatedBand(780,700);
         
-        waterBoard(780,600);
+        //waterBoard(780,600);
     }
 
     static void dummy(int længde, int bredde) {

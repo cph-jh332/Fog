@@ -17,51 +17,16 @@ var shed = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
-
-// Position elements
-frontPost.setAttribute("x", "120");
-frontPost.setAttribute("y", "120");
-frontPost.setAttribute("width", "15");
-frontPost.setAttribute("height", "250");
-frontPost.setAttribute("class", "element");
-
-middlePost.setAttribute("x", "400");
-middlePost.setAttribute("y", "130");
-middlePost.setAttribute("width", "15");
-middlePost.setAttribute("height", "240");
-middlePost.setAttribute("class", "element");
-
-shedPost.setAttribute("x", "650");
-shedPost.setAttribute("y", "140");
-shedPost.setAttribute("width", "15");
-shedPost.setAttribute("height", "230");
-shedPost.setAttribute("class", "element");
-
-backPost.setAttribute("x", "850");
-backPost.setAttribute("y", "140");
-backPost.setAttribute("width", "15");
-backPost.setAttribute("height", "230");
-backPost.setAttribute("class", "element");
-
-roof.setAttribute("x", "50");
-roof.setAttribute("y", "100");
-roof.setAttribute("width", "850");
-roof.setAttribute("height", "25");
-roof.setAttribute("class", "element");
-roof.setAttribute("transform", "rotate(2 50 50)");
-
-roofSide.setAttribute("x", "55");
-roofSide.setAttribute("y", "115");
-roofSide.setAttribute("width", "840");
-roofSide.setAttribute("height", "20");
-roofSide.setAttribute("class", "element");
-roofSide.setAttribute("transform", "rotate(2 50 50)");
-
-shed.setAttribute("x", "665");
-shed.setAttribute("y", "145");
-shed.setAttribute("width", "185");
-shed.setAttribute("height", "225");
-shed.setAttribute("class", "element");
+function createObject(o,x,y,w,h,c,t) {
+    o.setAttribute("x", x);
+    o.setAttribute("y", y);
+    o.setAttribute("width", w);
+    o.setAttribute("height", h);
+    o.setAttribute("class", c);
+    o.setAttribute("transform", t);
+    
+    return o;
+}
 
 // Position specifications
 cLength.setAttribute("d", "M 50 450 L 900 450");
@@ -79,15 +44,17 @@ var texty = document.createTextNode("Length: 780cm");
 cLengthTxt.appendChild(texty);
 
 // Append all elements to the drawing
-svg.appendChild(frontPost);
-svg.appendChild(middlePost);
-svg.appendChild(backPost);
-svg.appendChild(shedPost);
-svg.appendChild(roofSide);
-svg.appendChild(shed);
-svg.appendChild(roof);
+svg.appendChild(createObject(frontPost, 120, 120, 15, 250, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(middlePost, 400, 130, 15, 240, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(backPost, 850, 140, 15, 230, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(shedPost, 650, 140, 15, 230, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(roofSide, 55, 115, 840, 20, "element", "rotate(2 50 50)"));
+svg.appendChild(createObject(shed, 665, 145, 185, 225, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(roof, 50, 100, 850, 25, "element", "rotate(2 50 50)"));
+
 svg.appendChild(cLength);
 svg.appendChild(cLengthTxt);
+//svg.appendChild(createObject(testPost, 10, 10, 15, 300, "element"));
 
 // Apply global styles
 var element = document.getElementsByClassName("element");
