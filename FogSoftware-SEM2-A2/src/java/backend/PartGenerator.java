@@ -5,12 +5,9 @@
  */
 package backend;
 
-/**
- *
- * @author Bade
- */
-public class PartGenerator {
-
+ // All lengths are in millimeter //
+public class PartGenerator 
+{
     private int carportLength;
     private int carportWidth;
 
@@ -20,7 +17,6 @@ public class PartGenerator {
         carportWidth = width * 10;
     }
 
-    // Length in millimeter //
     public int getRafterAmount()
     {
         int length = carportLength;
@@ -64,15 +60,16 @@ public class PartGenerator {
     // index 0 is the 6000mm long tiles and index 1 is the 3600mm long tiles //
     public int[] getRoofTiles()
     {
-        int length = carportLength;
-        int width = carportWidth;
-        
+        int overlap = 200;
         int tileWidth = 1090;
         int[] tileLengths =
         {
             6000, 3600
         };
-        
+
+        int length = carportLength;
+        int width = carportWidth;
+
         int typeChosen = 0;
         int[] tiles = new int[tileLengths.length];
 
@@ -82,16 +79,16 @@ public class PartGenerator {
         while (lengthCounter < length)
         {
             widthCounter = 0;
-            while (lengthCounter + tileLengths[typeChosen] > length && typeChosen < tileLengths.length - 1)
+            while (lengthCounter + (tileLengths[typeChosen] - overlap) > length && typeChosen < tileLengths.length - 1)
             {
                 typeChosen++;
             }
 
-            lengthCounter += tileLengths[typeChosen];
+            lengthCounter += tileLengths[typeChosen] - overlap;
 
             while (widthCounter < width)
             {
-                widthCounter += tileWidth;
+                widthCounter += tileWidth - overlap;
                 tiles[typeChosen]++;
             }
         }
@@ -99,7 +96,34 @@ public class PartGenerator {
         return tiles;
     }
 
-    public void understernBrædder(int længde, int bredde)
+    public int[] getRafters()
+    {
+        int[] rafters = new int[2];
+        
+        
+        
+        return rafters;
+    }
+    
+    public int getShedBoards()
+    {
+        int boardWidth = 1000;
+
+        int circumference = 2 * carportLength + 2 * carportWidth;
+        int boards = 0;
+
+        while (circumference > 0)
+        {
+            circumference -= boardWidth;
+            boards++;
+        }
+
+        return boards;
+    }
+    
+    
+
+    public int[] understernBrædder(int længde, int bredde)
     {
         int[] understern = new int[2];
 
@@ -107,13 +131,11 @@ public class PartGenerator {
         int temp540 = ((længde / 540) + 1) * 2;
         understern[0] = temp360;
         understern[1] = temp540;
-        for (int i = 0; i < understern.length; i++)
-        {
-            System.out.println(understern[i]);
-        }
+
+        return understern;
     }
 
-    public void oversternBrædder(int længde, int bredde)
+    public int[] oversternBrædder(int længde, int bredde)
     {
         int[] overstern = new int[2];
 
@@ -121,9 +143,7 @@ public class PartGenerator {
         int temp540 = ((længde / 540) + 1) * 2;
         overstern[0] = temp360;
         overstern[1] = temp540;
-        for (int i = 0; i < overstern.length; i++)
-        {
-            System.out.println(overstern[i]);
-        }
+
+        return overstern;
     }
 }
