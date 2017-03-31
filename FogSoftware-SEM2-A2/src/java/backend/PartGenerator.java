@@ -5,8 +5,8 @@
  */
 package backend;
 
- // All lengths are in millimeter //
-public class PartGenerator
+// All lengths are in millimeter //
+public class PartGenerator 
 {
     private int carportLength;
     private int carportWidth;
@@ -35,7 +35,7 @@ public class PartGenerator
     {
         int length = carportLength;
         int width = carportWidth;
-        
+
         int shedPillars = 4;
         int extraPillars = 1;
         int num = 2;
@@ -60,7 +60,7 @@ public class PartGenerator
     // index 0 is the 6000mm long tiles and index 1 is the 3600mm long tiles //
     public int[] getRoofTiles()
     {
-        int overlap = 200;
+        //int overlap = 200;
         int tileWidth = 1090;
         int[] tileLengths =
         {
@@ -80,53 +80,46 @@ public class PartGenerator
         while (lengthCounter < length)
         {
             widthCounter = 0;
-            while (lengthCounter + (tileLengths[typeChosen] - overlap) > length && typeChosen < tileLengths.length - 1)
+            while (lengthCounter + (tileLengths[typeChosen]) > length && typeChosen < tileLengths.length - 1)
             {
                 typeChosen++;
             }
 
-            lengthCounter += tileLengths[typeChosen] - overlap;
+            lengthCounter += tileLengths[typeChosen];
 
             while (widthCounter < width)
             {
-                widthCounter += tileWidth - overlap;
+                widthCounter += tileWidth;
                 tiles[typeChosen]++;
             }
         }
 
         return tiles;
     }
-    
+
     public int[] getRem()
     {
-        int[] rafterLengths = {6000, 4800};
+        int[] rafterLengths =
+        {
+            6000, 4800
+        };
         int[] rafters = new int[rafterLengths.length];
-     
-        
-        
+
         return rafters;
     }
-    
+
     public int getShedBoards()
     {
-        int boardWidth = 1000;
+        int boardWidth = 100;
 
-        int circumference = 2 * carportLength + 2 * carportWidth;
-        int boards = 0;
+        int circumference = (2 * 2100) + (2 * (carportWidth - 700));
+        int boards = circumference / boardWidth;
 
-        while (circumference > 0)
-        {
-            circumference -= boardWidth;
-            boards++;
-        }
-
-        return boards;
+        return (int)Math.ceil(boards * 1.35); // 0.35 is the fraction that Fog adds as extra
     }
-    
-    
 
     public int[] understernBrædder()
-    {   
+    {
         int[] understern = new int[2];
 
         int temp360 = ((carportWidth / 3600) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
@@ -147,5 +140,29 @@ public class PartGenerator
         overstern[1] = temp540;
 
         return overstern;
+    }
+
+    public int[] waterBoard()
+    {
+        int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
+        int temp540 = ((carportLength / 5400) + 1) * 2;
+
+        int[] waterBoards =
+        {
+            temp360, temp540
+        };
+        return waterBoards;
+    }
+
+    public int perforatedBand()
+    {
+        int pyth = (int) Math.sqrt(Math.pow(carportWidth, 2) + Math.pow(carportLength, 2));  //we find the length from front left pillar to the back right pillar c^2 = a^2 + b^2
+        int band = 2;
+        if (pyth > 1000)
+        {
+            band += 1;
+        }
+        
+        return band;
     }
 }

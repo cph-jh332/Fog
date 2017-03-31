@@ -15,26 +15,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author craci
  */
-@WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
+@WebServlet(name = "FrontController", urlPatterns =
+{
+    "/FrontController"
+})
 public class FrontController extends HttpServlet {
 
     TextFiles text = new TextFiles();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd = null;
         String action = request.getParameter("action");
 
         // If no form is submitted
-        if (action == null /*&& currentUser != null*/) {
+        if (action == null /*&& currentUser != null*/)
+        {
             //rd = goToShop(request);
             response.sendRedirect("index.html");
             return;
         }
 
-        switch (action) {
-            case "hello": {
+        switch (action)
+        {
+            case "hello":
+            {
                 String name = request.getParameter("magictext");
                 String hello = text.getText();
                 request.setAttribute("magictext", hello + " " + name);
@@ -43,16 +50,16 @@ public class FrontController extends HttpServlet {
                 break;
             }
 
-            case "create_carport": {
+            case "create_carport":
+            {
                 //int height = Integer.parseInt(request.getParameter("height"));
-               
-                
+
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
-                
+
                 PartGenerator pg = new PartGenerator(length, width);
 
-                int pillars = pg.getPillarAmount();             
+                int pillars = pg.getPillarAmount();
                 int rafters = pg.getRafterAmount();
 
                 request.setAttribute("pillars", pillars);
@@ -82,7 +89,8 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
@@ -96,7 +104,8 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
@@ -106,7 +115,8 @@ public class FrontController extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+    public String getServletInfo()
+    {
         return "Short description";
     }// </editor-fold>
 
