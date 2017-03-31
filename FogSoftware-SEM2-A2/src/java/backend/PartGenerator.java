@@ -13,8 +13,8 @@ public class PartGenerator
 
     public PartGenerator(int length, int width)
     {
-        carportLength = length;
-        carportWidth = width;
+        carportLength = length * 10;
+        carportWidth = width * 10;
     }
 
     public int getRafterAmount()
