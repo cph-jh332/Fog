@@ -29,6 +29,6 @@ public class materialListTest
     public void rafterAmountTest(){
         int rafters = pg.getRafterAmount();
         int expected = 15;
-        assertEquals(expected, rafters);
+        assertEquals(expected, rafters); 
     }
 }
