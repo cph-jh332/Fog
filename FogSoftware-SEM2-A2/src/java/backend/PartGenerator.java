@@ -6,15 +6,15 @@
 package backend;
 
  // All lengths are in millimeter //
-public class PartGenerator 
+public class PartGenerator
 {
     private int carportLength;
     private int carportWidth;
 
     public PartGenerator(int length, int width)
     {
-        carportLength = length * 10;
-        carportWidth = width * 10;
+        carportLength = length;
+        carportWidth = width;
     }
 
     public int getRafterAmount()
@@ -22,20 +22,21 @@ public class PartGenerator
         int length = carportLength;
         int rafterDistance = 550;
 
-        int rafter = 1;
+        length -= 275; // udhæng bagved
+        int spær = 1;
         while (length > rafterDistance)
         {
-            rafter++;
+            spær++;
             length -= rafterDistance;
         }
-        return rafter;
+        return spær;
     }
 
     public int getPillarAmount()
     {
         int length = carportLength;
         int width = carportWidth;
-
+        
         int shedPillars = 4;
         int extraPillars = 1;
         int num = 2;
@@ -71,6 +72,7 @@ public class PartGenerator
         int width = carportWidth;
 
         int typeChosen = 0;
+
         int[] tiles = new int[tileLengths.length];
 
         int widthCounter = 0;
@@ -95,7 +97,7 @@ public class PartGenerator
 
         return tiles;
     }
-
+    
     public int[] getRafters()
     {
         int[] rafters = new int[2];
