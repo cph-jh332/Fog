@@ -19,7 +19,7 @@ var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
 // Objects
 var post = {
-    console.log("ping");
+    
 };
 
 // Position elements

@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet {
         // If no form is submitted
         if (action == null /*&& currentUser != null*/) {
             //rd = goToShop(request);
-            response.sendRedirect("index.html");
+            response.sendRedirect("/index.html");
             return;
         }
 
@@ -38,7 +38,7 @@ public class FrontController extends HttpServlet {
                 String name = request.getParameter("magictext");
                 String hello = text.getText();
                 request.setAttribute("magictext", hello + " " + name);
-                rd = request.getRequestDispatcher("testresult.jsp");
+                rd = request.getRequestDispatcher("/testresult.jsp");
 
                 break;
             }
@@ -58,7 +58,7 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("pillars", pillars);
                 request.setAttribute("rafters", rafters);
 
-                rd = request.getRequestDispatcher("material-list.jsp");
+                rd = request.getRequestDispatcher("/material-list.jsp");
 
                 break;
 
