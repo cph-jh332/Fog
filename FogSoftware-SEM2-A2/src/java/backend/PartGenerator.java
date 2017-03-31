@@ -6,8 +6,8 @@
 package backend;
 
 // All lengths are in millimeter //
-public class PartGenerator {
-
+public class PartGenerator 
+{
     private int carportLength;
     private int carportWidth;
 
@@ -60,7 +60,7 @@ public class PartGenerator {
     // index 0 is the 6000mm long tiles and index 1 is the 3600mm long tiles //
     public int[] getRoofTiles()
     {
-        int overlap = 200;
+        //int overlap = 200;
         int tileWidth = 1090;
         int[] tileLengths =
         {
@@ -80,16 +80,16 @@ public class PartGenerator {
         while (lengthCounter < length)
         {
             widthCounter = 0;
-            while (lengthCounter + (tileLengths[typeChosen] - overlap) > length && typeChosen < tileLengths.length - 1)
+            while (lengthCounter + (tileLengths[typeChosen]) > length && typeChosen < tileLengths.length - 1)
             {
                 typeChosen++;
             }
 
-            lengthCounter += tileLengths[typeChosen] - overlap;
+            lengthCounter += tileLengths[typeChosen];
 
             while (widthCounter < width)
             {
-                widthCounter += tileWidth - overlap;
+                widthCounter += tileWidth;
                 tiles[typeChosen]++;
             }
         }
@@ -112,16 +112,10 @@ public class PartGenerator {
     {
         int boardWidth = 100;
 
-        int circumference = 2 * carportLength + 2 * carportWidth;
-        int boards = 0;
+        int circumference = (2 * 2100) + (2 * (carportWidth - 700));
+        int boards = circumference / boardWidth;
 
-        while (circumference > 0)
-        {
-            circumference -= boardWidth;
-            boards++;
-        }
-
-        return boards;
+        return (int)Math.ceil(boards * 1.35); // 0.35 is the fraction that Fog adds as extra
     }
 
     public int[] understernBrædder()
