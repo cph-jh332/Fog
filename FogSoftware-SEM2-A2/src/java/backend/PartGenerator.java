@@ -154,9 +154,9 @@ public class PartGenerator
         return waterBoards;
     }
 
-    public int perforatedBand(int length, int width)
+    public int perforatedBand()
     {
-        int pyth = (int) Math.sqrt(Math.pow(width, 2) + Math.pow(length, 2));  //we find the length from front left pillar to the back right pillar c^2 = a^2 + b^2
+        int pyth = (int) Math.sqrt(Math.pow(carportWidth, 2) + Math.pow(carportLength, 2));  //we find the length from front left pillar to the back right pillar c^2 = a^2 + b^2
         int band = 2;
         if (pyth > 1000)
         {
