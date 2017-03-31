@@ -52,7 +52,7 @@ public class FrontController extends HttpServlet {
                 
                 PartGenerator pg = new PartGenerator(length, width);
 
-                int pillars = pg.getPillarAmount();             
+                int pillars = pg.getPillarAmount();
                 int rafters = pg.getRafterAmount();
 
                 request.setAttribute("pillars", pillars);
