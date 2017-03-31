@@ -31,5 +31,14 @@ public class materialListTest
         int expected = 15;
         assertEquals(expected, rafters); 
     }
+    
+    @Test
+    public void understærnTest(){
+        int[] understern = pg.understernBrædder();
+        int understern1 = understern[1];
+        
+        int expected = 4;
+        assertEquals(expected, understern1);
+    }
 
 }
