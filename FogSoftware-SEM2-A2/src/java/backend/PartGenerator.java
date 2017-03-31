@@ -17,8 +17,8 @@ public class PartGenerator
 
     public PartGenerator(int length, int width)
     {
-        carportLength = length*10;
-        carportWidth = width*10;
+        carportLength = length;
+        carportWidth = width;
     }
 
     // Length in millimeter //
