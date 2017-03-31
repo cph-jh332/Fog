@@ -85,7 +85,7 @@ public class materialListTest {
     
     @Test
     public void perforatedBand(){
-        int perforatedBand = pg.perforatedBand();
+        int perforatedBand = pg.getPerforatedBand();
         int expected = 2;
         assertEquals(expected, perforatedBand);
     }
