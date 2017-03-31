@@ -22,7 +22,6 @@ public class PartGenerator
         int length = carportLength;
         int rafterDistance = 550;
 
-        length -= 275; // udhæng bagved
         int spær = 1;
         while (length > rafterDistance)
         {
@@ -125,24 +124,24 @@ public class PartGenerator
     
     
 
-    public int[] understernBrædder(int længde, int bredde)
-    {
+    public int[] understernBrædder()
+    {   
         int[] understern = new int[2];
 
-        int temp360 = ((bredde / 360) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
-        int temp540 = ((længde / 540) + 1) * 2;
+        int temp360 = ((carportWidth / 3600) + 10) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
+        int temp540 = ((carportLength / 5400) + 10) * 2;
         understern[0] = temp360;
         understern[1] = temp540;
 
         return understern;
     }
 
-    public int[] oversternBrædder(int længde, int bredde)
+    public int[] oversternBrædder()
     {
         int[] overstern = new int[2];
 
-        int temp360 = ((bredde / 360) + 1); //no boards in the back 
-        int temp540 = ((længde / 540) + 1) * 2;
+        int temp360 = ((carportWidth / 3600) + 10); //no boards in the back 
+        int temp540 = ((carportLength / 5400) + 10) * 2;
         overstern[0] = temp360;
         overstern[1] = temp540;
 
