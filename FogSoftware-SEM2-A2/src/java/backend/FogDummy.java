@@ -16,7 +16,7 @@ public class FogDummy {
      */
     public static void main(String[] args) {
         //dummy(780, 800);
-        understernBrædder(780,600);
+        understernBrædder(450,350);
         oversternBrædder(780,600);
     }
 
@@ -46,7 +46,7 @@ public class FogDummy {
     static void understernBrædder(int længde, int bredde){
         int[] understern = new int[2] ;
         
-        int temp360 = ((bredde / 360) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
+        int temp360 = ((bredde / 360) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, * 2 front and back!
         int temp540 = ((længde / 540) + 1) * 2;
         understern[0] = temp360; 
         understern[1] = temp540; 
@@ -72,4 +72,21 @@ public class FogDummy {
         }
         
     }
+    
+    
+    static void perforatedBand(int length, int width){
+       // int length = carportLength;
+       // int width = carportWidth;
+       
+       int pyth = (int) Math.sqrt(Math.pow(width, 2)+ Math.pow(length, 2));  //we find the length from front left pillar to the back right pillar c^2 = a^2 + b^2
+       int band = 2;
+       if(pyth > 10){
+           band += 1;
+       }
+      // return band;
+    }
+    
+    
+    
+    
 }
