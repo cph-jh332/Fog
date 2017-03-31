@@ -122,8 +122,6 @@ public class PartGenerator
 
         return boards;
     }
-    
-    
 
     public int[] understernBrædder()
     {   
