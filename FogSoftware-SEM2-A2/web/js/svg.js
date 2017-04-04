@@ -42,7 +42,7 @@ function createObject(object,x,y,w,h,c,t) {
 }
 
 function getDimensions(isLength) {
-    var carportLength = document.getElementById("carport_length");
+    var carportLength = document.getElementById("carport_length").innerHTML;
     var carportWidth = document.getElementById("carport_width");
     
     y = 0;
@@ -59,28 +59,29 @@ function getDimensions(isLength) {
 }
 
 // Carport length
-cLength.setAttribute("d", "M 50 450 L 900 450");
-cLength.setAttribute("stroke", "lightblue");
+cLength.setAttribute("d", "M 10 450 L 900 450");
+cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
 cLengthTxt.setAttribute("x", "400");
 cLengthTxt.setAttribute("y", "480");
-cLengthTxt.setAttribute("fill", "lightblue");
+cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
 var textX = document.createTextNode("Length: " + getDimensions(true) + " cm");
 cLengthTxt.appendChild(textX);
 
 // Carport height
-cHeight.setAttribute("d", "M 20 50 V 20 50");
-cHeight.setAttribute("stroke", "lightblue");
+cHeight.setAttribute("d", "M 19 98 V 460 460");
+cHeight.setAttribute("stroke", "#6495ED");
 cHeight.setAttribute("stroke-width", "2");
 cHeight.setAttribute("stroke-dasharray", "1,3");
 
 cHeightTxt.setAttribute("x", "20");
 cHeightTxt.setAttribute("y", "300");
-cHeightTxt.setAttribute("fill", "lightblue");
+cHeightTxt.setAttribute("fill", "#6495ED");
 cHeightTxt.setAttribute("font-family", "Arial");
+cHeightTxt.setAttribute("transform", "rotate(-90 45 295)");
 var textY = document.createTextNode("Height: 210 cm");
 cHeightTxt.appendChild(textY);
 

@@ -12,9 +12,8 @@
     </head>
     <body>
         <div class="container">
-    
-            <p>Højde: </p><c:out value="${length}"/><p id="carport_length"></p>
-            <p>Bredde: </p><c:out value="${width}"/><p id="carport_width"></p>
+            <h1>Carport output</h1>
+            <p>Højde: <span id="carport_length"><c:out value="${length}"/></span> x Bredde: <c:out value="${width}"/><span id="carport_width"></span></p>
 
             <div class="Table">
                 <div class="Title">
@@ -51,6 +50,10 @@
                     }
                 %>
             </div>
+            
+            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport"></svg> 
+
+            <script src="js/svg.js"></script>
             
         </div>
     </body>

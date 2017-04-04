@@ -1,6 +1,8 @@
 .Table
 {
     display: table;
+    width: 950px;
+    margin-bottom: 50px;
 }
 .Title
 {
