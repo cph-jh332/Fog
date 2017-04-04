@@ -52,33 +52,17 @@ public class FrontController extends HttpServlet {
 
             case "create_carport":
             {
-                //int height = Integer.parseInt(request.getParameter("height"));
-
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
 
                 PartGenerator pg = new PartGenerator(length, width);
-
-                int pillars = pg.getPillarAmount();
-                int rafters = pg.getRafterAmount();
-                int shedBoards = pg.getShedBoards();
-                int[] understern = pg.understernBrædder();
-                int[] overstern = pg.oversternBrædder();
-                int[] roofTiles = pg.getRoofTiles();
-                int[] waterBoards = pg.waterBoard();
-
-                request.setAttribute("pillars", pillars);
-                request.setAttribute("rafters", rafters);
-                request.setAttribute("shedBoards", shedBoards);
-                request.setAttribute("understern", understern);
-                request.setAttribute("overstern", overstern);
-                request.setAttribute("roofTiles", roofTiles);
-                request.setAttribute("waterBoards", waterBoards);
+                request.setAttribute("materialList", pg.generateMaterialList());
+                request.setAttribute("length", length);
+                request.setAttribute("width", width);
 
                 rd = request.getRequestDispatcher("material-list.jsp");
 
                 break;
-
             }
 
             //default: {
