@@ -72,9 +72,7 @@ var textX = document.createTextNode("Length: " + getDimensions(true) + " cm");
 cLengthTxt.appendChild(textX);
 
 // Carport height
-cHeight.setAttribute("d", "M 400 50 V 20 50");
-
-
+cHeight.setAttribute("d", "M 20 50 V 20 50");
 cHeight.setAttribute("stroke", "lightblue");
 cHeight.setAttribute("stroke-width", "2");
 cHeight.setAttribute("stroke-dasharray", "1,3");
