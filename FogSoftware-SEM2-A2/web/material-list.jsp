@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -6,30 +7,47 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <c:import url="/inc/head.jsp"/>
+        <link rel="stylesheet" type="text/css" href="css/material_list_stylesheet.css">
     </head>
     <body>
-        <h1>Result</h1>
-        <h1>Pillars</h1>
-        <p><c:out value="${pillars}"/></p><hr>
-        <h1>Rafters</h1>
-        <p><c:out value="${rafters}"/></p><hr>
-        <h1>Shed Boards</h1>
-        <p><c:out value="${shedBoards}"/></p><hr>
-        <h1>Understern</h1>
-        <c:forEach var="entry" items="${understern}">
-            <p><c:out value ="${entry}"/></p>
-        </c:forEach><hr>
-        <h1>Overstern</h1>
-        <c:forEach var="entry" items="${overstern}">
-            <p><c:out value ="${entry}"/></p>
-        </c:forEach><hr>
-        <h1>Roof Tiles</h1>
-        <c:forEach var="entry" items="${roofTiles}">
-            <p><c:out value ="${entry}"/></p>
-        </c:forEach><hr>
-        <h1>Water Boards</h1>
-        <c:forEach var="entry" items="${waterBoards}">
-            <p><c:out value ="${entry}"/></p>
-        </c:forEach><hr>
+        <p>Højde: </p><c:out value="${length}"/><p id="carport_length"></p>
+        <p>Bredde: </p><c:out value="${width}"/><p id="carport_width"></p>
+
+        <div class="Table">
+            <div class="Title">
+                <p>Stykliste til carport</p>
+            </div>
+            <div class="Heading">
+                <div class="Cell">
+                    <p>Materiale</p>
+                </div>
+                <div class="Cell">
+                    <p>Længde</p>
+                </div>
+                <div class="Cell">
+                    <p>Antal</p>
+                </div>
+                <div class="Cell">
+                    <p>Enhed</p>
+                </div>
+            </div>
+            <%
+                for (String str : (ArrayList<String>)request.getAttribute("materialList"))
+                {
+                    String[] materialData = str.split("_");
+                    %> <div class="Row"> <%
+                    for (String data : materialData)
+                    {
+                        %>
+                        <div class="Cell">
+                            <p><%out.println(data);%></p>
+                        </div>
+                        <%
+                    }
+                    %> </div> <%
+                }
+            %>
+        </div>
     </body>
 </html>
