@@ -67,6 +67,8 @@ public class FrontController extends HttpServlet {
                 int[] roofTiles = pg.getRoofTiles();
                 int[] waterBoards = pg.waterBoard();
 
+                request.setAttribute("length", length);
+                request.setAttribute("width", width);
                 request.setAttribute("pillars", pillars);
                 request.setAttribute("rafters", rafters);
                 request.setAttribute("shedBoards", shedBoards);
