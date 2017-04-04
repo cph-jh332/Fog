@@ -59,23 +59,9 @@ public class FrontController extends HttpServlet {
 
                 PartGenerator pg = new PartGenerator(length, width);
 
-                int pillars = pg.getPillarAmount();
-                int rafters = pg.getRafterAmount();
-                int shedBoards = pg.getShedBoards();
-                int[] understern = pg.understernBrædder();
-                int[] overstern = pg.oversternBrædder();
-                int[] roofTiles = pg.getRoofTiles();
-                int[] waterBoards = pg.waterBoard();
-
                 request.setAttribute("length", length);
                 request.setAttribute("width", width);
-                request.setAttribute("pillars", pillars);
-                request.setAttribute("rafters", rafters);
-                request.setAttribute("shedBoards", shedBoards);
-                request.setAttribute("understern", understern);
-                request.setAttribute("overstern", overstern);
-                request.setAttribute("roofTiles", roofTiles);
-                request.setAttribute("waterBoards", waterBoards);
+                request.setAttribute("materialList", pg.generateMaterialList());
 
                 rd = request.getRequestDispatcher("material-list.jsp");
 
