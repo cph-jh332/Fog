@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <h1>Carport output</h1>
-            <p>Højde: <span id="carport_length"><c:out value="${length}"/></span> x Bredde: <c:out value="${width}"/><span id="carport_width"></span></p>
+            <p>Længde: <span id="carport_length"><c:out value="${length}"/></span> x Bredde: <c:out value="${width}"/><span id="carport_width"></span></p>
 
             <div class="Table">
                 <div class="Title">
