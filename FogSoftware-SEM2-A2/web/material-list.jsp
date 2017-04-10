@@ -8,28 +8,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <c:import url="/inc/head.jsp"/>
-        <link rel="stylesheet" type="text/css" href="css/material_list_stylesheet.css">
     </head>
     <body>
         <div class="container">
             <h1>Carport output</h1>
             <p>Længde: <span id="carport_length"><c:out value="${length}"/></span> x Bredde: <c:out value="${width}"/><span id="carport_width"></span></p>
 
-            <div class="Table">
-                <div class="Title">
+            <div class="table">
+                <div class="table-title">
                     <p>Stykliste til carport</p>
                 </div>
-                <div class="Heading">
-                    <div class="Cell">
+                <div class="table-heading">
+                    <div class="table-cell">
                         <p>Materiale</p>
                     </div>
-                    <div class="Cell">
+                    <div class="table-cell">
                         <p>Længde</p>
                     </div>
-                    <div class="Cell">
+                    <div class="table-cell">
                         <p>Antal</p>
                     </div>
-                    <div class="Cell">
+                    <div class="table-cell">
                         <p>Enhed</p>
                     </div>
                 </div>
@@ -37,11 +36,11 @@
                     for (String str : (ArrayList<String>)request.getAttribute("materialList"))
                     {
                         String[] materialData = str.split("_");
-                        %> <div class="Row"> <%
+                        %> <div class="table-row"> <%
                         for (String data : materialData)
                         {
                             %>
-                            <div class="Cell">
+                            <div class="table-cell">
                                 <p><%out.println(data);%></p>
                             </div>
                             <%
