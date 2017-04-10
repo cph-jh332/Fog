@@ -5,6 +5,7 @@
  */
 package backend;
 
+import db.DBConnector;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -15,10 +16,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Bade
- */
 public class HashEncoder
 {
 
