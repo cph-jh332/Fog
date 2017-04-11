@@ -1,9 +1,12 @@
 package controller;
 
+import backend.Order;
 import backend.PartGenerator;
 import backend.TextFiles;
+import backend.User;
+import db.OrderMapper;
+import db.UserMapper;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,49 +14,54 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "FrontController", urlPatterns =
-{
-    "/FrontController"
-})
+@WebServlet(name = "FrontController", urlPatterns
+        = {
+            "/FrontController"
+        })
 public class FrontController extends HttpServlet {
 
     TextFiles text = new TextFiles();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd = null;
         String action = request.getParameter("action");
+        User currentUser = (User) request.getSession().getAttribute("user");
 
         // If no form is submitted
-        if (action == null /*&& currentUser != null*/)
-        {
+        if (action == null /*&& currentUser != null*/) {
             //rd = goToShop(request);
             response.sendRedirect("index.html");
             return;
         }
 
-        switch (action)
-        {
-            case "hello":
-            {
-                String name = request.getParameter("magictext");
-                String hello = text.getText();
-                request.setAttribute("magictext", hello + " " + name);
-                rd = request.getRequestDispatcher("testresult.jsp");
+        switch (action) {
+            case "login": {
+                
+                currentUser = new UserMapper().loginUser(request.getParameter("username"), request.getParameter("password"));
+                if (currentUser != null) {
+                    request.getSession().setAttribute("user", currentUser);
+                    //rd = goToShop(request);
+                } else {
+                    request.setAttribute("message", "Failed login error.");
+                    rd = request.getRequestDispatcher("/index.jsp");
+                }
 
                 break;
             }
 
-            case "create_carport":
-            {
+            case "create_carport": {
                 //int height = Integer.parseInt(request.getParameter("height"));
 
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
 
                 PartGenerator pg = new PartGenerator(length, width);
+
+                // Create order in DB
+                Order o = new Order(666, Integer.toString(length) + "x" + Integer.toString(width));
+                new OrderMapper().storeOrder(currentUser, o);
 
                 request.setAttribute("length", length);
                 request.setAttribute("width", width);
@@ -83,8 +91,7 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -98,8 +105,7 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -109,8 +115,7 @@ public class FrontController extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo()
-    {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
