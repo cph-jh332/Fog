@@ -5,8 +5,8 @@ import backend.PartGenerator;
 import backend.TextFiles;
 import backend.User;
 import db.OrderMapper;
-import db.UserMapper;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd = null;
+        OrderMapper om = new OrderMapper();
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("user");
 
@@ -38,7 +39,7 @@ public class FrontController extends HttpServlet {
 
         switch (action) {
             case "login": {
-                
+                /*
                 currentUser = new UserMapper().loginUser(request.getParameter("username"), request.getParameter("password"));
                 if (currentUser != null) {
                     request.getSession().setAttribute("user", currentUser);
@@ -47,7 +48,15 @@ public class FrontController extends HttpServlet {
                     request.setAttribute("message", "Failed login error.");
                     rd = request.getRequestDispatcher("/index.jsp");
                 }
-
+                */
+                ArrayList orderList = om.getOrders();
+                
+                for (int i = 0; i < orderList.size(); i++) {
+                    //Object object = arr[i];
+                    
+                }
+                request.setAttribute("list", orderList);
+                rd = request.getRequestDispatcher("admin.jsp");
                 break;
             }
 
