@@ -6,6 +6,9 @@
 package backend;
 
 // All lengths are in millimeter //
+
+import java.util.ArrayList;
+
 public class PartGenerator 
 {
     private int carportLength;
@@ -17,6 +20,35 @@ public class PartGenerator
         carportWidth = width * 10;
     }
 
+    public ArrayList<String> generateMaterialList()
+    {
+        String[] types = {"45x195 mm. spærtræ ubh.", "97x97 mm. trykimp. Stolpe",
+        "Plastmo Ecolite blåtonet", "45x195 mm. spærtræ ubh.", "19x100 mm. trykimp. Bræt",
+        "25x200 mm. trykimp. Bræt", "25x125mm. trykimp. Bræt", "19x100 mm. trykimp. Bræt"}; // Input types in method order in this class
+        
+        ArrayList<String> materialList = new ArrayList();
+        materialList.add(types[0] + "_" + carportWidth / 10 + "cm" + "_" + getRafterAmount() + "_" + "stk");
+        materialList.add(types[1] + "_" + "300cm" + "_" + getPillarAmount() + "_" + "stk");
+        int[] tiles = getRoofTiles();
+        materialList.add(types[2] + "_" + "600cm" + "_" + tiles[0] + "_" + "stk");
+        materialList.add(types[2] + "_" + "360cm" + "_" + tiles[1] + "_" + "stk");
+        int[] rem = getRem();
+        materialList.add(types[3] + "_" + "600cm" + "_" + rem[0] + "_" + "stk");
+        materialList.add(types[3] + "_" + "480cm" + "_" + rem[1] + "_" + "stk");
+        materialList.add(types[4] + "_" + "210cm" + "_" + getShedBoards() + "_" + "stk");
+        int[] understern = getUndersternBrædder();
+        materialList.add(types[5] + "_" + "540cm" + "_" + understern[0] + "_" + "stk");
+        materialList.add(types[5] + "_" + "360cm" + "_" + understern[1] + "_" + "stk");
+        int[] overstern = getOversternBrædder();
+        materialList.add(types[6] + "_" + "540cm" + "_" + overstern[0] + "_" + "stk");
+        materialList.add(types[6] + "_" + "360cm" + "_" + overstern[1] + "_" + "stk");
+        int[] waterboard = getWaterboards();
+        materialList.add(types[7] + "_" + "540cm" + "_" + waterboard[0] + "_" + "stk");
+        materialList.add(types[7] + "_" + "360cm" + "_" + waterboard[1] + "_" + "stk");
+        
+        return materialList;
+    }
+    
     public int getRafterAmount()
     {
         int length = carportLength;
@@ -146,38 +178,38 @@ public class PartGenerator
         return (int)Math.ceil(boards * 1.35); // 0.35 is the fraction that Fog adds as extra
     }
 
-    public int[] understernBrædder()
+    public int[] getUndersternBrædder()
     {
         int[] understern = new int[2];
 
         int temp360 = ((carportWidth / 3600) + 1) * 2; //+1 because the costumer needs 1 extra for mistakes per length, *2 front and back!
         int temp540 = ((carportLength / 5400) + 1) * 2;
-        understern[0] = temp360;
-        understern[1] = temp540;
+        understern[0] = temp540;
+        understern[1] = temp360;
 
         return understern;
     }
 
-    public int[] oversternBrædder()
+    public int[] getOversternBrædder()
     {
         int[] overstern = new int[2];
 
         int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
         int temp540 = ((carportLength / 5400) + 1) * 2;
-        overstern[0] = temp360;
-        overstern[1] = temp540;
+        overstern[0] = temp540;
+        overstern[1] = temp360;
 
         return overstern;
     }
 
-    public int[] waterBoard()
+    public int[] getWaterboards()
     {
         int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
         int temp540 = ((carportLength / 5400) + 1) * 2;
 
         int[] waterBoards =
         {
-            temp360, temp540
+            temp540, temp360
         };
         return waterBoards;
     }

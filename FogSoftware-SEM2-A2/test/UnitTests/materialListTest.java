@@ -33,7 +33,7 @@ public class materialListTest {
 
     @Test
     public void understernTest() {
-        int[] understern = pg.understernBrædder();
+        int[] understern = pg.getUndersternBrædder();
         int understern1 = understern[1];
 
         int expected = 4;
@@ -42,7 +42,7 @@ public class materialListTest {
 
     @Test
     public void oversternTest() {
-        int[] overstern = pg.oversternBrædder();
+        int[] overstern = pg.getOversternBrædder();
         int overstern1 = overstern[0];
 
         int expected = 2;
@@ -76,7 +76,7 @@ public class materialListTest {
     
     @Test
     public void waterBoard(){
-        int[] waterBoards = pg.waterBoard();
+        int[] waterBoards = pg.getWaterboards();
         int waterBoard = waterBoards[0];
         
         int expected = 2;
