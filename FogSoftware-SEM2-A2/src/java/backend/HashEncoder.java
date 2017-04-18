@@ -42,7 +42,7 @@ public class HashEncoder
         return generatedPassword;
     }
     
-    private static byte[] generateSalt() throws NoSuchAlgorithmException
+    public static byte[] generateSalt() throws NoSuchAlgorithmException
     {
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
