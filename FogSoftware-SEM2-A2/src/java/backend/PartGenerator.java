@@ -194,8 +194,8 @@ public class PartGenerator
     {
         int[] overstern = new int[2];
 
-        int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
-        int temp540 = ((carportLength / 5400) + 1) * 2;
+        int temp360 = ((carportWidth / 3600) + 1) * 2; //no boards in the back 
+        int temp540 = ((carportLength / 5400) + 1);
         overstern[0] = temp540;
         overstern[1] = temp360;
 
@@ -204,8 +204,8 @@ public class PartGenerator
 
     public int[] getWaterboards()
     {
-        int temp360 = ((carportWidth / 3600) + 1); //no boards in the back 
-        int temp540 = ((carportLength / 5400) + 1) * 2;
+        int temp360 = ((carportWidth / 3600) + 1) * 2; //no boards in the back
+        int temp540 = ((carportLength / 5400) + 1);
 
         int[] waterBoards =
         {
