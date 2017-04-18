@@ -1,5 +1,5 @@
 // Main drawing
-var svg = document.getElementById("carport");
+var svg = document.getElementById("carport_side");
 
 svg.style.width = "950";
 svg.style.height = "550";
@@ -111,7 +111,3 @@ for (var i = 0; i < element.length; i++) {
 }
 
 shed.style.fill = "#ccc";
-
-
-
-

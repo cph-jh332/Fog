@@ -13,9 +13,13 @@
             <p id="carport_length">780</p>
             <p id="carport_width">300</p>
 
-            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport"></svg> 
+            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
+            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_side"></svg>
+            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_front"></svg>
 
-            <script src="js/svg.js"></script>
+            <script src="js/carport_top.js"></script>
+            <script src="js/carport_side.js"></script>
+            <script src="js/carport_front.js"></script>
         </div>
 
     </body>
