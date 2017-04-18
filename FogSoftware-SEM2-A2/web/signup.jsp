@@ -9,11 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Singup</title>
+        <title>Signup</title>
     </head>
     <body>
         <h1>Signup</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <p>E-mail</p>
             <input type="email" name="email" value="" placeholder="Type in your email" required/>
             <p>First Name</p>

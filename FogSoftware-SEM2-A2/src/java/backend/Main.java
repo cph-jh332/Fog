@@ -6,31 +6,16 @@
 package backend;
 
 import db.OrderMapper;
+import db.UserMapper;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
-        
-        // Main partly for testing
-        PartGenerator pg = new PartGenerator(7800, 6000);
-        OrderMapper om = new OrderMapper();
-
-        int[] roofTiles = pg.getRoofTiles();
-
-        //System.out.println(roofTiles[0] + ", " + roofTiles[1]);
-        
-        ArrayList<Order> orderList = om.getOrders();
-
-        for (int i = 0; i < orderList.size(); i++) {
-            System.out.println(orderList.get(i).getOrder_id());
-            System.out.println(orderList.get(i).getUser_id());
-            System.out.println(orderList.get(i).getOrder_date());
-            System.out.println(orderList.get(i).getOrder_title());
-        }
-        
-        
-        
-        
+    public static void main(String[] args) 
+    {
+        UserMapper um = new UserMapper();
+        User user = new User("test@joe.dk", "Tester", "Testensen", 22003300);
+        um.createUser(user, "");
+        System.out.println(um.loginUser(user.getEmail(), "") == null);
     }
 }

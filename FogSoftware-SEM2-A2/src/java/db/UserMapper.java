@@ -35,7 +35,6 @@ public class UserMapper {
             
         }
         
-        
         String sql = "select * from user where email = ? and password = ?";
         User user = null;
 
@@ -76,5 +75,4 @@ public class UserMapper {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
