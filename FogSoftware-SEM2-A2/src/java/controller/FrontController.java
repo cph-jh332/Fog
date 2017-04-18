@@ -40,7 +40,7 @@ public class FrontController extends HttpServlet {
 
         switch (action) {
             case "login": {
-                /*
+
                 currentUser = new UserMapper().loginUser(request.getParameter("username"), request.getParameter("password"));
                 if (currentUser != null) {
                     request.getSession().setAttribute("user", currentUser);
@@ -49,32 +49,30 @@ public class FrontController extends HttpServlet {
                     request.setAttribute("message", "Failed login error.");
                     rd = request.getRequestDispatcher("/index.jsp");
                 }
-                */
+
                 ArrayList orderList = om.getOrders();
-                
-                for (int i = 0; i < orderList.size(); i++) {
-                    //Object object = arr[i];
-                    
+
+                if (currentUser.isAdmin()) {
+                    request.setAttribute("list", orderList);
+                    rd = request.getRequestDispatcher("admin.jsp");
                 }
-                request.setAttribute("list", orderList);
-                rd = request.getRequestDispatcher("admin.jsp");
                 break;
             }
-            
+
             case "signup": {
                 String email = request.getParameter("email");
                 String firstName = request.getParameter("firstName");
                 String lastName = request.getParameter("lastName");
                 int phone = Integer.parseInt(request.getParameter("phone"));
                 String password = request.getParameter("password");
-                
+
                 User newUser = new User(email, firstName, lastName, phone);
-                
+
                 UserMapper userMapper = new UserMapper();
                 userMapper.createUser(newUser, password);
-                
+
                 rd = request.getRequestDispatcher("index.html");
-                
+
                 break;
             }
 
