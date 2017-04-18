@@ -18,7 +18,7 @@
                     <div class="col-md-12 col-border">
                         <h3>New incoming carport projects</h3>
                         <c:forEach var="entry" items="${list}">
-                            <a href="">
+                            <a href="admin-projectpage.jsp">
                                 <p>&rsaquo; 
                                     <c:out value="${entry.getOrder_id()}"/> - 
                                     <c:out value="${entry.getUser_id()}"/> - 

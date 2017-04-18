@@ -7,6 +7,7 @@ package db;
 
 import backend.HashEncoder;
 import backend.User;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,8 +23,6 @@ public class UserMapper {
 
     public User loginUser(String email, String password) {
         String sql = "select * from User where email = ? and password = ?";
-        byte[] salt = HashEncoder.getSalt();
-        password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
         User user = null;
 
         try (Connection con = new DBConnector().getConnection();) {
@@ -34,7 +33,8 @@ public class UserMapper {
 
             if (rs.next()) {
                 user = new User(rs.getInt("id"), rs.getString("email"),
-                        rs.getString("name"), rs.getInt("balance"));
+                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"));
+                password = HashEncoder.get_SHA_256_SecurePassword(password, rs.getBytes("salt"));
             }
             con.close();
         } catch (SQLException ex) {
@@ -44,20 +44,22 @@ public class UserMapper {
     }
 
     public void createUser(User newUser, String password) {
-        String sql = "insert into User (email, password, name, balance) values (?,?,?)";
-        byte[] salt = HashEncoder.getSalt();
-
-        password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
+        String sql = "insert into user (email, password, firstName, lastName, phone, salt) values (?,?,?,?,?,?)";
 
         try (Connection con = new DBConnector().getConnection();) {
+            byte[] salt = HashEncoder.generateSalt();
+            password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, newUser.getEmail());
             stmt.setString(2, password);
             stmt.setString(3, newUser.getName());
+            stmt.setString(4, newUser.getLastName());
+            stmt.setInt(5, newUser.getPhone());
+            stmt.setBytes(6, salt);
             stmt.executeUpdate();
 
             con.close();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

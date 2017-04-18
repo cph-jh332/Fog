@@ -21,7 +21,7 @@
             <p>First Name</p>
             <input type="text" name="lastName" value="" placeholder="Type in your last name" required/>
             <p>Phone</p>
-            <input type="phone" name="phone" value="" placeholder="Type in your phone number" required/>
+            <input type="tel" name="phone" value="" placeholder="Type in your phone number" required/>
             <p>Password</p>
             <input type="password" name="password" value="" placeholder="Type in your password" required/><br>
             <input type="submit" value="signup" name="action"/>
