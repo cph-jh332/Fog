@@ -10,8 +10,8 @@
     <body>
         <div class="container text-center">
             <h1>Carport 2D SVG drawing</h1>
-            <p id="carport_length">780</p>
-            <p id="carport_width">300</p>
+            <p hidden id="carport_length">780</p>
+            <p hidden id="carport_width">300</p>
 
             <h2>Top-view</h2>
             <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>

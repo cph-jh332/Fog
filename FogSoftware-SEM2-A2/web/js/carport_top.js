@@ -24,21 +24,9 @@ function createObject(x, y, width, height, eleclass, rotation)
     return object;
 }
 
-function getDimensions(isLength) {
-    var carportLength = document.getElementById("carport_length").innerHTML;
-    var carportWidth = document.getElementById("carport_width").innerHTML;
-    
-    y = 0;
-    
-    if (isLength === true) {
-        // get length
-        y = parseInt(carportLength);
-    } else {
-        // get width
-        y = parseInt(carportWidth);
-    }
-    
-    return y;
+function getDimensions(name) 
+{
+    return document.getElementById(name).innerHTML;
 }
 
 // Carport length
@@ -51,7 +39,7 @@ cWidthTxt.setAttribute("x", "420");
 cWidthTxt.setAttribute("y", "575");
 cWidthTxt.setAttribute("fill", "#6495ED");
 cWidthTxt.setAttribute("font-family", "Arial");
-var textX = document.createTextNode("Width: " + getDimensions(false) + " cm");
+var textX = document.createTextNode("Width: " + getDimensions("carport_width") + " cm");
 cWidthTxt.appendChild(textX);
 
 // Carport height
@@ -65,7 +53,7 @@ cLengthTxt.setAttribute("y", "520");
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
 cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
-var textY = document.createTextNode("Length: " + getDimensions(true) + " cm");
+var textY = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textY);
 
 // Append all elements to the drawing
