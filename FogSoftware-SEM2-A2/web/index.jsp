@@ -4,6 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -12,5 +13,6 @@ and open the template in the editor.
     </head>
     <body>
         <div>TODO write content</div>
+        <div><c:out value="${message}"/></div>
     </body>
 </html>

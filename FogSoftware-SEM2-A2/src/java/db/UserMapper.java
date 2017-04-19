@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class UserMapper {
 
     public User loginUser(String email, String password) {
+        User user = null;
         String getSalt = "select salt from user where email = ?";
         try (Connection con = new DBConnector().getConnection();){
             PreparedStatement stmt1 = con.prepareStatement(getSalt);
@@ -31,12 +32,12 @@ public class UserMapper {
                byte[] salt = rs1.getBytes("salt");
                password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
             }
+            con.close();
         }catch (Exception e) {
-            
+            System.out.println("e");
         }
         
         String sql = "select * from user where email = ? and password = ?";
-        User user = null;
 
         try (Connection con = new DBConnector().getConnection();) {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -45,7 +46,7 @@ public class UserMapper {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                user = new User(rs.getInt("id"), rs.getString("email"),
+                user = new User(rs.getInt("userID"), rs.getString("email"),
                         rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"));
             }
             con.close();

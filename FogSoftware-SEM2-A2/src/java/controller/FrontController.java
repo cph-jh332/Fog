@@ -47,7 +47,7 @@ public class FrontController extends HttpServlet
             case "login":
             {
 
-                currentUser = new UserMapper().loginUser(request.getParameter("username"), request.getParameter("password"));
+                currentUser = new UserMapper().loginUser(request.getParameter("email"), request.getParameter("password"));
                 if (currentUser != null)
                 {
                     request.getSession().setAttribute("user", currentUser);
