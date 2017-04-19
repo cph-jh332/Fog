@@ -30,13 +30,13 @@ var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 var cHeight = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cHeightTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
-function createObject(object,x,y,w,h,c,t) {
+function createObject(object, x, y, width, height, eleclass, rotation) {
     object.setAttribute("x", x);
     object.setAttribute("y", y);
-    object.setAttribute("width", w);
-    object.setAttribute("height", h);
-    object.setAttribute("class", c);
-    object.setAttribute("transform", t);
+    object.setAttribute("width", width);
+    object.setAttribute("height", height);
+    object.setAttribute("class", eleclass);
+    object.setAttribute("transform", rotation);
     
     return object;
 }
@@ -91,7 +91,7 @@ svg.appendChild(createObject(middlePost, 400, 130, 15, 240, "element", "rotate(0
 svg.appendChild(createObject(backPost, 850, 140, 15, 230, "element", "rotate(0 0 0)"));
 svg.appendChild(createObject(shedPost, 650, 140, 15, 230, "element", "rotate(0 0 0)"));
 svg.appendChild(createObject(roofSide, 55, 115, 840, 20, "element", "rotate(2 50 50)"));
-svg.appendChild(createObject(shed, 665, 145, 185, 225, "element", "rotate(0 0 0)"));
+svg.appendChild(createObject(shed, 665, 145, 185, 225, "", "rotate(0 0 0)"));
 svg.appendChild(createObject(roof, 50, 100, 850, 25, "element", "rotate(2 50 50)"));
 
 svg.appendChild(cLength);
@@ -99,7 +99,6 @@ svg.appendChild(cLengthTxt);
 
 svg.appendChild(cHeight);
 svg.appendChild(cHeightTxt);
-//svg.appendChild(createObject(testPost, 10, 10, 15, 300, "element"));
 
 // Apply global styles
 var element = document.getElementsByClassName("element");

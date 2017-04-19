@@ -16,6 +16,6 @@ public class Main {
         UserMapper um = new UserMapper();
         User user = new User("test@joe.dk", "Tester", "Testensen", 22003300);
         um.createUser(user, "");
-        System.out.println(um.loginUser(user.getEmail(), "") == null);
+        System.out.println(um.loginUser("test@test.dk", "test") == null);
     }
 }
