@@ -18,7 +18,7 @@ public class OrderMapper {
 
     public boolean storeOrder(User user, int length, int width, ArrayList<Material> materials) {
         String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle) VALUES (?, ?, ?);";
-        String sqlOrderMat = "INSERT INTO orderDetails (orderID, material, amount) VALUES (?,?,?);";
+        String sqlOrderMat = "INSERT INTO orderDetails (orderID, materialID, amount) VALUES (?,?,?);";
 
         // String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
         Connection con = new DBConnector().getConnection();
