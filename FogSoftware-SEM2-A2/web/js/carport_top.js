@@ -14,7 +14,6 @@ var carportLength = 500;
 var carportWidth = 340;
 svg.style.width = canvasWidth;
 svg.style.height = canvasHeight;
-svg.style.border = "solid 4px #999";
 
 function getTotalScale()
 {
@@ -48,14 +47,9 @@ function createObject(x, y, width, height, eleclass, rotation)
     return object;
 }
 
-function createObjectChooseScale(x, y, width, height, eleclass, rotation, scaleLength, scaleWidth)
+function createObjectDontScale(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    if (scaleLength)
-        y = y * scaleLength;
-    if (scaleWidth)
-        x = x * scaleWidth;
-    
     object.setAttribute("x", x * widthScale);
     object.setAttribute("y", y * lengthScale);
     object.setAttribute("width", width);
@@ -74,13 +68,13 @@ function getDimensions(name)
 // Carport length
 var cWidth = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
-cWidth.setAttribute("d", "M " + 285*widthScale + " " + 555*lengthScale + "L " + 650*widthScale + " " + 555 * lengthScale);
+cWidth.setAttribute("d", "M " + 285 * widthScale + " " + 555 * lengthScale + "L " + 650 * widthScale + " " + 555 * lengthScale);
 cWidth.setAttribute("stroke", "#6495ED");
 cWidth.setAttribute("stroke-width", "2");
 cWidth.setAttribute("stroke-dasharray", "1,3");
 
-cWidthTxt.setAttribute("x", 420*widthScale);
-cWidthTxt.setAttribute("y", 575*lengthScale);
+cWidthTxt.setAttribute("x", 420 * widthScale);
+cWidthTxt.setAttribute("y", 575 * lengthScale);
 cWidthTxt.setAttribute("fill", "#6495ED");
 cWidthTxt.setAttribute("font-family", "Arial");
 var textX = document.createTextNode("Width: " + getDimensions("carport_width") + " cm");
@@ -89,13 +83,13 @@ cWidthTxt.appendChild(textX);
 // Carport height
 var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
-cLength.setAttribute("d", "M " + 285*widthScale + " " + 555*lengthScale + " V 460 " + 35*lengthScale);
+cLength.setAttribute("d", "M " + 285 * widthScale + " " + 555 * lengthScale + " V 460 " + 35 * lengthScale);
 cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
-cLengthTxt.setAttribute("x", canvasWidth/3 - 150);
-cLengthTxt.setAttribute("y", canvasHeight/2);
+cLengthTxt.setAttribute("x", canvasWidth / 3 - 150);
+cLengthTxt.setAttribute("y", canvasHeight / 2);
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
 //cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
@@ -108,27 +102,27 @@ svg.appendChild(createObject(305, 35, 340, 500, "frame", "rotate(0 0 0)")); // f
 svg.appendChild(createObject(315, 45, 320, 480, "frame", "rotate(0 0 0)")); // inner-frame
 svg.appendChild(createObject(305, 35, 340, 135, "frame", "rotate(0 0 0)")); // shed
 svg.appendChild(createObject(315, 45, 320, 115, "shed", "rotate(0 0 0)")); // shed inner-frame
-svg.appendChild(createObjectChooseScale(305, 35, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-svg.appendChild(createObjectChooseScale(469, 35, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-svg.appendChild(createObjectChooseScale(629, 35, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-svg.appendChild(createObjectChooseScale(305, 159, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-svg.appendChild(createObjectChooseScale(469, 159, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-svg.appendChild(createObjectChooseScale(629, 159, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
+svg.appendChild(createObjectDontScale(305, 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createObjectDontScale(469, 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createObjectDontScale(629, 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createObjectDontScale(305, 159, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createObjectDontScale(469, 159, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createObjectDontScale(629, 159, 16, 16, "pillar", "rotate(0 0 0)"));
 
 var startY = 35 + carportLength - 16;
 var startX = 305;
-for (var i = 0; i < pillars - 6; i+=2)
+for (var i = 0; i < pillars - 6; i += 2)
 {
-    svg.appendChild(createObjectChooseScale(startX, startY, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
-    svg.appendChild(createObjectChooseScale(startX + 340 - 16, startY, 16, 16, "pillar", "rotate(0 0 0)"), false, false);
+    svg.appendChild(createObjectDontScale(startX, startY, 16, 16, "pillar", "rotate(0 0 0)"));
+    svg.appendChild(createObjectDontScale(startX + 340 - 16, startY, 16, 16, "pillar", "rotate(0 0 0)"));
     startY -= 250;
 }
 
 var startY = 40;
-var distance = (500 - 10)/(rafters - 1);
+var distance = (500 - 10) / (rafters - 1);
 for (var i = 0; i < rafters; i++)
 {
-    svg.appendChild(createObjectChooseScale(295, startY, 360, 4, "scalable_element", "rotate(0 0 0)"), true, false);
+    svg.appendChild(createObject(295, startY, 360, 4, "scalable_element", "rotate(0 0 0)"));
     startY += distance;
 }
 svg.appendChild(cWidth);
