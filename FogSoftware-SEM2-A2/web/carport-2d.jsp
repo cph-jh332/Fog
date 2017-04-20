@@ -15,17 +15,17 @@
             <p hidden id="pillars"><c:out value="${pillars}"/></p>
             <p hidden id="rafters"><c:out value="${rafters}"/></p>
 
-            <h1>Top-view</h1>
+            <h3>Top-view</h3>
             <div class="svg-container">
                 <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
             </div>
             
-            <h1>Side-view</h1>
+            <h3>Side-view</h3>
             <div class="svg-container">
                 <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_side"></svg>
             </div>
             
-            <h1>Front-view</h1>
+            <h3>Front-view</h3>
             <div class="svg-container">
                 <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_front"></svg>
             </div>
