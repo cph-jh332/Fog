@@ -21,7 +21,7 @@ public class OrderMapper {
 
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sqlOrder);
-            stmt.setInt(1, /*user.getId()*/ 666);
+            stmt.setInt(1, user.getId());
             stmt.setString(2, order.getOrder_title() + " - Carport med flat tag");
             stmt.executeUpdate();
             stmt = con.prepareStatement(sqlOrderMat);
