@@ -27,6 +27,13 @@ function getWidthScale()
     return width / baseWidth;
 }
 
+function getFullScale()
+{
+    var width = parseInt(getDimensions("carport_width"));
+    var length = parseInt(getDimensions("carport_length"));
+    return ((length / baseLength) + (width / baseWidth) / 2);
+}
+
 function createObject(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -70,7 +77,7 @@ cWidthTxt.setAttribute("x", 420 * widthScale);
 cWidthTxt.setAttribute("y", 575 * lengthScale);
 cWidthTxt.setAttribute("fill", "#6495ED");
 cWidthTxt.setAttribute("font-family", "Arial");
-cWidthTxt.setAttribute("font-size", "20");
+cWidthTxt.setAttribute("font-size", 10 * getFullScale());
 var textX = document.createTextNode("Width: " + getDimensions("carport_width") + " cm");
 cWidthTxt.appendChild(textX);
 
@@ -82,11 +89,11 @@ cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
-cLengthTxt.setAttribute("x", (canvasWidth/3) * widthScale - 190);
-cLengthTxt.setAttribute("y", canvasHeight / 2);
+cLengthTxt.setAttribute("x", (canvasWidth/3) * widthScale - (185 * widthScale));
+cLengthTxt.setAttribute("y", canvasHeight / 2 * lengthScale);
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
-cLengthTxt.setAttribute("font-size", "20");
+cLengthTxt.setAttribute("font-size", 10 * getFullScale());
 cLengthTxt.setAttribute("transform", "rotate(0 0 0)");
 var textY = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textY);
