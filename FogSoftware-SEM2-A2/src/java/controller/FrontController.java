@@ -4,6 +4,7 @@ import backend.Order;
 import backend.PartGenerator;
 import backend.TextFiles;
 import backend.User;
+import db.MaterialMapper;
 import db.OrderMapper;
 import db.UserMapper;
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
 
         RequestDispatcher rd = null;
         OrderMapper om = new OrderMapper();
+        MaterialMapper mp = new MaterialMapper();
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("user");
 
@@ -78,6 +80,13 @@ public class FrontController extends HttpServlet {
                 rd = request.getRequestDispatcher("index.jsp");
                 break;
             }
+            
+            case "materials": {
+                ArrayList<String> list = mp.getAllMaterials();
+                request.setAttribute("list", list);
+                rd = request.getRequestDispatcher("admin-materials.jsp");
+                break;
+            }
 
             case "signup": {
                 String email = request.getParameter("email");
@@ -112,7 +121,7 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("width", width);
                 request.setAttribute("materialList", pg.generateMaterialList());
 
-                rd = request.getRequestDispatcher("material-list.jsp");
+                rd = request.getRequestDispatcher("carport-2d.jsp");
 
                 break;
 

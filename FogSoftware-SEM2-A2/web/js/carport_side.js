@@ -10,8 +10,6 @@ function drawSidePillars(x) {
     return ((x - 1) / 2) - 1;
 }
 
-
-
 // Create objects
 var frontPost = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 var middlePost = document.createElementNS("http://www.w3.org/2000/svg", "rect");
