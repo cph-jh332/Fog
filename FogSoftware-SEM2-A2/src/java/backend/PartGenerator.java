@@ -13,13 +13,13 @@ public class PartGenerator
 {
     private int carportLength;
     private int carportWidth;
-
+    
     public PartGenerator(int length, int width)
     {
         carportLength = length * 10;
         carportWidth = width * 10;
     }
-
+    
     public ArrayList<String> generateMaterialList()
     {
         String[] types = {"45x195 mm. spærtræ ubh.", "97x97 mm. trykimp. Stolpe",

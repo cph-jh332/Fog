@@ -110,7 +110,8 @@ public class FrontController extends HttpServlet {
 
                 request.setAttribute("length", length);
                 request.setAttribute("width", width);
-                request.setAttribute("materialList", pg.generateMaterialList());
+                request.setAttribute("pillars", pg.getPillarAmount());
+                request.setAttribute("rafters", pg.getRafterAmount());
 
                 rd = request.getRequestDispatcher("carport-2d.jsp");
 

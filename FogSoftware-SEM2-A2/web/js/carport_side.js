@@ -5,11 +5,6 @@ svg.style.width = "950";
 svg.style.height = "550";
 svg.style.border = "solid 4px #999";
 
-function drawSidePillars(x) {
-    // x = total amount of pillars
-    return ((x - 1) / 2) - 1;
-}
-
 // Create objects
 var frontPost = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 var middlePost = document.createElementNS("http://www.w3.org/2000/svg", "rect");
