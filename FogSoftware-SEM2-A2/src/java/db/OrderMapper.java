@@ -37,26 +37,18 @@ public class OrderMapper {
             stmt.setString(3, length + "x" + width + " - Carport med flat tag");
             stmt.executeUpdate();
             
-            
-            
+            stmt = con.prepareStatement(sqlOrderMat);
+            stmt.setInt(1, newOrderId);
             for(Material m:materials){
-               stmt = con.prepareStatement(sqlOrderMat);
-               stmt.setInt(1, newOrderId);
                stmt.setInt(2, m.getID());
                stmt.setInt(3, m.getAmount()); 
-            }
-            
-            for (int i = 0; i < materials.size(); i++) {
-               Material m = materials.get(i);
-               stmt = con.prepareStatement(sqlOrderMat);
-               stmt.setInt(1, newOrderId);
-               stmt.setInt(2, m.getID());
-               stmt.setInt(3, m.getAmount());
                stmt.executeUpdate();
             }
             
-            con.commit();
+
             
+            con.commit();
+            return true;
 
 
 
@@ -65,7 +57,7 @@ public class OrderMapper {
             Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        return true;
+        
     }
 
     public ArrayList getOrders(String incomingSQL) {
