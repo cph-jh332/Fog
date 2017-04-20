@@ -81,35 +81,35 @@ public class FrontController extends HttpServlet {
                 rd = request.getRequestDispatcher("index.jsp");
                 break;
             }
-            
+
             case "see-materials": {
                 ArrayList<String> list = mp.getAllMaterials();
                 request.setAttribute("list", list);
                 rd = request.getRequestDispatcher("admin-materials.jsp");
                 break;
             }
-            
+
             case "see-projects": {
                 ArrayList orderList = om.getOrders("sqlall");
                 request.setAttribute("list", orderList);
                 rd = request.getRequestDispatcher("admin-projects.jsp");
                 break;
             }
-            
+
             case "add-material": {
                 request.setCharacterEncoding("UTF-8");
                 String material_name = request.getParameter("material_name");
-                
+
                 Material m = new Material(material_name);
-                
+
                 new MaterialMapper().addNewMaterial(m);
-                
+
                 ArrayList<String> list = mp.getAllMaterials();
-                
+
                 request.setAttribute("list", list);
-                
+
                 rd = request.getRequestDispatcher("admin-materials.jsp");
-                
+
                 break;
             }
 
@@ -141,7 +141,6 @@ public class FrontController extends HttpServlet {
                 // Create order in DB
                 //Order o = new Order(666, Integer.toString(length) + "x" + Integer.toString(width));
                 //new OrderMapper().storeOrder(currentUser, o, pg.generateMaterialList());
-
                 request.setAttribute("length", length);
                 request.setAttribute("width", width);
                 request.setAttribute("pillars", pg.getPillarAmount());
@@ -152,21 +151,22 @@ public class FrontController extends HttpServlet {
                 break;
 
             }
-            
+
             case "order": {
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
-                
+
                 User user = (User) request.getSession().getAttribute("user");
-                
+
                 PartGenerator pg = new PartGenerator(length, width);
 
-                new OrderMapper().storeOrder(user, length, width, pg.getMats());
-                
-                request.setAttribute("message", "you've ordered the carport");
+                if (new OrderMapper().storeOrder(user, length, width, pg.getMats())) {
+                    request.setAttribute("message", "you've ordered the carport");
+                } else {
+                    request.setAttribute("message", "Something went wrong, please try again");
+                }
                 rd = request.getRequestDispatcher("index.jsp");
                 break;
-
             }
 
             //default: {
