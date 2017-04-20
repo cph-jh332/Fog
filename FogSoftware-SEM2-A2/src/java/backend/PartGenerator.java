@@ -59,11 +59,28 @@ public class PartGenerator
         
         materials = om.getMaterialID();
         
-        for (int i = 0; i < materials.size(); i++) {
-            materials.get(i).setAmount(getRafterAmount());
+        
+            materials.get(0).setAmount(getRafterAmount());
+            materials.get(1).setAmount(getPillarAmount());
+            int[] tiles = getRoofTiles();
+            materials.get(2).setAmount(tiles[0]);   //600
+            materials.get(3).setAmount(tiles[1]);   //360
+            int[] rem = getRem();
+            materials.get(4).setAmount(rem[0]);     //600
+            materials.get(5).setAmount(rem[1]);     //480
+            int[] understern = getUndersternBrædder();
+            materials.get(6).setAmount(getShedBoards());
+            materials.get(7).setAmount(understern[0]);  //540
+            materials.get(8).setAmount(understern[1]);  //360
+            int[] overstern = getOversternBrædder();
+            materials.get(9).setAmount(overstern[0]);   //540
+            materials.get(10).setAmount(overstern[1]);  //360
+            int[] waterboard = getWaterboards();
+            materials.get(11).setAmount(waterboard[0]); //540
+            materials.get(12).setAmount(waterboard[1]); //360
             
             
-        }
+        
         
         
         return materials;
