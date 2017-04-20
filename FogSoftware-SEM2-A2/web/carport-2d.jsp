@@ -15,12 +15,20 @@
             <p hidden id="pillars"><c:out value="${pillars}"/></p>
             <p hidden id="rafters"><c:out value="${rafters}"/></p>
 
-            <h2>Top-view</h2>
-            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
-            <h2>Side-view</h2>
-            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_side"></svg>
-            <h2>Front-view</h2>
-            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_front"></svg>
+            <h1>Top-view</h1>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
+            </div>
+            
+            <h1>Side-view</h1>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_side"></svg>
+            </div>
+            
+            <h1>Front-view</h1>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_front"></svg>
+            </div>
 
             <script src="js/carport_top.js"></script>
             <script src="js/carport_side.js"></script>
