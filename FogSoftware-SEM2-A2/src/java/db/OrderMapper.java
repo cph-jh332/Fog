@@ -26,7 +26,7 @@ public class OrderMapper {
             stmt.setInt(1, /*user.getId()*/ 666);
             stmt.setString(2, order.getOrder_title() + " - Carport med flat tag");
             stmt.executeUpdate();
-            
+             
             stmt = con.prepareStatement(sqlOrderMat);
             stmt.setString(1, mats);
             stmt.executeUpdate();
@@ -41,11 +41,19 @@ public class OrderMapper {
 
     }
 
-    public ArrayList getOrders() {
+    public ArrayList getOrders(String incomingSQL) {
         
         ArrayList<Order> orderList = new ArrayList();
-        String sql = "SELECT * FROM orders";
+        
+        String sql = incomingSQL;
 
+        if (sql.equalsIgnoreCase("sqltop10")) {
+            sql = "SELECT * FROM FogDB.orders order by orderDate desc limit 10";
+        }
+        if (sql.equalsIgnoreCase("sqlall")) {
+            
+        }
+        
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
