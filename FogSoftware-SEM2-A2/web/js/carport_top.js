@@ -7,12 +7,13 @@ var widthScale = getWidthScale();
 var pillars = parseInt(document.getElementById("pillars").innerHTML) - 1;
 var rafters = parseInt(document.getElementById("rafters").innerHTML);
 
-var canvasWidth = 950 * widthScale;
-var canvasHeight = 600 * lengthScale;
+var canvasWidth = 950;
+var canvasHeight = 600;
 var carportLength = 500;
 var carportWidth = 340;
 svg.style.width = canvasWidth;
 svg.style.height = canvasHeight;
+svg.setAttribute("viewBox", "0 0 " + canvasWidth * widthScale + " " + canvasHeight * lengthScale);
 
 function getLengthScale()
 {
@@ -69,6 +70,7 @@ cWidthTxt.setAttribute("x", 420 * widthScale);
 cWidthTxt.setAttribute("y", 575 * lengthScale);
 cWidthTxt.setAttribute("fill", "#6495ED");
 cWidthTxt.setAttribute("font-family", "Arial");
+cWidthTxt.setAttribute("font-size", "20");
 var textX = document.createTextNode("Width: " + getDimensions("carport_width") + " cm");
 cWidthTxt.appendChild(textX);
 
@@ -80,11 +82,11 @@ cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
-cLengthTxt.setAttribute("x", canvasWidth / 3 - 165);
+cLengthTxt.setAttribute("x", (canvasWidth/3) * widthScale - 190);
 cLengthTxt.setAttribute("y", canvasHeight / 2);
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
-//cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
+cLengthTxt.setAttribute("font-size", "20");
 cLengthTxt.setAttribute("transform", "rotate(0 0 0)");
 var textY = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textY);
