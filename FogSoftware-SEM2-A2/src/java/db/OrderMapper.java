@@ -17,7 +17,7 @@ public class OrderMapper {
     int newOrderId;
 
     public boolean storeOrder(User user, int length, int width, ArrayList<Material> materials) {
-        String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle) VALUES (?, ?, ?);";
+        String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle, width, length) VALUES (?, ?, ?, ?, ?);";
         String sqlOrderMat = "INSERT INTO orderDetails (orderID, materialID, amount) VALUES (?,?,?);";
 
         // String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
@@ -38,6 +38,8 @@ public class OrderMapper {
             stmt.setInt(1, newOrderId);
             stmt.setInt(2, user.getId());
             stmt.setString(3, length + "x" + width + " - Carport med flat tag");
+            stmt.setInt(4, width);
+            stmt.setInt(5, length);
             stmt.executeUpdate();
 
             //  stmt = con.prepareStatement(sqlOrderMat);
