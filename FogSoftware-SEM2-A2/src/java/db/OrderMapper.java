@@ -14,20 +14,29 @@ import java.util.logging.Logger;
 
 public class OrderMapper {
 
-    public void storeOrder(User user,int heigth, int width, ArrayList<String> materials) {
+    public void storeOrder(User user,int length, int width, ArrayList<Material> materials) {
         String sqlOrder = "INSERT INTO orders (userID, orderTitle) VALUES (?, ?);";
-        String sqlOrderMat = "INSERT INTO orderMaterials (material) VALUES (?);";
+        String sqlOrderMat = "INSERT INTO orderDetails (material, amount) VALUES (?,?);";
 
-        String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
+       // String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
 
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sqlOrder);
             stmt.setInt(1, user.getId());
-            stmt.setString(2, heigth + "x" + width + " - Carport med flat tag");
+            stmt.setString(2, length + "x" + width + " - Carport med flat tag");
             stmt.executeUpdate();
-            stmt = con.prepareStatement(sqlOrderMat);
-            stmt.setString(1, mats);
-            stmt.executeUpdate();
+            
+            for (int i = 0; i < materials.size(); i++) {
+               Material m = materials.get(i);
+               stmt = con.prepareStatement(sqlOrderMat);
+               stmt.setInt(1, m.getID());
+               stmt.setInt(2, m.getAmount());
+                
+            }
+//            
+//            stmt = con.prepareStatement(sqlOrderMat);
+//            stmt.setString(1, mats);
+//            stmt.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
