@@ -23,6 +23,16 @@
             <script src="js/carport_top.js"></script>
             <script src="js/carport_side.js"></script>
             <script src="js/carport_front.js"></script>
+            <c:if test="${user != null}">
+                <form action="FrontCrontoller">
+                    <input type="hidden" name="width" value="<c:out value="${width}"/>">
+                    <input type="hidden" name="length" value="<c:out value="${length}"/>">
+                    <input type="submit" value="order" name="action">
+                </form>
+            </c:if>
+            <c:if test="${user == null}">
+                
+            </c:if>
         </div>
 
     </body>

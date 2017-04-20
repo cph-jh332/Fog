@@ -140,7 +140,7 @@ public class FrontController extends HttpServlet {
 
                 // Create order in DB
                 Order o = new Order(666, Integer.toString(length) + "x" + Integer.toString(width));
-                new OrderMapper().storeOrder(currentUser, o, pg.generateMaterialList());
+                //new OrderMapper().storeOrder(currentUser, o, pg.generateMaterialList());
 
                 request.setAttribute("length", length);
                 request.setAttribute("width", width);
