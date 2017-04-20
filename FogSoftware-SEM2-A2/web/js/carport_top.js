@@ -14,7 +14,6 @@ var carportWidth = 340;
 svg.style.width = canvasWidth;
 svg.style.height = canvasHeight;
 
-
 function getLengthScale()
 {
     var length = parseInt(getDimensions("carport_length"));
