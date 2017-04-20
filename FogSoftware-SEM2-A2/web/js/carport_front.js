@@ -53,19 +53,19 @@ cLengthTxt.setAttribute("y", "360");
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
 cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
-var textY = document.createTextNode("Height: " + getDimensions("carport_length") + " cm");
+var textY = document.createTextNode("Height: 210 cm");
 cLengthTxt.appendChild(textY);
 
 // Append all elements to the drawing
-svg.appendChild(createObject(175, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
-svg.appendChild(createObject(750, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
+svg.appendChild(createObject(175, 160, 25, 240, "front_element", "rotate(0 0 0)")); // pillar
+svg.appendChild(createObject(750, 160, 25, 240, "front_element", "rotate(0 0 0)")); // pillar
 
-svg.appendChild(createObject(167, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
-svg.appendChild(createObject(767, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
+svg.appendChild(createObject(167, 160, 16, 32, "front_element", "rotate(0 0 0)")); // rem
+svg.appendChild(createObject(767, 160, 16, 32, "front_element", "rotate(0 0 0)")); // rem
 
-svg.appendChild(createObject(145, 132, 660, 28, "element", "rotate(0 0 0)")); // Waterbord front
+svg.appendChild(createObject(145, 132, 660, 28, "front_element", "rotate(0 0 0)")); // Waterbord front
 
-svg.appendChild(createObject(200, 160, 550, 174, "element", "rotate(0 0 0)")); // shed
+svg.appendChild(createObject(200, 160, 550, 174, "front_element", "rotate(0 0 0)")); // shed
 
 var start = 200;
 for (var i = 0; i < 22; i++) 
@@ -81,7 +81,7 @@ svg.appendChild(cLength);
 svg.appendChild(cLengthTxt);
 
 // Apply styles
-var elements = document.getElementsByClassName("element");
+var elements = document.getElementsByClassName("front_element");
 var boards = document.getElementsByClassName("board");
 var shed = document.getElementsByClassName("shed");
 

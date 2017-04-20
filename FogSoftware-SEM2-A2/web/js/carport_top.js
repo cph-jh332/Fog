@@ -1,58 +1,83 @@
-// Main drawing
+// Global variables
 var svg = document.getElementById("carport_top");
+var baseLength = 780;
+var baseWidth = 600;
+var lengthScale = getLengthScale();
+var widthScale = getWidthScale();
+var totalScale = getTotalScale();
 
-svg.style.width = "950";
-svg.style.height = "600";
+var width = 950 * widthScale;
+var height = 600 * lengthScale;
+svg.style.width = width;
+svg.style.height = height;
 svg.style.border = "solid 4px #999";
 
-var cWidth = document.createElementNS("http://www.w3.org/2000/svg", "path");
-var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+function getTotalScale()
+{
+    var length = parseInt(getDimensions("carport_length"));
+    var width = parseInt(getDimensions("carport_width"));
+    return (length / baseLength) * (width / baseWidth);
+}
 
-var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
-var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+function getLengthScale()
+{
+    var length = parseInt(getDimensions("carport_length"));
+    return length / baseLength;
+}
 
-function createObject(x, y, width, height, eleclass, rotation) 
+function getWidthScale()
+{
+    var width = parseInt(getDimensions("carport_width"));
+    return width / baseWidth;
+}
+
+function createObject(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    object.setAttribute("x", x);
-    object.setAttribute("y", y);
-    object.setAttribute("width", width);
-    object.setAttribute("height", height);
+    object.setAttribute("x", x * widthScale);
+    object.setAttribute("y", y * lengthScale);
+    object.setAttribute("width", width * widthScale);
+    object.setAttribute("height", height * lengthScale);
     object.setAttribute("class", eleclass);
     object.setAttribute("transform", rotation);
-    
+
     return object;
 }
 
-function getDimensions(name) 
+function getDimensions(name)
 {
     return document.getElementById(name).innerHTML;
 }
 
 // Carport length
-cWidth.setAttribute("d", "M 285 555 L 650 555");
+var cWidth = document.createElementNS("http://www.w3.org/2000/svg", "path");
+var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+cWidth.setAttribute("d", "M " + 285*widthScale + " " + 555*lengthScale + "L " + 650*widthScale + " " + 555 * lengthScale);
 cWidth.setAttribute("stroke", "#6495ED");
 cWidth.setAttribute("stroke-width", "2");
 cWidth.setAttribute("stroke-dasharray", "1,3");
 
-cWidthTxt.setAttribute("x", "420");
-cWidthTxt.setAttribute("y", "575");
+cWidthTxt.setAttribute("x", 420*widthScale);
+cWidthTxt.setAttribute("y", 575*lengthScale);
 cWidthTxt.setAttribute("fill", "#6495ED");
 cWidthTxt.setAttribute("font-family", "Arial");
 var textX = document.createTextNode("Width: " + getDimensions("carport_width") + " cm");
 cWidthTxt.appendChild(textX);
 
 // Carport height
-cLength.setAttribute("d", "M 285 555 V 460 35");
+var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
+var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+cLength.setAttribute("d", "M " + 285*widthScale + " " + 555*lengthScale + " V 460 " + 35*lengthScale);
 cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
-cLengthTxt.setAttribute("x", "20");
-cLengthTxt.setAttribute("y", "520");
+cLengthTxt.setAttribute("x", width/3 - 150);
+cLengthTxt.setAttribute("y", height/2);
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
-cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
+//cLengthTxt.setAttribute("transform", "rotate(-90 45 295)");
+cLengthTxt.setAttribute("transform", "rotate(0 0 0)");
 var textY = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textY);
 
@@ -71,10 +96,11 @@ svg.appendChild(createObject(305, 255, 16, 16, "pillar", "rotate(0 0 0)"));
 svg.appendChild(createObject(629, 255, 16, 16, "pillar", "rotate(0 0 0)"));
 svg.appendChild(createObject(305, 519, 16, 16, "pillar", "rotate(0 0 0)"));
 svg.appendChild(createObject(629, 519, 16, 16, "pillar", "rotate(0 0 0)"));
+
 var startY = 45;
-for (var i = 0; i < 15; i++) 
+for (var i = 0; i < 15; i++)
 {
-    svg.appendChild(createObject(305, startY, 340, 4, "element", "rotate(0 0 0)"));
+    svg.appendChild(createObject(305, startY, 340, 4, "scalable_element", "rotate(0 0 0)"));
     startY += 34;
 }
 svg.appendChild(cWidth);
@@ -84,7 +110,7 @@ svg.appendChild(cLength);
 svg.appendChild(cLengthTxt);
 
 // Apply styles
-var elements = document.getElementsByClassName("element");
+var elements = document.getElementsByClassName("scalable_element");
 var pillars = document.getElementsByClassName("pillar");
 var shed = document.getElementsByClassName("shed");
 var frames = document.getElementsByClassName("frame");
@@ -93,21 +119,21 @@ var frames = document.getElementsByClassName("frame");
 for (var i = 0; i < elements.length; i++) {
     elements[i].style.fill = "white";
     elements[i].style.stroke = "#333";
-    elements[i].style.strokeWidth = "2px";
+    elements[i].style.strokeWidth = 2 * totalScale;
 }
 
 for (var i = 0; i < pillars.length; i++) {
     pillars[i].style.fill = "#696969";
     pillars[i].style.stroke = "#333";
-    pillars[i].style.strokeWidth = "2px";
+    pillars[i].style.strokeWidth = 2 * totalScale;
 }
 
 for (var i = 0; i < frames.length; i++) {
     frames[i].style.fill = "white";
     frames[i].style.stroke = "#333";
-    frames[i].style.strokeWidth = "4px";
+    frames[i].style.strokeWidth = 4 * totalScale;
 }
 
 shed[0].style.fill = "#D3D3D3";
 shed[0].style.stroke = "#333";
-shed[0].style.strokeWidth = "4px";
+shed[0].style.strokeWidth = 4 * totalScale;

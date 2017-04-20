@@ -117,7 +117,7 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("width", width);
                 request.setAttribute("materialList", pg.generateMaterialList());
 
-                rd = request.getRequestDispatcher("material-list.jsp");
+                rd = request.getRequestDispatcher("carport-2d.jsp");
 
                 break;
 
