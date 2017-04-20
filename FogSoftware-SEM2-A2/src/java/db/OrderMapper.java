@@ -100,7 +100,7 @@ public class OrderMapper {
     }
 
     public ArrayList<Material> getOrderDetail(int orderNum) {
-        String sql = "SELECT material FROM orderDetails WHERE orderID = " + orderNum;
+        String sql = "SELECT * FROM orderDetails natural join materials WHERE orderID = " + orderNum;
         ArrayList<Material> materials = new ArrayList<>();
 
         try (Connection con = new DBConnector().getConnection()) {
@@ -108,7 +108,9 @@ public class OrderMapper {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                Material m = new Material(rs.getInt("materialID"),rs.getString("materialName"));
+                m.setAmount(rs.getInt("amount"));
+                materials.add(m);
             }
 
         } catch (Exception ex) {
