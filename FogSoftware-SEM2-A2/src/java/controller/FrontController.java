@@ -161,6 +161,10 @@ public class FrontController extends HttpServlet {
                 
                 PartGenerator pg = new PartGenerator(length, width);
                 new OrderMapper().storeOrder(user, length, width, pg.generateMaterialList());
+                
+                request.setAttribute("message", "you've ordered the carport");
+                rd = request.getRequestDispatcher("index.jsp");
+                break;
             }
 
             //default: {
