@@ -11,16 +11,16 @@ import java.util.logging.Logger;
 
 public class MaterialMapper {
     
-    public void addNewMaterial(Material name) {
-        String sql = "INSERT INTO materials (materialList) VALUES (?)";
+    public void addNewMaterial(Material material) {
+        String sql = "INSERT INTO materials (materialName) VALUES (?)";
         
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, name.getName());
+            stmt.setString(1, material.getName());
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -39,7 +39,7 @@ public class MaterialMapper {
                 list.add(materialType);
             }
         } catch (Exception ex) {
-            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return list;

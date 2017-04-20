@@ -90,15 +90,17 @@ public class FrontController extends HttpServlet {
             }
             
             case "add-material": {
-                String material_name = request.getParameter("name");
+                String material_name = request.getParameter("material_name");
                 
                 Material m = new Material(material_name);
                 
                 new MaterialMapper().addNewMaterial(m);
                 
-                //request.setAttribute("name", m);
+                ArrayList<String> list = mp.getAllMaterials();
                 
-                rd = request.getRequestDispatcher("admin-projects.jsp");
+                request.setAttribute("list", list);
+                
+                rd = request.getRequestDispatcher("admin-materials.jsp");
                 
                 break;
             }
