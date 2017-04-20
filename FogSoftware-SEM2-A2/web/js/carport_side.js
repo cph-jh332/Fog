@@ -1,9 +1,19 @@
 // Main drawing
 var svg = document.getElementById("carport_side");
 
-svg.style.width = "950";
-svg.style.height = "550";
-svg.style.border = "solid 4px #999";
+var baseLength = 780;
+var baseWidth = 600;
+var scale = getTotalScale();
+svg.style.width = 950 * scale;
+svg.style.height = 550 * scale;
+
+function getTotalScale()
+{
+    var length = parseInt(getDimensions("carport_length"));
+    var width = parseInt(getDimensions("carport_width"));
+    //console.log(length + ", " + width);
+    return (length / baseLength) * (width / baseWidth);
+}
 
 // Create objects
 var frontPost = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -24,31 +34,19 @@ var cHeight = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cHeightTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
 function createObject(object, x, y, width, height, eleclass, rotation) {
-    object.setAttribute("x", x);
-    object.setAttribute("y", y);
-    object.setAttribute("width", width);
-    object.setAttribute("height", height);
+    object.setAttribute("x", x * scale);
+    object.setAttribute("y", y * scale);
+    object.setAttribute("width", width*  scale);
+    object.setAttribute("height", height * scale);
     object.setAttribute("class", eleclass);
     object.setAttribute("transform", rotation);
     
     return object;
 }
 
-function getDimensions(isLength) {
-    var carportLength = document.getElementById("carport_length").innerHTML;
-    var carportWidth = document.getElementById("carport_width");
-    
-    y = 0;
-    
-    if (isLength === true) {
-        // get length
-        y = parseInt(carportLength);
-    } else {
-        // get width
-        y = parseInt(carportWidth);
-    }
-    
-    return y;
+function getDimensions(name)
+{
+    return document.getElementById(name).innerHTML;
 }
 
 // Carport length
@@ -61,7 +59,7 @@ cLengthTxt.setAttribute("x", "400");
 cLengthTxt.setAttribute("y", "480");
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
-var textX = document.createTextNode("Length: " + getDimensions(true) + " cm");
+var textX = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textX);
 
 // Carport height

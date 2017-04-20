@@ -3,7 +3,6 @@ var svg = document.getElementById("carport_front");
 
 svg.style.width = "950";
 svg.style.height = "550";
-svg.style.border = "solid 4px #999";
 
 var cWidth = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
