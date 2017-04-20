@@ -41,11 +41,11 @@ public class OrderMapper {
             stmt.executeUpdate();
 
             //  stmt = con.prepareStatement(sqlOrderMat);
-            stmt.setInt(1, newOrderId);
+            stmt2.setInt(1, newOrderId);
             for (Material m : materials) {
-                stmt.setInt(2, m.getID());
-                stmt.setInt(3, m.getAmount());
-                stmt.executeUpdate();
+                stmt2.setInt(2, m.getID());
+                stmt2.setInt(3, m.getAmount());
+                stmt2.executeUpdate();
             }
 
             con.commit();
