@@ -17,7 +17,7 @@
 
             <h3>Top-view</h3>
             <div class="svg-container">
-                <svg version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
+                <svg viewBox="0 0 0 0" version="1.1" xmlns="https://www.w3.org/2000/svg" id="carport_top"></svg>
             </div>
             
             <h3>Side-view</h3>
