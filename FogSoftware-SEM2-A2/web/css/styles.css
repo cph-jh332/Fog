@@ -3,7 +3,7 @@ h1, h3 {font-family: 'Raleway', sans-serif!important;}
 p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
-.svg-container {border: solid 4px #999;}
+.svg-container {border: solid 4px #999; overflow: hidden;}
 
 /* Tables */
 .table {display: table; width: 950px; margin-bottom: 50px;}
