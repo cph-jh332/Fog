@@ -81,7 +81,7 @@ public class FrontController extends HttpServlet {
                 break;
             }
             
-            case "materials": {
+            case "see-materials": {
                 ArrayList<String> list = mp.getAllMaterials();
                 request.setAttribute("list", list);
                 rd = request.getRequestDispatcher("admin-materials.jsp");
