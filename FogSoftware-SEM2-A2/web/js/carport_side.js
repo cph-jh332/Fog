@@ -3,33 +3,52 @@ var svg = document.getElementById("carport_side");
 
 var baseLength = 780;
 var baseWidth = 600;
-var scale = getTotalScale();
+var scale = getScale();
+var lengthScale = getLengthScale();
+var heightScale = getHeightScale();
 var pillars = parseInt(document.getElementById("pillars").innerHTML) - 1;
-svg.style.width = 950 * scale;
-svg.style.height = 550 * scale;
+var canvasWidth = 950;
+var canvasHeight = 550;
+svg.style.width = canvasWidth;
+svg.style.height = canvasHeight;
+svg.setAttribute("viewBox", "0 0 " + canvasWidth * lengthScale + " " + canvasHeight * heightScale);
 
-function getTotalScale()
+function getScale()
 {
     var length = parseInt(getDimensions("carport_length"));
-    var width = parseInt(getDimensions("carport_width"));
-    return ((length / baseLength) + (width / baseWidth)) / 2;
+    return length / baseLength;
+}
+
+function getHeightScale()
+{
+    return 1;
+}
+
+function getLengthScale()
+{
+    var length = parseInt(getDimensions("carport_length"));
+    return length / baseLength;
 }
 
 function createObject(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    object.setAttribute("x", x * scale);
-    object.setAttribute("y", y * scale);
-    object.setAttribute("width", width * scale);
-    object.setAttribute("height", height * scale);
+    object.setAttribute("x", x * lengthScale);
+    object.setAttribute("y", y * heightScale);
+    object.setAttribute("width", width * lengthScale);
+    object.setAttribute("height", height * heightScale);
     object.setAttribute("class", eleclass);
     object.setAttribute("transform", rotation);
 
     return object;
 }
 
-function createObjectChooseScale(object, x, y, width, height, eleclass, rotation, scaleWidth, scaleLength) 
+function createObjectChooseScale(object, x, y, width, height, eleclass, rotation, scaleWidth, scaleHeight) 
 {
+    if (scaleWidth)
+        width = width * lengthScale;
+    if (scaleHeight)
+        height = height * heightScale;
     object.setAttribute("x", x * scale);
     object.setAttribute("y", y * scale);
     object.setAttribute("width", width * scale);
@@ -48,31 +67,33 @@ function getDimensions(name)
 // Carport length
 var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
-cLength.setAttribute("d", "M " + 10 * scale + " " + 450 * scale + "L " + 900 * scale + " " + 450 * scale);
+cLength.setAttribute("d", "M " + 10 * lengthScale + " " + 450 + "L " + 900 * lengthScale + " " + 450);
 cLength.setAttribute("stroke", "#6495ED");
 cLength.setAttribute("stroke-width", "2");
 cLength.setAttribute("stroke-dasharray", "1,3");
 
-cLengthTxt.setAttribute("x", 380 * scale);
-cLengthTxt.setAttribute("y", 480 * scale);
+cLengthTxt.setAttribute("x", (canvasWidth / 2) * lengthScale - (50 * lengthScale));
+cLengthTxt.setAttribute("y", 480);
 cLengthTxt.setAttribute("fill", "#6495ED");
 cLengthTxt.setAttribute("font-family", "Arial");
+cLengthTxt.setAttribute("font-size", 18 * lengthScale);
 var textX = document.createTextNode("Length: " + getDimensions("carport_length") + " cm");
 cLengthTxt.appendChild(textX);
 
 // Carport height
 var cHeight = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cHeightTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
-cHeight.setAttribute("d", "M " + 10 * scale + " " + 450 * scale + "L " + 5 + " " + 100 * scale);
+cHeight.setAttribute("d", "M " + 10 * scale + " " + 450 + "L " + 10 + " " + 100);
 cHeight.setAttribute("stroke", "#6495ED");
 cHeight.setAttribute("stroke-width", "2");
 cHeight.setAttribute("stroke-dasharray", "1,3");
 
-cHeightTxt.setAttribute("x", 130);
-cHeightTxt.setAttribute("y", 280);
+cHeightTxt.setAttribute("x", -300);
+cHeightTxt.setAttribute("y", 50 * lengthScale);
 cHeightTxt.setAttribute("fill", "#6495ED");
 cHeightTxt.setAttribute("font-family", "Arial");
-cHeightTxt.setAttribute("transform", "rotate(-90 45 295)");
+cHeightTxt.setAttribute("font-size", 18 * lengthScale);
+cHeightTxt.setAttribute("transform", "rotate(-90 0 0)");
 var textY = document.createTextNode("Height: 210 cm");
 cHeightTxt.appendChild(textY);
 
