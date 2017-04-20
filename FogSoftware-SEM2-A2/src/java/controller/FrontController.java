@@ -168,6 +168,20 @@ public class FrontController extends HttpServlet {
                 rd = request.getRequestDispatcher("index.jsp");
                 break;
             }
+            
+            case "viewOrder": {
+                
+                int orderID = Integer.parseInt(request.getParameter("orderID"));
+                
+                request.setAttribute("materials", new OrderMapper().getOrderDetail(orderID));
+                
+                
+                rd = request.getRequestDispatcher("admin-projectpage.jsp");
+                break;
+                
+                
+                
+            }
 
             //default: {
             //response.sendRedirect("index.jsp");

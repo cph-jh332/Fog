@@ -1,3 +1,4 @@
+<%@page import="backend.Material"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -9,14 +10,14 @@
         <c:import url="/inc/head.jsp"/>
     </head>
     <body>
-        
+
         <c:import url="/inc/admin-nav.jsp"/>
-        
+
         <div class="container">
             <div class="row">
                 <h1>Carport project page</h1>
-                
-                                <div class="table">
+
+                <div class="table">
                     <div class="table-title">
                         <p>Stykliste til carport</p>
                     </div>
@@ -34,26 +35,25 @@
                             <p>Enhed</p>
                         </div>
                     </div>
-                    <%
-                        for (String str : (ArrayList<String>)request.getAttribute("materialList"))
-                        {
-                            String[] materialData = str.split("_");
-                            %> <div class="table-row"> <%
-                            for (String data : materialData)
-                            {
-                                %>
-                                <div class="table-cell">
-                                    <p><%out.println(data);%></p>
-                                </div>
-                                <%
-                            }
-                            %> </div> <%
-                        }
-                    %>
+
+
+                    <c:forEach var="entry" items="${materials}">
+                        <div class="table-row">
+
+                            <div class="table-cell"><c:out value="${entry.getID()}"/></div>
+                            <div class="table-cell"><c:out value="${entry.getName()}"/></div>
+                            <div class="table-cell"><c:out value="${entry.getAmount()}"/></div>
+                            <div class="table-cell">Stk.</div>
+
+                        </div>
+                    </c:forEach>
+                    
+                    
+
                 </div>
-                
+
             </div>
         </div>
-        
+
     </body>
 </html>

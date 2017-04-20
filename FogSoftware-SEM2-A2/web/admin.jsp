@@ -19,7 +19,7 @@
                         <h3>Top 10 new incoming carport projects</h3>
                         <hr>
                         <c:forEach var="entry" items="${list}">
-                            <a href="admin-projectpage.jsp">
+                            <a href="?action=viewOrder&orderID=<c:out value="${entry.getOrder_id()}"/>">
                                 <p>&rsaquo; 
                                     <c:out value="${entry.getOrder_id()}"/> - 
                                     <c:out value="${entry.getUser_id()}"/> - 
