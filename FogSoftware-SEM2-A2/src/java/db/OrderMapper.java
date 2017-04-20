@@ -44,7 +44,7 @@ public class OrderMapper {
     public ArrayList getOrders() {
         
         ArrayList<Order> orderList = new ArrayList();
-        String sql = "SELECT * FROM orders";
+        String sql = "SELECT * FROM FogDB.orders order by orderDate desc limit 10";
 
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
