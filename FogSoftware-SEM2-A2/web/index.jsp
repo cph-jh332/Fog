@@ -15,7 +15,7 @@
                 <div class="col-md-6 text-right"><a href="signup.jsp">Signup</a></div>
             </c:if>
             <c:if test="${user != null}">
-                <div class="col-md-6 text-right"><a href="login.jsp">Logout</a></div>
+                <div class="col-md-6 text-right"><a href="?action=logout">Logout</a></div>
             </c:if>
         </div>
 
