@@ -11,8 +11,15 @@
         <div class="container">
             <div class="row">
                 <h1>Materials</h1>
+
+                <c:forEach var="entry" items="${list}">
+
+                    <p><c:out value="${entry}"/></p>
+
+                </c:forEach>
+                    
             </div>
         </div>
-        
+
     </body>
 </html>

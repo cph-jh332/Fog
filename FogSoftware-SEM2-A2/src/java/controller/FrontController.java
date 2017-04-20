@@ -78,6 +78,11 @@ public class FrontController extends HttpServlet {
                 rd = request.getRequestDispatcher("index.jsp");
                 break;
             }
+            
+            case "materials": {
+                
+                break;
+            }
 
             case "signup": {
                 String email = request.getParameter("email");
