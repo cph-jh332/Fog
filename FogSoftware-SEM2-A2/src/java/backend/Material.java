@@ -4,9 +4,11 @@ public class Material {
    private int ID,amount;
    private String name;
 
-    public Material(String name) {
+    public Material(int id, String name) {
+        this.ID = id;
         this.name = name;
     }
+    
     public Material(String name){
         this.name = name;
     }
