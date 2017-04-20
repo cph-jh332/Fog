@@ -23,10 +23,10 @@
                     </div>
                     <div class="table-heading">
                         <div class="table-cell">
-                            <p>Materiale</p>
+                            <p>ID</p>
                         </div>
                         <div class="table-cell">
-                            <p>Længde</p>
+                            <p>Materiale</p>
                         </div>
                         <div class="table-cell">
                             <p>Antal</p>
