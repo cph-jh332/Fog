@@ -90,6 +90,7 @@ public class FrontController extends HttpServlet {
             }
             
             case "add-material": {
+                request.setCharacterEncoding("UTF-8");
                 String material_name = request.getParameter("material_name");
                 
                 Material m = new Material(material_name);
