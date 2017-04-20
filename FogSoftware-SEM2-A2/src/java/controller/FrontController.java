@@ -89,6 +89,13 @@ public class FrontController extends HttpServlet {
                 break;
             }
             
+            case "see-projects": {
+                ArrayList orderList = om.getOrders("sqlall");
+                request.setAttribute("list", orderList);
+                rd = request.getRequestDispatcher("admin-projects.jsp");
+                break;
+            }
+            
             case "add-material": {
                 String material_name = request.getParameter("material_name");
                 
