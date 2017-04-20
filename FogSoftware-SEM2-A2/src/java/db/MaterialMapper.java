@@ -1,6 +1,6 @@
 package db;
 
-import backend.Order;
+import backend.Material;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +11,12 @@ import java.util.logging.Logger;
 
 public class MaterialMapper {
     
-    public void addNewMaterial(String name) {
+    public void addNewMaterial(Material name) {
         String sql = "INSERT INTO materials (materialList) VALUES (?)";
         
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, name);
+            stmt.setString(1, name.getName());
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

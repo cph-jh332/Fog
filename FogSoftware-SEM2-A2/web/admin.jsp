@@ -36,7 +36,7 @@
                         <hr>
                         <form action="FrontController" method="POST">
                             <div class="form-group"><input type="text" class="form-control" placeholder="Type material name here..."></div>
-                            <div class="form-group text-right"><button type="submit" name="action" value="add-material" class="btn btn-primary">Add material</button></div>
+                            <div class="form-group text-right"><button type="submit" name="action" value="name" class="btn btn-primary">Add material</button></div>
                         </form>
                         
                     </div>

@@ -28,6 +28,14 @@ public class Material {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
    
    
    

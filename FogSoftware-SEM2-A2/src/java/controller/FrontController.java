@@ -1,5 +1,6 @@
 package controller;
 
+import backend.Material;
 import backend.Order;
 import backend.PartGenerator;
 import backend.TextFiles;
@@ -85,6 +86,20 @@ public class FrontController extends HttpServlet {
                 ArrayList<String> list = mp.getAllMaterials();
                 request.setAttribute("list", list);
                 rd = request.getRequestDispatcher("admin-materials.jsp");
+                break;
+            }
+            
+            case "add-material": {
+                String material_name = request.getParameter("name");
+                
+                Material m = new Material(material_name);
+                
+                new MaterialMapper().addNewMaterial(m);
+                
+                //request.setAttribute("name", m);
+                
+                rd = request.getRequestDispatcher("admin-projects.jsp");
+                
                 break;
             }
 
