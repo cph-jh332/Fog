@@ -10,10 +10,15 @@
     <body>
         <div class="container">
             <div class="col-md-6"><h1>Fog Carport frontpage</h1></div>
-            <div class="col-md-6 text-right"><a href="login.jsp">Login</a></div>
-            <div class="col-md-6 text-right"><a href="signup.jsp">Signup</a></div>
+            <c:if test="${user == null}">
+                <div class="col-md-6 text-right"><a href="login.jsp">Login</a></div>
+                <div class="col-md-6 text-right"><a href="signup.jsp">Signup</a></div>
+            </c:if>
+            <c:if test="${user != null}">
+                <div class="col-md-6 text-right"><a href="?action=logout">Logout</a></div>
+            </c:if>
         </div>
-        
+
         <div><a href="create-carport.jsp">Create Carport</a></div>
         <div><c:out value="${message}"/></div>
     </body>

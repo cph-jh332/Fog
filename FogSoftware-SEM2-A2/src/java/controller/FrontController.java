@@ -160,7 +160,15 @@ public class FrontController extends HttpServlet {
                 User user = (User) request.getSession().getAttribute("user");
                 
                 PartGenerator pg = new PartGenerator(length, width);
+
                 new OrderMapper().storeOrder(user, length, width, pg.getMats());
+
+                new OrderMapper().storeOrder(user, length, width, pg.getMats());
+                
+                request.setAttribute("message", "you've ordered the carport");
+                rd = request.getRequestDispatcher("index.jsp");
+                break;
+
             }
 
             //default: {
