@@ -171,10 +171,13 @@ public class FrontController extends HttpServlet {
             
             case "viewOrder": {
                 
-              //  int orderID = integer.parseInt(request.getParameter())
+                int orderID = Integer.parseInt(request.getParameter("orderID"));
                 
-             //   new OrderMapper().getOrderDetail()
+                request.setAttribute("materials", new OrderMapper().getOrderDetail(orderID));
                 
+                
+                rd = request.getRequestDispatcher("admin-projectpage.jsp");
+                break;
                 
                 
                 

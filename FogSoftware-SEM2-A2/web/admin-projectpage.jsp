@@ -1,3 +1,4 @@
+<%@page import="backend.Material"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -34,10 +35,33 @@
                             <p>Enhed</p>
                         </div>
                     </div>
+                                    
+                         <c:forEach var="entry" items="${list}">
+                             <div>
+                                
+                                    <c:out value="${entry.getID()}"/> - 
+                                    <c:out value="${entry.getName()}"/> - 
+                                    <c:out value="${entry.getAmount}"/> 
+                                
+                            <div/>
+                        </c:forEach>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                     <%
-                        for (String str : (ArrayList<String>)request.getAttribute("materialList"))
+                     
+                                
+                                
+                                
+                                
+                                
+                        for (Material m : (ArrayList<Material>)request.getAttribute("materials"))
                         {
-                            String[] materialData = str.split("_");
+                            
                             %> <div class="table-row"> <%
                             for (String data : materialData)
                             {
