@@ -26,11 +26,9 @@
             <script src="js/carport_side.js"></script>
             <script src="js/carport_front.js"></script>
             <c:if test="${user != null}">
-                <form action="FrontCrontoller">
-                    <input type="hidden" name="width" value="<c:out value="${width}"/>">
-                    <input type="hidden" name="length" value="<c:out value="${length}"/>">
-                    <input type="submit" value="order" name="action">
-                </form>
+                <div>
+                <a href="?action=order&width=<c:out value="${width}"/>&length=<c:out value="${length}"/>">order</a>
+                </div>
             </c:if>
             <c:if test="${user == null}">
                 <form action="login.jsp">
