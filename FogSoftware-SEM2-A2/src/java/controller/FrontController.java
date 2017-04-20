@@ -16,17 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "FrontController", urlPatterns
-        =
-        {
+        = {
             "/FrontController"
         })
-public class FrontController extends HttpServlet
-{
+public class FrontController extends HttpServlet {
 
     TextFiles text = new TextFiles();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/jsp;charset=UTF-8");
 
         RequestDispatcher rd = null;
@@ -35,44 +32,43 @@ public class FrontController extends HttpServlet
         User currentUser = (User) request.getSession().getAttribute("user");
 
         // If no form is submitted
-        if (action == null /*&& currentUser != null*/)
-        {
+        if (action == null /*&& currentUser != null*/) {
             //rd = goToShop(request);
             response.sendRedirect("index.jsp");
             return;
         }
 
-        switch (action)
-        {
-            case "login":
-            {
+        switch (action) {
+
+            case "admin-home": {
+                request.getSession().setAttribute("user", currentUser);
+                ArrayList orderList = om.getOrders();
+                request.setAttribute("list", orderList);
+                rd = request.getRequestDispatcher("admin.jsp");
+                break;
+            }
+
+            case "login": {
 
                 currentUser = new UserMapper().loginUser(request.getParameter("email"), request.getParameter("password"));
-                if (currentUser != null)
-                {
+                if (currentUser != null) {
                     request.getSession().setAttribute("user", currentUser);
                     ArrayList orderList = om.getOrders();
 
-                    if (currentUser.isAdmin())
-                    {
+                    if (currentUser.isAdmin()) {
                         request.setAttribute("list", orderList);
                         rd = request.getRequestDispatcher("admin.jsp");
-                    }
-                    else
-                    {
+                    } else {
                         rd = request.getRequestDispatcher("index.jsp");
                     }
-                }
-                else
-                {
+                } else {
                     request.setAttribute("message", "Failed login error.");
                     rd = request.getRequestDispatcher("/index.jsp");
                 }
                 break;
             }
 
-            case "signup":
-            {
+            case "signup": {
                 String email = request.getParameter("email");
                 String firstName = request.getParameter("firstName");
                 String lastName = request.getParameter("lastName");
@@ -89,8 +85,7 @@ public class FrontController extends HttpServlet
                 break;
             }
 
-            case "create_carport":
-            {
+            case "create_carport": {
                 //int height = Integer.parseInt(request.getParameter("height"));
 
                 int length = Integer.parseInt(request.getParameter("length"));
@@ -130,8 +125,7 @@ public class FrontController extends HttpServlet
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -145,8 +139,7 @@ public class FrontController extends HttpServlet
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -156,8 +149,7 @@ public class FrontController extends HttpServlet
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo()
-    {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
