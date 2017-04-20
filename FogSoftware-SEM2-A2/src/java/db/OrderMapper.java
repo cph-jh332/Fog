@@ -13,31 +13,36 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderMapper {
+    int newOrderId;
 
     public boolean storeOrder(User user,int length, int width, ArrayList<Material> materials) {
         String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle) VALUES (?, ?, ?);";
         String sqlOrderMat = "INSERT INTO orderDetails (orderID, material, amount) VALUES (?.?,?);";
 
        // String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
-
-        try (Connection con = new DBConnector().getConnection()) {
+       Connection con = new DBConnector().getConnection();
+        try (PreparedStatement stmt = con.prepareStatement(sqlOrder)) {
             con.setAutoCommit(false);
             PreparedStatement getMaxID = con.prepareStatement("Select max(orderId) from orders");
             ResultSet rs = getMaxID.executeQuery();
             
-            int newOrderId = 1;
+            newOrderId = 1;
             if(rs.next()){
                 newOrderId = rs.getInt("max(orderId)");
                 newOrderId += 1;
             }
             
-            PreparedStatement stmt = con.prepareStatement(sqlOrder);
+            //PreparedStatement stmt = con.prepareStatement(sqlOrder);
             stmt.setInt(1, newOrderId);
             stmt.setInt(2, user.getId());
             stmt.setString(3, length + "x" + width + " - Carport med flat tag");
             stmt.executeUpdate();
             
-            stmt = con.prepareStatement(sqlOrderMat);
+        } catch(SQLException ex){
+            
+        }
+         try(PreparedStatement stmt = con.prepareStatement(sqlOrder)){   
+          //  stmt = con.prepareStatement(sqlOrderMat);
             stmt.setInt(1, newOrderId);
             for(Material m:materials){
                stmt.setInt(2, m.getID());
