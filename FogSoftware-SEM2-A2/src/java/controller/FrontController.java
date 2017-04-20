@@ -41,10 +41,15 @@ public class FrontController extends HttpServlet {
         switch (action) {
 
             case "admin-home": {
-                request.getSession().setAttribute("user", currentUser);
-                ArrayList orderList = om.getOrders("sqltop10");
-                request.setAttribute("list", orderList);
-                rd = request.getRequestDispatcher("admin.jsp");
+                User user = (User) request.getSession().getAttribute("user");
+                if (user.isAdmin()) {
+                    ArrayList orderList = om.getOrders("sqltop10");
+                    request.setAttribute("list", orderList);
+                    rd = request.getRequestDispatcher("admin.jsp");
+                } else {
+                    request.setAttribute("message", "you're not logged in or Admin");
+                    rd = request.getRequestDispatcher("index.jsp");
+                }
                 break;
             }
 
@@ -67,7 +72,7 @@ public class FrontController extends HttpServlet {
                 }
                 break;
             }
-            
+
             case "logout": {
                 request.getSession().invalidate();
                 rd = request.getRequestDispatcher("index.jsp");
