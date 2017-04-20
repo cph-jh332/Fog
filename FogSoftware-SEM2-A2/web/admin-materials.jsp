@@ -26,6 +26,11 @@
                     
             </div>
         </div>
-
+        
+        <script>
+            // Active page nav bold
+            document.getElementById("admin-nav-materials").style.fontWeight = "bold";
+        </script>
+        
     </body>
 </html>
