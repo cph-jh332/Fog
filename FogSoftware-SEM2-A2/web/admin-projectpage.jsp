@@ -43,6 +43,7 @@
                             <div class="table-cell"><c:out value="${entry.getID()}"/></div>
                             <div class="table-cell"><c:out value="${entry.getName()}"/></div>
                             <div class="table-cell"><c:out value="${entry.getAmount()}"/></div>
+                            <div class="table-cell">Stk.</div>
 
                         </div>
                     </c:forEach>
