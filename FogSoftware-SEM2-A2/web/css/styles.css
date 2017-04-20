@@ -1,6 +1,6 @@
 svg {margin-bottom: 50px;}
-h1, h3 {font-family: 'Raleway', sans-serif;}
-p {font-family: 'Open Sans', sans-serif;}
+h1, h3 {font-family: 'Raleway', sans-serif!important;}
+p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
 

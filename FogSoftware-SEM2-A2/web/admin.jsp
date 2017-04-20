@@ -16,7 +16,8 @@
 
                 <div class="col-md-6">
                     <div class="col-md-12 col-border">
-                        <h3>New incoming carport projects</h3>
+                        <h3>Top 10 new incoming carport projects</h3>
+                        <hr>
                         <c:forEach var="entry" items="${list}">
                             <a href="admin-projectpage.jsp">
                                 <p>&rsaquo; 
@@ -31,7 +32,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12 col-border">
-                        <p>Right pane</p>
+                        <h3>Add new materials</h3>
+                        <hr>
+                        <form action="FrontController" method="POST">
+                            <div class="form-group"><input type="text" class="form-control" placeholder="Type material name here..."></div>
+                            <div class="form-group text-right"><input type="submit" name="action" value="Add material" class="btn btn-primary"></div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
