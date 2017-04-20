@@ -10,14 +10,14 @@
         <c:import url="/inc/head.jsp"/>
     </head>
     <body>
-        
+
         <c:import url="/inc/admin-nav.jsp"/>
-        
+
         <div class="container">
             <div class="row">
                 <h1>Carport project page</h1>
-                
-                                <div class="table">
+
+                <div class="table">
                     <div class="table-title">
                         <p>Stykliste til carport</p>
                     </div>
@@ -35,49 +35,24 @@
                             <p>Enhed</p>
                         </div>
                     </div>
-                                    
-                         <c:forEach var="entry" items="${list}">
-                             <div>
-                                
-                                    <c:out value="${entry.getID()}"/> - 
-                                    <c:out value="${entry.getName()}"/> - 
-                                    <c:out value="${entry.getAmount}"/> 
-                                
-                            <div/>
-                        </c:forEach>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                    <%
-                     
-                                
-                                
-                                
-                                
-                                
-                        for (Material m : (ArrayList<Material>)request.getAttribute("materials"))
-                        {
-                            
-                            %> <div class="table-row"> <%
-                            for (String data : materialData)
-                            {
-                                %>
-                                <div class="table-cell">
-                                    <p><%out.println(data);%></p>
-                                </div>
-                                <%
-                            }
-                            %> </div> <%
-                        }
-                    %>
+
+
+                    <c:forEach var="entry" items="${materials}">
+                        <div class="table-row">
+
+                            <div class="cell"><c:out value="${entry.getID()}"/></div>
+                            <div class="cell"><c:out value="${entry.getName()}"/></div>
+                            <div class="cell"><c:out value="${entry.getAmount()}"/></div>
+
+                        </div>
+                    </c:forEach>
+                    
+                    
+
                 </div>
-                
+
             </div>
         </div>
-        
+
     </body>
 </html>
