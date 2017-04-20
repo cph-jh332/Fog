@@ -67,8 +67,8 @@ public class PartGenerator
             int[] rem = getRem();
             materials.get(4).setAmount(rem[0]);     //600
             materials.get(5).setAmount(rem[1]);     //480
-            int[] understern = getUndersternBrædder();
             materials.get(6).setAmount(getShedBoards());
+            int[] understern = getUndersternBrædder();
             materials.get(7).setAmount(understern[0]);  //540
             materials.get(8).setAmount(understern[1]);  //360
             int[] overstern = getOversternBrædder();
