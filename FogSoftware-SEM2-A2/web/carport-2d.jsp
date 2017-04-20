@@ -33,7 +33,9 @@
                 </form>
             </c:if>
             <c:if test="${user == null}">
-                
+                <form action="login.jsp">
+                    <input type="submit" value="Login to Order">
+                </form>
             </c:if>
         </div>
 

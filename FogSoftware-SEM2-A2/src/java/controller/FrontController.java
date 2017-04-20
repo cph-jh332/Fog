@@ -139,7 +139,7 @@ public class FrontController extends HttpServlet {
                 PartGenerator pg = new PartGenerator(length, width);
 
                 // Create order in DB
-                Order o = new Order(666, Integer.toString(length) + "x" + Integer.toString(width));
+                //Order o = new Order(666, Integer.toString(length) + "x" + Integer.toString(width));
                 //new OrderMapper().storeOrder(currentUser, o, pg.generateMaterialList());
 
                 request.setAttribute("length", length);
@@ -151,6 +151,16 @@ public class FrontController extends HttpServlet {
 
                 break;
 
+            }
+            
+            case "order": {
+                int length = Integer.parseInt(request.getParameter("length"));
+                int width = Integer.parseInt(request.getParameter("width"));
+                
+                User user = (User) request.getSession().getAttribute("user");
+                
+                PartGenerator pg = new PartGenerator(length, width);
+                new OrderMapper().storeOrder(user, length, width, pg.generateMaterialList());
             }
 
             //default: {

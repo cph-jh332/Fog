@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class OrderMapper {
 
-    public void storeOrder(User user, Order order, ArrayList<String> materials) {
+    public void storeOrder(User user,int heigth, int width, ArrayList<String> materials) {
         String sqlOrder = "INSERT INTO orders (userID, orderTitle) VALUES (?, ?);";
         String sqlOrderMat = "INSERT INTO orderMaterials (material) VALUES (?);";
 
@@ -23,7 +23,7 @@ public class OrderMapper {
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sqlOrder);
             stmt.setInt(1, user.getId());
-            stmt.setString(2, order.getOrder_title() + " - Carport med flat tag");
+            stmt.setString(2, heigth + "x" + width + " - Carport med flat tag");
             stmt.executeUpdate();
             stmt = con.prepareStatement(sqlOrderMat);
             stmt.setString(1, mats);
