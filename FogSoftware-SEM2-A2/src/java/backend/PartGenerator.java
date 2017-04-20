@@ -7,12 +7,15 @@ package backend;
 
 // All lengths are in millimeter //
 
+import db.OrderMapper;
 import java.util.ArrayList;
 
 public class PartGenerator 
 {
     private int carportLength;
     private int carportWidth;
+    private OrderMapper om = new OrderMapper();
+    
 
     public PartGenerator(int length, int width)
     {
@@ -47,6 +50,25 @@ public class PartGenerator
         materialList.add(types[7] + "_" + "360cm" + "_" + waterboard[1] + "_" + "stk");
         
         return materialList;
+    }
+    public ArrayList<Material> getMats(){
+       
+        
+        int[] matID;
+        ArrayList<Material> materials = new ArrayList<>();
+        
+        materials = om.getMaterialID();
+        
+        for (int i = 0; i < materials.size(); i++) {
+            materials.get(i).setAmount(getRafterAmount());
+            
+            
+        }
+        
+        
+        return materials;
+        
+        
     }
     
     public int getRafterAmount()
