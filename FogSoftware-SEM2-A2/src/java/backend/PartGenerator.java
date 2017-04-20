@@ -117,12 +117,12 @@ public class PartGenerator
         int temp = num;
         num += shedPillars + extraPillars;
 
-        // width - pillarDistance
-        width -= 700;
-        if (width > 6000)
-        {
-            num += temp / 2;
-        }
+        // width - pillarDistance   will be added later!!!
+//        width -= 700;
+//        if (width > 6000)     
+//        {
+//            num += temp / 2;
+//        }
 
         return num;
     }
