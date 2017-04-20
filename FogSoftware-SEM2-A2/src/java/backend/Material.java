@@ -7,6 +7,9 @@ public class Material {
     public Material(String name) {
         this.name = name;
     }
+    public Material(String name){
+        this.name = name;
+    }
 
     public int getID() {
         return ID;
