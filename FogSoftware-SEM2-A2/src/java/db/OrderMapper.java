@@ -14,34 +14,58 @@ import java.util.logging.Logger;
 
 public class OrderMapper {
 
-    public void storeOrder(User user,int length, int width, ArrayList<Material> materials) {
-        String sqlOrder = "INSERT INTO orders (userID, orderTitle) VALUES (?, ?);";
-        String sqlOrderMat = "INSERT INTO orderDetails (material, amount) VALUES (?,?);";
+    public boolean storeOrder(User user,int length, int width, ArrayList<Material> materials) {
+        String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle) VALUES (?, ?, ?);";
+        String sqlOrderMat = "INSERT INTO orderDetails (orderID, material, amount) VALUES (?.?,?);";
 
        // String mats = String.join(",", materials);  //this converts the String ArrayList into one log String each element seperated by a " , "
 
         try (Connection con = new DBConnector().getConnection()) {
+            con.setAutoCommit(false);
+            PreparedStatement getMaxID = con.prepareStatement("Select max(orderId) from orders");
+            ResultSet rs = getMaxID.executeQuery();
+            
+            int newOrderId = 1;
+            if(rs.next()){
+                newOrderId = rs.getInt("max(orderId)");
+                newOrderId += 1;
+            }
+            
             PreparedStatement stmt = con.prepareStatement(sqlOrder);
-            stmt.setInt(1, user.getId());
-            stmt.setString(2, length + "x" + width + " - Carport med flat tag");
+            stmt.setInt(1, newOrderId);
+            stmt.setInt(2, user.getId());
+            stmt.setString(3, length + "x" + width + " - Carport med flat tag");
             stmt.executeUpdate();
+            
+            
+            
+            for(Material m:materials){
+               stmt = con.prepareStatement(sqlOrderMat);
+               stmt.setInt(1, newOrderId);
+               stmt.setInt(2, m.getID());
+               stmt.setInt(3, m.getAmount()); 
+            }
             
             for (int i = 0; i < materials.size(); i++) {
                Material m = materials.get(i);
                stmt = con.prepareStatement(sqlOrderMat);
-               stmt.setInt(1, m.getID());
-               stmt.setInt(2, m.getAmount());
-                
+               stmt.setInt(1, newOrderId);
+               stmt.setInt(2, m.getID());
+               stmt.setInt(3, m.getAmount());
+               stmt.executeUpdate();
             }
-//            
-//            stmt = con.prepareStatement(sqlOrderMat);
-//            stmt.setString(1, mats);
-//            stmt.executeUpdate();
+            
+            con.commit();
+            
+
+
+
 
         } catch (SQLException ex) {
             Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-
+        return true;
     }
 
     public ArrayList getOrders(String incomingSQL) {
@@ -72,19 +96,18 @@ public class OrderMapper {
         return orderList;
     }
 
-    public ArrayList getOrderMat(int orderNum) {
-        String sql = "SELECT material FROM orderMaterials WHERE orderID = " + orderNum;
-        ArrayList<String> materials = new ArrayList<>();
+    public ArrayList<Material> getOrderDetail(int orderNum) {
+        String sql = "SELECT material FROM orderDetails WHERE orderID = " + orderNum;
+        ArrayList<Material> materials = new ArrayList<>();
 
         try (Connection con = new DBConnector().getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
-            String material = rs.getString("material");
-            String[] material1 = material.split(",");
-
-            materials = new ArrayList<>(Arrays.asList(material1));
-
+            while(rs.next()){
+                
+            }
+           
         } catch (Exception ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,6 +115,9 @@ public class OrderMapper {
         return materials;
 
     }
+    
+    
+    
     public ArrayList<Material> getMaterialID(){
                 String sql = "SELECT materialID FROM materials";
                 ArrayList<Material> materials = new ArrayList<>();
