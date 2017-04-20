@@ -18,7 +18,7 @@ public class DBConnector {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
+            String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE + "?useUnicode=true&amp;characterEncoding=utf8";
             conn = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);

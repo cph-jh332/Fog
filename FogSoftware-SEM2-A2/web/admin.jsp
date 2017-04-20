@@ -35,8 +35,8 @@
                         <h3>Add new materials</h3>
                         <hr>
                         <form action="FrontController" method="POST">
-                            <div class="form-group"><input type="text" class="form-control" placeholder="Type material name here..."></div>
-                            <div class="form-group text-right"><input type="submit" name="action" value="Add material" class="btn btn-primary"></div>
+                            <div class="form-group"><input type="text" name="material_name" class="form-control" placeholder="Type material name here..."></div>
+                            <div class="form-group text-right"><button type="submit" name="action" value="add-material" class="btn btn-primary">Add material</button></div>
                         </form>
                         
                     </div>

@@ -1,9 +1,11 @@
 package controller;
 
+import backend.Material;
 import backend.Order;
 import backend.PartGenerator;
 import backend.TextFiles;
 import backend.User;
+import db.MaterialMapper;
 import db.OrderMapper;
 import db.UserMapper;
 import java.io.IOException;
@@ -28,6 +30,7 @@ public class FrontController extends HttpServlet {
 
         RequestDispatcher rd = null;
         OrderMapper om = new OrderMapper();
+        MaterialMapper mp = new MaterialMapper();
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("user");
 
@@ -76,6 +79,37 @@ public class FrontController extends HttpServlet {
             case "logout": {
                 request.getSession().invalidate();
                 rd = request.getRequestDispatcher("index.jsp");
+                break;
+            }
+            
+            case "see-materials": {
+                ArrayList<String> list = mp.getAllMaterials();
+                request.setAttribute("list", list);
+                rd = request.getRequestDispatcher("admin-materials.jsp");
+                break;
+            }
+            
+            case "see-projects": {
+                ArrayList orderList = om.getOrders("sqlall");
+                request.setAttribute("list", orderList);
+                rd = request.getRequestDispatcher("admin-projects.jsp");
+                break;
+            }
+            
+            case "add-material": {
+                request.setCharacterEncoding("UTF-8");
+                String material_name = request.getParameter("material_name");
+                
+                Material m = new Material(material_name);
+                
+                new MaterialMapper().addNewMaterial(m);
+                
+                ArrayList<String> list = mp.getAllMaterials();
+                
+                request.setAttribute("list", list);
+                
+                rd = request.getRequestDispatcher("admin-materials.jsp");
+                
                 break;
             }
 
