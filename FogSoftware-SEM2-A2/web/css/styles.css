@@ -1,9 +1,24 @@
 svg {margin-bottom: 50px;}
-h1, h3 {font-family: 'Raleway', sans-serif!important;}
+body {overflow: hidden;}
+h1, h3 {font-family: 'Oswald', sans-serif!important; text-transform: uppercase;}
+h1 {margin: 0; padding: 0 0 20px 0;}
+h3 {margin: 0; padding: 0 0 10px 0;}
 p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
 .svg-container {border: solid 4px #999; overflow: hidden; text-align: center;}
+
+/* Design */
+.fog-pink-column {background: #ff517c; padding: 100px 0;}
+.fog-blue-column {background: #00114f; padding: 100px 0;}
+.left {float: left; width: 50%;}
+.right {float: right; width: 50%;}
+.fog-pink-column a, .fog-blue-column a {display: inline-block; padding: 20px 40px; border: solid 2px white; font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: white;}
+.front-page-top {background: #eaeaea; padding: 10px 0 50px 0;}
+.front-page-top h1, .front-page-top h2 {text-shadow: #FFF 0px 1px 0px;}
+.front-page-top a {color: #333; font-family: 'Oswald'; font-size: 16px;}
+.front-page-colorcolumns {margin-bottom: 30px;}
+.toolbar {padding-bottom: 30px;}
 
 /* Tables */
 .table {display: table; width: 950px; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
@@ -14,3 +29,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 
 /* Admin */
 .admin-nav {background: whitesmoke; border-bottom: solid 1px lightgray; padding: 10px 0; margin-bottom: 20px;}
+
+/* Footer */
+footer {background: #003d76; padding: 30px 0; position: fixed; bottom: 0; width: 100%;}
+footer p {color: white;}
