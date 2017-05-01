@@ -23,6 +23,20 @@ public class MaterialMapper {
             Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void deleteMaterial(String materialName){
+        String sql = "DELETE FROM materials WHERE materialName = ?";
+        
+        try(Connection con = new DBConnector().getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, materialName);
+            stmt.executeUpdate();
+            
+        }catch(SQLException ex){
+            Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
     
     public ArrayList getAllMaterials() {
         
