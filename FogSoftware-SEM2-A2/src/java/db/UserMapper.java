@@ -24,19 +24,19 @@ public class UserMapper {
     public User loginUser(String email, String password) {
         User user = null;
         String getSalt = "select salt from user where email = ?";
-        try (Connection con = new DBConnector().getConnection();){
+        try (Connection con = new DBConnector().getConnection();) {
             PreparedStatement stmt1 = con.prepareStatement(getSalt);
             stmt1.setString(1, email);
             ResultSet rs1 = stmt1.executeQuery();
-            if(rs1.next()){
-               byte[] salt = rs1.getBytes("salt");
-               password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
+            if (rs1.next()) {
+                byte[] salt = rs1.getBytes("salt");
+                password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
             }
             con.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("e");
         }
-        
+
         String sql = "select * from user where email = ? and password = ?";
 
         try (Connection con = new DBConnector().getConnection();) {
@@ -75,5 +75,36 @@ public class UserMapper {
         } catch (Exception ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void deleteUser(String email, String password) {
+        String getSalt = "select salt from user where email = ?";
+        try (Connection con = new DBConnector().getConnection();) {
+            PreparedStatement stmt1 = con.prepareStatement(getSalt);
+            stmt1.setString(1, email);
+            ResultSet rs1 = stmt1.executeQuery();
+            if (rs1.next()) {
+                byte[] salt = rs1.getBytes("salt");
+                password = HashEncoder.get_SHA_256_SecurePassword(password, salt);
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println("e");
+        }
+        
+        
+        String sql = "DELETE FROM user WHERE email = ? AND password = ?";
+        try (Connection con = new DBConnector().getConnection();) {
+            PreparedStatement stmt2 = con.prepareStatement(sql);
+            stmt2.setString(1, email);
+            stmt2.setString(2, password);
+            stmt2.executeUpdate();
+            
+            con.close();
+            
+        } catch(SQLException ex){
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
