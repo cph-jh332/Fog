@@ -109,7 +109,7 @@ public class materialListTest {
 
     @Test
     public void materialListFromPartGen() {
-        ArrayList<Material> materials = pg.getMats();
+        ArrayList<Material> materials = pg.getMaterials();
 
         int firstExpected = 1;
         int lastExpected = 13;

@@ -23,7 +23,7 @@ public class PartGenerator
     }
     
     
-    public ArrayList<Material> getMats(){
+    public ArrayList<Material> getMaterials(){
        
         
         int[] matID;
