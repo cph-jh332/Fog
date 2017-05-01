@@ -47,13 +47,14 @@
 
                         </div>
                     </c:forEach>
-                    
-                    
+
+
 
                 </div>
 
             </div>
         </div>
+        <c:import url="/carport-2d.jsp"/>
 
     </body>
 </html>

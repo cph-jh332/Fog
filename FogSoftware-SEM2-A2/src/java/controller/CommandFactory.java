@@ -1,17 +1,7 @@
 package controller;
 
-import commands.AddMaterialCommand;
-import commands.CreateCarportCommand;
-import commands.GoToPageCommand;
+import commands.*;
 import interfaces.ICommand;
-import commands.LoginCommand;
-import commands.LogoutCommand;
-import commands.NullCommand;
-import commands.OrderCommand;
-import commands.SeeMaterialsCommand;
-import commands.SeeProjectCommand;
-import commands.SignUpCommand;
-import commands.ViewOrderCommand;
 import java.util.HashMap;
 
 public class CommandFactory
@@ -37,7 +27,7 @@ public class CommandFactory
         commandMap.put("signup", new SignUpCommand());
         commandMap.put("viewOrder", new ViewOrderCommand());
         commandMap.put("add-material", new AddMaterialCommand());
-        commandMap.put("admin-home", new GoToPageCommand("admin.jsp"));
+        commandMap.put("admin-home", new AdminHomePage());
         commandMap.put(null, new NullCommand());
     }
 }
