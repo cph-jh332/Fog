@@ -21,7 +21,7 @@ public class CreateCarportCommand implements ICommand
         request.setAttribute("pillars", pg.getPillarAmount());
         request.setAttribute("rafters", pg.getRafterAmount());
 
-        return request.getRequestDispatcher("carport-2d.jsp");
+        return request.getRequestDispatcher("view-order.jsp");
     }
 
 }
