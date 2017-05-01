@@ -20,7 +20,7 @@ public class OrderCommand extends UserCommand implements ICommand
 
         PartGenerator pg = new PartGenerator(length, width);
 
-        if (new OrderMapper().storeOrder(user, length, width, pg.getMats()))
+        if (new OrderMapper().storeOrder(user, length, width, pg.getMaterials()))
         {
             request.setAttribute("message", "you've ordered the carport");
         }
