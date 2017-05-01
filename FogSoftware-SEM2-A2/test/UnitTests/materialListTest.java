@@ -5,7 +5,10 @@ package UnitTests;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import backend.Material;
 import backend.PartGenerator;
+import db.OrderMapper;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,6 +19,7 @@ import static org.junit.Assert.*;
 public class materialListTest {
 
     PartGenerator pg = new PartGenerator(780, 600);
+    OrderMapper om = new OrderMapper();
 
     @Test
     public void pillarsTest() {
@@ -73,20 +77,47 @@ public class materialListTest {
         int expected = 6;
         assertEquals(expected, roofTile);
     }
-    
+
     @Test
-    public void waterBoard(){
+    public void waterBoard() {
         int[] waterBoards = pg.getWaterboards();
         int waterBoard = waterBoards[0];
-        
+
         int expected = 2;
         assertEquals(expected, waterBoard);
     }
-    
+
     @Test
-    public void perforatedBand(){
+    public void perforatedBand() {
         int perforatedBand = pg.getPerforatedBand();
         int expected = 2;
         assertEquals(expected, perforatedBand);
     }
+
+    @Test
+    public void materialListFromDB() {
+        ArrayList<Material> materials = om.getMaterialID();
+
+        int firstExpected = 1;
+        int lastExpected = 13;
+        int firstMaterial = materials.get(0).getID();
+        int lastMaterial = materials.get(12).getID();
+        assertEquals(firstExpected, firstMaterial);
+        assertEquals(lastExpected, lastMaterial);
+
+    }
+
+    @Test
+    public void materialListFromPartGen() {
+        ArrayList<Material> materials = pg.getMats();
+
+        int firstExpected = 1;
+        int lastExpected = 13;
+        int firstMaterial = materials.get(0).getID();
+        int lastMaterial = materials.get(12).getID();
+        assertEquals(firstExpected, firstMaterial);
+        assertEquals(lastExpected, lastMaterial);
+
+    }
+
 }
