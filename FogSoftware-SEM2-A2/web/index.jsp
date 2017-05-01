@@ -32,12 +32,12 @@
         </div>
 
         <div class="row front-page-colorcolumns">
-            <div class="hide">
+            <div class="hide-on-site" id="create-carport-fields">
                 <c:import url="/inc/create-carport.jsp"/>
             </div>
             
-            <div class="fog-pink-column left text-center"><a href="create-carport.jsp">Fladt tag</a></div>
-            <div class="fog-blue-column right text-center"><a href="#">Trapez tag</a></div>
+            <div class="fog-pink-column left text-center" id="left-pane"><a href="#" id="flat-roof-button">Fladt tag</a></div>
+            <div class="fog-blue-column right text-center" id="right-pane"><a href="#" id="trapez-roof-button">Trapez tag</a></div>
         </div>
 
         <div class="row">
@@ -60,6 +60,8 @@
 
 
         <c:import url="/inc/footer.jsp"/>
+        
+        <script src="js/frontpage.js"></script>
 
 
     </body>
