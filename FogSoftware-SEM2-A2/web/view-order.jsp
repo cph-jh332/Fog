@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container text-center">
-            <c:import url="carport-2d.jsp"/>
+            <c:import url="/inc/carport-2d.jsp"/>
             <c:if test="${user != null}">
                 <div>
                 <a href="?action=order&width=<c:out value="${width}"/>&length=<c:out value="${length}"/>">order</a>
