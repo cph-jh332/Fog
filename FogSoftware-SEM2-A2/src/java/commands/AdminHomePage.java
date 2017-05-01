@@ -23,7 +23,7 @@ public class AdminHomePage implements ICommand {
         User currentUser = (User) request.getSession().getAttribute("user");
         String admin = "admin.jsp";
         String notAdmin = "index.jsp";
-        if (currentUser.isAdmin()) {
+        if (currentUser != null && currentUser.isAdmin()) {
             ArrayList orderList = new OrderMapper().getOrders("sqltop10");
             request.setAttribute("list", orderList);
             return request.getRequestDispatcher(admin);
