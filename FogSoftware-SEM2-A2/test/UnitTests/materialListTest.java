@@ -122,21 +122,31 @@ public class materialListTest {
         assertEquals(lastExpected, lastMaterial);
 
     }
+    
     @Test
-    public void addMaterialsToDB(){
-        //String name = "et stykke bræt";
-       // material = new Material(name);
-       // materialMapper.addNewMaterial(material);
+    public void addAndDeleteMaterialsToAndFromDB(){
+        String name = "et stykke bræt";
+        material = new Material(name);
+        materialMapper.addNewMaterial(material);
         
-        ArrayList<Material> materials = materialMapper.getAllMaterials();
+        ArrayList<String> materials = materialMapper.getAllMaterials();
         
-        material = materials.get(materials.size() - 1);
-        String materialName = material.getName();
-        //String materialName = "noget";
-        String expected = "et stykke bræt";
+        
+        String materialName = materials.get(materials.size() - 1);
+        String expected = name;
         
         assertEquals(expected,materialName);
         
+        materialMapper.deleteMaterial(name);
+        
+        materials = materialMapper.getAllMaterials();
+        
+        materialName = materials.get(materials.size() - 1);
+        String notExpected = name;
+        
+        assertNotEquals(notExpected,materialName);
+        
     }
+
 
 }

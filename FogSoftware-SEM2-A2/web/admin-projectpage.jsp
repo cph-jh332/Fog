@@ -52,7 +52,7 @@
 
                 </div>
 
-                <c:import url="/carport-2d.jsp"/>
+                <c:import url="/inc/carport-2d.jsp"/>
             </div>
         </div>
 
