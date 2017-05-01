@@ -7,6 +7,7 @@ package UnitTests;
  */
 import backend.Material;
 import backend.PartGenerator;
+import db.MaterialMapper;
 import db.OrderMapper;
 import java.util.ArrayList;
 import org.junit.After;
@@ -20,6 +21,8 @@ public class materialListTest {
 
     PartGenerator pg = new PartGenerator(780, 600);
     OrderMapper om = new OrderMapper();
+    MaterialMapper materialMapper = new MaterialMapper();
+    Material material;
 
     @Test
     public void pillarsTest() {
@@ -118,6 +121,22 @@ public class materialListTest {
         assertEquals(firstExpected, firstMaterial);
         assertEquals(lastExpected, lastMaterial);
 
+    }
+    @Test
+    public void addMaterialsToDB(){
+        //String name = "et stykke bræt";
+       // material = new Material(name);
+       // materialMapper.addNewMaterial(material);
+        
+        ArrayList<Material> materials = materialMapper.getAllMaterials();
+        
+        material = materials.get(materials.size() - 1);
+        String materialName = material.getName();
+        //String materialName = "noget";
+        String expected = "et stykke bræt";
+        
+        assertEquals(expected,materialName);
+        
     }
 
 }
