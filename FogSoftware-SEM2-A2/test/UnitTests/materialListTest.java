@@ -7,8 +7,7 @@ package UnitTests;
  */
 import backend.Material;
 import backend.PartGenerator;
-import db.MaterialMapper;
-import db.OrderMapper;
+import db.DBFacade;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,10 +17,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class materialListTest {
-
+    DBFacade df = new DBFacade();
     PartGenerator pg = new PartGenerator(780, 600);
-    OrderMapper om = new OrderMapper();
-    MaterialMapper materialMapper = new MaterialMapper();
     Material material;
 
     @Test
@@ -99,7 +96,7 @@ public class materialListTest {
 
     @Test
     public void materialListFromDB() {
-        ArrayList<Material> materials = om.getMaterialID();
+        ArrayList<Material> materials = df.getMaterialID();
 
         int firstExpected = 1;
         int lastExpected = 13;
@@ -127,9 +124,9 @@ public class materialListTest {
     public void addAndDeleteMaterialsToAndFromDB(){
         String name = "et stykke bræt";
         material = new Material(name);
-        materialMapper.addNewMaterial(material);
+        df.addNewMaterial(material);
         
-        ArrayList<String> materials = materialMapper.getAllMaterials();
+        ArrayList<String> materials = df.getAllMaterials();
         
         
         String materialName = materials.get(materials.size() - 1);
@@ -137,9 +134,9 @@ public class materialListTest {
         
         assertEquals(expected,materialName);
         
-        materialMapper.deleteMaterial(name);
+        df.deleteMaterial(name);
         
-        materials = materialMapper.getAllMaterials();
+        materials = df.getAllMaterials();
         
         materialName = materials.get(materials.size() - 1);
         String notExpected = name;
