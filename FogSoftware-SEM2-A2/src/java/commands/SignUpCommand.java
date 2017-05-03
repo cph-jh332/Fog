@@ -1,7 +1,7 @@
 package commands;
 
 import backend.User;
-import db.UserMapper;
+import db.DBFacade;
 import interfaces.ICommand;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +20,8 @@ public class SignUpCommand implements ICommand
 
         User newUser = new User(email, firstName, lastName, phone);
 
-        UserMapper userMapper = new UserMapper();
-        userMapper.createUser(newUser, password);
+        DBFacade df = new DBFacade();
+        df.createUser(newUser, password);
 
         return request.getRequestDispatcher("index.jsp");
     }

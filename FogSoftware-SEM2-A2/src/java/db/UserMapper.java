@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Bade
  */
-public class UserMapper {
+class UserMapper {
 
     public User loginUser(String email, String password) {
         User user = null;

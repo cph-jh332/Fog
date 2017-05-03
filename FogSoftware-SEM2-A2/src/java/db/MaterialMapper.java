@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MaterialMapper {
+class MaterialMapper {
     
     public void addNewMaterial(Material material) {
         String sql = "INSERT INTO materials (materialName) VALUES (?)";
