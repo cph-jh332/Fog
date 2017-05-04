@@ -40,6 +40,8 @@ p {font-family: 'Open Sans', sans-serif!important;}
 
 /* Admin */
 .admin-nav {background: whitesmoke; border-bottom: solid 1px lightgray; padding: 10px 0; margin-bottom: 20px;}
+.admin-inline-form {display: inline;}
+.admin-inline-form button {margin-right: 10px;}
 
 /* Footer */
 footer {background: #003d76; padding: 30px 0; width: 100%;}
