@@ -16,9 +16,13 @@
 
         <div class="container">
             <div class="row">
-                <h1>Carport project page</h1>
+                
                 
                 <div class="col-md-12 text-center">
+                    <div class="text-left">
+                        <h1>Carport project page</h1>
+                    </div>
+                    
                     <h3 class="text-center">Progress:</h3>
                     <div class="progress">
                         <div class="progress-bar progress-bar-success" role="progressbar" baria-valuenow="<c:out value="${orderProgress}"/>" aria-valuemin="0" aria-valuemax="100" style="width: <c:out value="${orderProgress}"/>%;">
@@ -47,7 +51,7 @@
                                 <input type="hidden" name="action" value="updateCustomerConfirmed">
                                 <input type="hidden" name="customerConfirmed" value="true">
                                 <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                                <button class="btn btn-primary" type="submit">Kunde har accpeteret tilbuddet</button>
+                                <button class="btn btn-primary" type="submit">Kunde har accepteret tilbuddet</button>
                             </form>
                         </c:if>
                         <c:if test="${customerConfirmed}">
@@ -55,7 +59,7 @@
                                 <input type="hidden" name="action" value="updateCustomerConfirmed">
                                 <input type="hidden" name="customerConfirmed" value="false">
                                 <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                                <button class="btn btn-primary" type="submit">Kunde har ikke accpeteret tilbuddet</button>
+                                <button class="btn btn-primary" type="submit">Kunde har ikke accepteret tilbuddet</button>
                             </form>
                         </c:if>
                     </div>
