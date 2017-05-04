@@ -13,35 +13,32 @@
             <div><c:out value="${message}"/></div>
         </div>
 
-        <div class="row text-center front-page-top ">
-            <div class="container toolbar">
-                <div class="col-md-12 text-right">
-                    <c:if test="${user == null}">
-                        <p><a href="login.jsp">Login</a> | <a href="signup.jsp">Signup</a></p>
-                    </c:if>
-                    <c:if test="${user != null}">
-                        <a href="?action=logout">Logout</a>
-                    </c:if>
 
-                </div>
+        <div class="front-page-header">
+            <c:import url="/inc/header.jsp"/>
+            
+            <div class="text-center">
+                <h1>Velkommen til Fog Custom Carporte</h1>
+                <h3>Byg din carport efter egne mål</h3>
+                <h3>Vælg først typen af tag herunder:</h3>
             </div>
-
-            <h1>Velkommen til Fog Custom Carporte</h1>
-            <h3>Byg din carport efter egne mål</h3>
-            <h3>Vælg først typen af tag herunder:</h3>
         </div>
 
-        <div class="row front-page-colorcolumns">
+        <div class="front-page-colorcolumns">
+            
+            <img src="img/fog-logo.png" class="logo" id="logo">
+            
             <div class="hide-on-site" id="create-carport-fields">
                 <c:import url="/inc/create-carport.jsp"/>
             </div>
-            
+
             <div class="fog-pink-column left text-center" id="left-pane"><a href="#" id="flat-roof-button">Fladt tag</a></div>
             <div class="fog-blue-column right text-center" id="right-pane"><a href="#" id="trapez-roof-button">Trapez tag</a></div>
         </div>
+            
 
-        <div class="row">
-            <div class="container">
+        <div class="container front-columns">
+            <div class="row">
                 <div class="col-md-4">
                     <h3>1. Vælg tag</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -58,9 +55,8 @@
         </div>
 
 
-
         <c:import url="/inc/footer.jsp"/>
-        
+
         <script src="js/frontpage.js"></script>
 
 
