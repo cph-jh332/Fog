@@ -104,8 +104,9 @@
                 </div>
                 <div class="col-md-6">
                     <h3>Kundedata</h3>
-                    <p>Navn: Hansen Jensen</p>
-                    <p>Osv: ...</p>
+                    <p>Navn: <c:out value="${user.getName()}"/></p>
+                    <p>Email: <c:out value="${user.getEmail()}"/></p>
+                    <p>Tlf: <c:out value="${user.getPhone()}"/></p>
                 </div>
             </div>
 
