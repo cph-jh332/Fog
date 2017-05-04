@@ -53,4 +53,16 @@ public class DBFacade {
     public HashMap getLengthAndWidth(int orderID) {
         return om.getLengthAndWidth(orderID);
     }
+    
+    public HashMap getProgress(int orderID){
+        return om.getProgress(orderID);
+    }
+    
+    public void updateHasCalled(int orderID, boolean hasCalled){
+        om.updateHasCalled(orderID, hasCalled);
+    }
+    
+    public void updateCustomerConfirmed(int orderID, boolean costumerConfirmed){
+        om.updateCustomerConfirmed(orderID, costumerConfirmed);
+    }
 }

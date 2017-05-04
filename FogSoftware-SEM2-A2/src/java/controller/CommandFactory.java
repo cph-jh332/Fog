@@ -1,5 +1,7 @@
 package controller;
 
+import commands.user.*;
+import commands.admin.*;
 import commands.*;
 import interfaces.ICommand;
 import java.util.HashMap;
@@ -29,5 +31,7 @@ public class CommandFactory
         commandMap.put("add-material", new AddMaterialCommand());
         commandMap.put("admin-home", new AdminHomePage());
         commandMap.put(null, new NullCommand());
+        commandMap.put("updateHasCalled", new HasCalled());
+        commandMap.put("updateCustomerConfirmed", new CustomerConfirmed());
     }
 }
