@@ -24,39 +24,40 @@
                     </div>
                 </div>
 
-                <c:if test="${!hasCalled}">
-                    <form action="FrontController" method="GET">
-                        <input type="hidden" name="action" value="updateHasCalled">
-                        <input type="hidden" name="hasCalled" value="true">
-                        <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                        <input type="submit" value="Har ringet til kunden">
-                    </form>
-                </c:if>
-                <c:if test="${hasCalled}">
-                    <form action="FrontController" method="GET">
-                        <input type="hidden" name="action" value="updateHasCalled">
-                        <input type="hidden" name="hasCalled" value="false">
-                        <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                        <input type="submit" value="Har ikke ringet til kunden">
-                    </form>
-                </c:if>
-                <c:if test="${!customerConfirmed}">
-                    <form action="FrontController" method="GET">
-                        <input type="hidden" name="action" value="updateCustomerConfirmed">
-                        <input type="hidden" name="customerConfirmed" value="true">
-                        <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                        <input type="submit" value="Kunden har accpeteret tilbud">
-                    </form>
-                </c:if>
-                <c:if test="${customerConfirmed}">
-                    <form action="FrontController" method="GET">
-                        <input type="hidden" name="action" value="updateCustomerConfirmed">
-                        <input type="hidden" name="customerConfirmed" value="false">
-                        <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
-                        <input type="submit" value="Kunde har ikke accpeteret tilbuddet">
-                    </form>
-                </c:if>
-
+                <div class="btn-group" role="group" aria-label="...">
+                    <c:if test="${!hasCalled}">
+                        <form action="FrontController" method="GET">
+                            <input type="hidden" name="action" value="updateHasCalled">
+                            <input type="hidden" name="hasCalled" value="true">
+                            <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
+                            <button class="btn btn-primary" type="submit">Har ringet til kunden</button>
+                        </form>
+                    </c:if>
+                    <c:if test="${hasCalled}">
+                        <form action="FrontController" method="GET">
+                            <input type="hidden" name="action" value="updateHasCalled">
+                            <input type="hidden" name="hasCalled" value="false">
+                            <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
+                            <button class="btn btn-primary" type="submit">Har ikke ringet til kunden</button>
+                        </form>
+                    </c:if>
+                    <c:if test="${!customerConfirmed}">
+                        <form action="FrontController" method="GET">
+                            <input type="hidden" name="action" value="updateCustomerConfirmed">
+                            <input type="hidden" name="customerConfirmed" value="true">
+                            <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
+                            <button class="btn btn-primary" type="submit">Kunde har accpeteret tilbuddet</button>
+                        </form>
+                    </c:if>
+                    <c:if test="${customerConfirmed}">
+                        <form action="FrontController" method="GET">
+                            <input type="hidden" name="action" value="updateCustomerConfirmed">
+                            <input type="hidden" name="customerConfirmed" value="false">
+                            <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
+                            <button class="btn btn-primary" type="submit">Kunde har ikke accpeteret tilbuddet</button>
+                        </form>
+                    </c:if>
+                </div>
                 <div class="table">
                     <div class="table-title">
                         <p>Stykliste til carport</p>
