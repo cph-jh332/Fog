@@ -32,7 +32,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 #create-carport-fields h3 {color: white;}
 
 /* Tables */
-.table {display: table; width: 950px; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
+.table {display: table; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
 .table-title {display: table-caption; text-align: center; font-weight: bold; font-size: larger;}
 .table-heading {display: table-row; font-weight: bold; text-align: center;}
 .table-row {display: table-row;}
