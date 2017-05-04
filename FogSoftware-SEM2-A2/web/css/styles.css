@@ -44,7 +44,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .admin-inline-form button {margin-right: 10px;}
 
 /* Footer */
-footer {background: #003d76; padding: 30px 0; width: 100%;}
+footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0;}
 footer p {color: white;}
 
 /* Buttons */
