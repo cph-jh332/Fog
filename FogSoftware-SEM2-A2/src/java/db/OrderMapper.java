@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OrderMapper {
+class OrderMapper {
 
     int newOrderId;
 

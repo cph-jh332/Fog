@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBConnector {
+class DBConnector {
 
     private final String IP = "207.154.197.204";
     private final int PORT = 3306;

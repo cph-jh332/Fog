@@ -6,7 +6,7 @@
 package UnitTests;
 
 import backend.User;
-import db.UserMapper;
+import db.DBFacade;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class UserJUnitTest {
 
-    UserMapper userMapper = new UserMapper();
+    DBFacade userMapper = new DBFacade();
     User user;
 
     public UserJUnitTest() {
