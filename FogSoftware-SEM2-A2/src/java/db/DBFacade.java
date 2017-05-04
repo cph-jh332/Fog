@@ -65,4 +65,8 @@ public class DBFacade {
     public void updateCustomerConfirmed(int orderID, boolean costumerConfirmed){
         om.updateCustomerConfirmed(orderID, costumerConfirmed);
     }
+    
+    public User getUserByOrderID(int orderID){
+        return um.getUserByOrder(orderID);
+    }
 }

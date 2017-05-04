@@ -3,6 +3,7 @@ package commands.admin;
 import backend.Material;
 import backend.PartGenerator;
 import backend.OrderProgressCalc;
+import backend.User;
 import db.DBFacade;
 import interfaces.ICommand;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class ViewOrderCommand implements ICommand {
         ArrayList<Material> od = df.getOrderDetail(orderID);
         HashMap<String, Integer> map = df.getLengthAndWidth(orderID);
         HashMap<String, Boolean> progress = df.getProgress(orderID);
+        User user = df.getUserByOrderID(orderID);
         
         boolean hasCalled = progress.get("hasCalled");
         boolean customerConfirmed = progress.get("customerConfirmed");
@@ -31,6 +33,7 @@ public class ViewOrderCommand implements ICommand {
         request.setAttribute("customerConfirmed", customerConfirmed);
         request.setAttribute("orderProgress", orderProgress);
         request.setAttribute("orderID", orderID);
+        request.setAttribute("user", user);
         
         if (map != null) {
             int length = map.get("length");
