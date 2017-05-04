@@ -1,7 +1,14 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+let createCarportFields = document.getElementById("create-carport-fields");
+let flatRoofButton = document.getElementById("flat-roof-button");
+let trapezRoofButton = document.getElementById("trapez-roof-button");
+let leftPane = document.getElementById("left-pane");
+let rightPane = document.getElementById("right-pane");
 
+function showCreateCarport() {
+    createCarportFields.style.display = "block";
+    flatRoofButton.style.display = "none";
+    trapezRoofButton.style.display = "none";
+    rightPane.className = "fog-pink-column right";
+}
 
+flatRoofButton.addEventListener("click", showCreateCarport);

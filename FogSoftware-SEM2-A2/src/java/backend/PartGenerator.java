@@ -7,14 +7,14 @@ package backend;
 
 // All lengths are in millimeter //
 
-import db.OrderMapper;
+import db.DBFacade;
 import java.util.ArrayList;
 
 public class PartGenerator 
 {
     private int carportLength;
     private int carportWidth;
-    private OrderMapper om = new OrderMapper();
+    private DBFacade df = new DBFacade();
     
     public PartGenerator(int length, int width)
     {
@@ -29,7 +29,7 @@ public class PartGenerator
         int[] matID;
         ArrayList<Material> materials = new ArrayList<>();
         
-        materials = om.getMaterialID();
+        materials = df.getMaterialID();
         
         
             materials.get(0).setAmount(getRafterAmount());

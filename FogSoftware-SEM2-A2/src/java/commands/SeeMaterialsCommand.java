@@ -1,8 +1,8 @@
 package commands;
 
 import backend.User;
+import db.DBFacade;
 import interfaces.ICommand;
-import db.MaterialMapper;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class SeeMaterialsCommand extends UserCommand implements ICommand
         User user = getSessionUser(request);
         if (loggedIn(user) && user.isAdmin())
         {
-            ArrayList<String> list = new MaterialMapper().getAllMaterials();
+            ArrayList<String> list = new DBFacade().getAllMaterials();
             request.setAttribute("list", list);
             return request.getRequestDispatcher("admin-materials.jsp");
         }

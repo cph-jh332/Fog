@@ -1,0 +1,56 @@
+package db;
+
+import backend.Material;
+import backend.User;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class DBFacade {
+    MaterialMapper mp = new MaterialMapper();
+    OrderMapper om = new OrderMapper();
+    UserMapper um = new UserMapper();
+    
+    public void addNewMaterial(Material material){
+        mp.addNewMaterial(material);
+    }
+    
+    public void deleteMaterial(String materialName){
+        mp.deleteMaterial(materialName);
+    }
+    
+    public ArrayList getAllMaterials() {
+        return mp.getAllMaterials();
+    }
+    
+     public User loginUser(String email, String password) {
+        return um.loginUser(email, password);
+    }
+
+    public void createUser(User newUser, String password) {
+        um.createUser(newUser, password);
+    }
+
+    public void deleteUser(String email, String password) {
+        um.deleteUser(email, password);
+    }
+    
+    public boolean storeOrder(User user, int length, int width, ArrayList<Material> materials) {
+        return om.storeOrder(user, length, width, materials);
+    }
+
+    public ArrayList getOrders(String incomingSQL) {
+        return om.getOrders(incomingSQL);
+    }
+
+    public ArrayList<Material> getOrderDetail(int orderNum) {
+        return om.getOrderDetail(orderNum);
+    }
+
+    public ArrayList<Material> getMaterialID() {
+        return om.getMaterialID();
+    }
+
+    public HashMap getLengthAndWidth(int orderID) {
+        return om.getLengthAndWidth(orderID);
+    }
+}

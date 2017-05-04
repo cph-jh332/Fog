@@ -1,7 +1,7 @@
 package commands;
 
 import backend.Material;
-import db.MaterialMapper;
+import db.DBFacade;
 import interfaces.ICommand;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -15,10 +15,10 @@ public class AddMaterialCommand implements ICommand
     {
         String material_name = request.getParameter("material_name");
         Material m = new Material(material_name);
-        MaterialMapper mp = new MaterialMapper();
+        DBFacade df = new DBFacade();
         
-        mp.addNewMaterial(m);
-        ArrayList<String> list = mp.getAllMaterials();
+        df.addNewMaterial(m);
+        ArrayList<String> list = df.getAllMaterials();
         request.setAttribute("list", list);
         return request.getRequestDispatcher("admin-materials.jsp");
     }

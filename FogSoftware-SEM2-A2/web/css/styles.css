@@ -7,6 +7,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
 .svg-container {border: solid 4px #999; overflow: hidden; text-align: center;}
+.hide-on-site {display: none;}
 
 /* Design */
 .fog-pink-column {background: #ff517c; padding: 100px 0;}
@@ -19,6 +20,9 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .front-page-top a {color: #333; font-family: 'Oswald'; font-size: 16px;}
 .front-page-colorcolumns {margin-bottom: 30px;}
 .toolbar {padding-bottom: 30px;}
+
+#create-carport-fields {position: absolute; width: 300px; left: 50%; margin-left: -150px;}
+#create-carport-fields h3 {color: white;}
 
 /* Tables */
 .table {display: table; width: 950px; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
