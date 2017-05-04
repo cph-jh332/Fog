@@ -19,14 +19,14 @@
 
                 <h3 class="text-center">Progress:</h3>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="<c:out value="${orderProgress}"/>" aria-valuemin="0" aria-valuemax="100" style="width: <c:out value="${orderProgress}"/>%;">
+                    <div class="progress-bar progress-bar-success" role="progressbar" baria-valuenow="<c:out value="${orderProgress}"/>" aria-valuemin="0" aria-valuemax="100" style="width: <c:out value="${orderProgress}"/>%;">
                         <c:out value="${orderProgress}"/>%
                     </div>
                 </div>
 
                 <div class="btn-group" role="group" aria-label="...">
                     <c:if test="${!hasCalled}">
-                        <form action="FrontController" method="GET">
+                        <form action="FrontController" method="GET" class="admin-inline-form">
                             <input type="hidden" name="action" value="updateHasCalled">
                             <input type="hidden" name="hasCalled" value="true">
                             <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
@@ -34,7 +34,7 @@
                         </form>
                     </c:if>
                     <c:if test="${hasCalled}">
-                        <form action="FrontController" method="GET">
+                        <form action="FrontController" method="GET" class="admin-inline-form">
                             <input type="hidden" name="action" value="updateHasCalled">
                             <input type="hidden" name="hasCalled" value="false">
                             <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
@@ -42,7 +42,7 @@
                         </form>
                     </c:if>
                     <c:if test="${!customerConfirmed}">
-                        <form action="FrontController" method="GET">
+                        <form action="FrontController" method="GET" class="admin-inline-form">
                             <input type="hidden" name="action" value="updateCustomerConfirmed">
                             <input type="hidden" name="customerConfirmed" value="true">
                             <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
@@ -50,7 +50,7 @@
                         </form>
                     </c:if>
                     <c:if test="${customerConfirmed}">
-                        <form action="FrontController" method="GET">
+                        <form action="FrontController" method="GET" class="admin-inline-form">
                             <input type="hidden" name="action" value="updateCustomerConfirmed">
                             <input type="hidden" name="customerConfirmed" value="false">
                             <input type="hidden" name="orderID" value="<c:out value="${orderID}"/>">
