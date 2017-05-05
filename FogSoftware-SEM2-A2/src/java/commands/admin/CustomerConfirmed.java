@@ -33,6 +33,7 @@ public class CustomerConfirmed implements ICommand {
             boolean customerConfirmed = Boolean.parseBoolean(request.getParameter("customerConfirmed"));
             HashMap<String, Boolean> progress = df.getProgress(orderID);
 
+            user = df.getUserByOrderID(orderID);
             df.updateCustomerConfirmed(orderID, customerConfirmed);
 
             boolean hasCalled = progress.get("hasCalled");
@@ -42,7 +43,8 @@ public class CustomerConfirmed implements ICommand {
             request.setAttribute("customerConfirmed", customerConfirmed);
             request.setAttribute("orderProgress", orderProgress);
             request.setAttribute("orderID", orderID);
-
+            request.setAttribute("user", user);
+            
             ArrayList<Material> od = df.getOrderDetail(orderID);
             HashMap<String, Integer> map = df.getLengthAndWidth(orderID);
             if (map != null) {
