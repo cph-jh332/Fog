@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12 text-right">
             <c:if test="${user == null}">
-                <a href="#" id="login-button">Login</a> | <a href="#" id="signup-button">Opret bruger</a>
+                <a href="#" class="login-button">Login</a> | <a href="#" id="signup-button">Opret bruger</a>
             </c:if>
             <c:if test="${user != null}">
                 <a href="?action=logout">Logout</a>
