@@ -16,8 +16,8 @@ public class CreateCarportCommand implements ICommand
 
         PartGenerator pg = new PartGenerator(length, width);
 
-        request.setAttribute("length", length);
-        request.setAttribute("width", width);
+        request.getSession().setAttribute("length", length);
+        request.getSession().setAttribute("width", width);
         request.setAttribute("pillars", pg.getPillarAmount());
         request.setAttribute("rafters", pg.getRafterAmount());
 

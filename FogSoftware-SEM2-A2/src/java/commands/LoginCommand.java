@@ -1,5 +1,6 @@
 package commands;
 
+import backend.PartGenerator;
 import backend.User;
 import db.DBFacade;
 import interfaces.ICommand;
@@ -26,6 +27,16 @@ public class LoginCommand implements ICommand
                 ArrayList orderList = df.getOrders("sqltop10");
                 request.setAttribute("list", orderList);
                 return request.getRequestDispatcher(adminLogin);
+            }else if(request.getSession().getAttribute("length") != null){
+                               
+                int length = (Integer) request.getSession().getAttribute("length");
+                int width = (Integer) request.getSession().getAttribute("width");
+                
+                PartGenerator pg = new PartGenerator(length, width);
+
+                request.setAttribute("pillars", pg.getPillarAmount());
+                request.setAttribute("rafters", pg.getRafterAmount());
+                return request.getRequestDispatcher("view-order.jsp");
             }
             else
             {
