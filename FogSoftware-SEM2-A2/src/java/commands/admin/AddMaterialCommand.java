@@ -1,4 +1,4 @@
-package commands;
+package commands.admin;
 
 import backend.Material;
 import db.DBFacade;

@@ -1,6 +1,7 @@
-package commands;
+package commands.admin;
 
 import backend.User;
+import commands.UserCommand;
 import db.DBFacade;
 import interfaces.ICommand;
 import java.util.ArrayList;

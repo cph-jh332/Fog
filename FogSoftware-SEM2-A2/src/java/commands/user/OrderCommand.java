@@ -1,7 +1,8 @@
-package commands;
+package commands.user;
 
 import backend.PartGenerator;
 import backend.User;
+import commands.UserCommand;
 import db.DBFacade;
 import interfaces.ICommand;
 import javax.servlet.RequestDispatcher;

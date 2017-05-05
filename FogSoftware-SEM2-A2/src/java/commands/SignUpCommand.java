@@ -16,9 +16,12 @@ public class SignUpCommand implements ICommand
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         int phone = Integer.parseInt(request.getParameter("phone"));
+        String streetName = request.getParameter("streetName");
+        String city = request.getParameter("city");
+        int zipCode = Integer.parseInt(request.getParameter("zipCode"));
         String password = request.getParameter("password");
 
-        User newUser = new User(email, firstName, lastName, phone);
+        User newUser = new User(email, firstName, lastName, phone, streetName, city, zipCode);
 
         DBFacade df = new DBFacade();
         df.createUser(newUser, password);
