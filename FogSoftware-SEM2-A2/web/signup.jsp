@@ -22,9 +22,16 @@
             <input type="text" name="lastName" value="" placeholder="Type in your last name" required/>
             <p>Phone</p>
             <input type="tel" name="phone" value="" placeholder="Type in your phone number" pattern=".{8,8}" required/>
+            <p>Vejnavn</p>
+            <input type="text" name="streetName" placeholder="Type in your street name" required/>
+            <p>City</p>
+            <input type="text" name="city" placeholder="Type in your city name" required/>
+            <p>Postnr.</p>
+            <input type="number" name="zipCode" placeholder="Type in you zip code" pattern=".{4,4}" required/>
             <p>Password</p>
             <input type="password" name="password" value="" placeholder="Type in your password" required/><br>
-            <input type="submit" value="signup" name="action"/>
+            <input tupe="hidden" name="action" value="signup"/>
+            <input type="submit" value="signup"/>
         </form>
     </body>
 </html>

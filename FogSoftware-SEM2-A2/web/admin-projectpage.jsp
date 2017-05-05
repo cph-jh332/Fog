@@ -111,6 +111,9 @@
                     <p>Navn: <c:out value="${user.getName()}"/></p>
                     <p>Email: <c:out value="${user.getEmail()}"/></p>
                     <p>Tlf: <c:out value="${user.getPhone()}"/></p>
+                    <p>Vej: <c:out value="${user.getStreetName()}"/></p>
+                    <p>By: <c:out value="${user.getCity()}"/></p>
+                    <p>Post nr.: <c:out value="${user.getZipCode()}"/></p>
                 </div>
             </div>
 

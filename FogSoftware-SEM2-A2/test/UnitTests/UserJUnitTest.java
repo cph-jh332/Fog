@@ -61,7 +61,10 @@ public class UserJUnitTest {
         String firstName = "mr junit";
         String lastName = "test";
         int phone = 404;
-        user = new User(email,firstName,lastName,phone);
+        String streetName = "tester";
+        String city = "testby";
+        int zipCode = 2810;
+        user = new User(email,firstName,lastName,phone,streetName, city, zipCode);
         userMapper.createUser(user, password);
         
         firstName = userMapper.loginUser(email, password).getFirstName(); 
