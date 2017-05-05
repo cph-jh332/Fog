@@ -47,7 +47,7 @@ class UserMapper {
 
             if (rs.next()) {
                 user = new User(rs.getInt("userID"), rs.getString("email"),
-                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"));
+                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"), rs.getString("streetName"), rs.getString("city"), rs.getInt("zipCode"));
             }
             con.close();
         } catch (SQLException ex) {
@@ -57,7 +57,7 @@ class UserMapper {
     }
 
     public void createUser(User newUser, String password) {
-        String sql = "insert into user (email, password, firstName, lastName, phone, salt) values (?,?,?,?,?,?)";
+        String sql = "insert into user (email, password, firstName, lastName, phone, salt, streetName, city, zipCode) values (?,?,?,?,?,?,?,?,?)";
 
         try (Connection con = new DBConnector().getConnection();) {
             byte[] salt = HashEncoder.generateSalt();
@@ -69,6 +69,9 @@ class UserMapper {
             stmt.setString(4, newUser.getLastName());
             stmt.setInt(5, newUser.getPhone());
             stmt.setBytes(6, salt);
+            stmt.setString(7, newUser.getStreetName());
+            stmt.setString(8, newUser.getCity());
+            stmt.setInt(9, newUser.getZipCode());
             stmt.executeUpdate();
 
             con.close();
@@ -132,7 +135,7 @@ class UserMapper {
 
             if (rs.next()) {
                 user = new User(rs.getInt("userID"), rs.getString("email"),
-                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"));
+                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"), rs.getString("streetName"), rs.getString("city"), rs.getInt("zipCode"));
             }
             con.close();
         } catch (SQLException ex) {
