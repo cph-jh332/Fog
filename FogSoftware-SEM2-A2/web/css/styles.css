@@ -6,7 +6,7 @@ h3 {margin: 0; padding: 0 0 10px 0;}
 p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
-.svg-container {border: solid 4px #999; overflow: hidden; text-align: center;}
+.svg-container {border: solid 4px #999; overflow: hidden; text-align: center; margin-bottom: 50px;}
 .hide-on-site {display: none;}
 
 /* Design */
@@ -44,7 +44,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .admin-inline-form button {margin-right: 10px;}
 
 /* Footer */
-footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0;}
+footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0; margin-top: 40px;}
 footer p {color: white;}
 
 /* Buttons */
