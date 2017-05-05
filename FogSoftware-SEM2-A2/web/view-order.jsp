@@ -17,22 +17,14 @@
         </div>
 
         <div class="container text-center">
-            <c:if test="${user != null}">
-                <div>
-                    <a href="?action=order&width=<c:out value="${width}"/>&length=<c:out value="${length}"/>">order</a>
-                </div>
-            </c:if>
-            <c:if test="${user == null}">
-                <form action="login.jsp">
-                    <input type="submit" value="Login to Order">
-                </form>
-            </c:if>
+            
 
             <div class="row">
                 <c:import url="/inc/carport-2d.jsp"/>
             </div>
             
             <div class="row text-center">
+                <h3>3D tegning</h3>
                 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="1170px"></canvas>
                 <br>
                 <div class="logo"></div>
@@ -60,10 +52,8 @@
                     <a href="?action=order&width=<c:out value="${width}"/>&length=<c:out value="${length}"/>" class="fog-button">Opret carport projekt</a>
                 </div>
             </c:if>
-            <c:if test="${user == null}">
-                <form action="login.jsp">
-                    <input type="submit" value="Login for at bestille" class="fog-button">
-                </form>
+            <c:if test="${user == null}">             
+                <a href="#" class="login-button fog-button">Login for at bestille</a>
             </c:if>
 
         </div>
