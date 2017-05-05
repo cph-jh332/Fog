@@ -15,17 +15,24 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .left {float: left; width: 50%;}
 .right {float: right; width: 50%;}
 .fog-pink-column a, .fog-blue-column a {display: inline-block; padding: 20px 40px; border: solid 2px white; font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: white;}
-.front-page-top {background: #eaeaea; padding: 10px 0 50px 0;}
-.front-page-top h1, .front-page-top h2 {text-shadow: #FFF 0px 1px 0px;}
-.front-page-top a {color: #333; font-family: 'Oswald'; font-size: 16px;}
-.front-page-colorcolumns {margin-bottom: 30px;}
-.toolbar {padding-bottom: 30px;}
+
+.header-page-top {padding: 10px 0 15px 0;}
+.header-page-top a {color: #333; font-family: 'Oswald'; font-size: 16px; text-shadow: #FFF 0px 1px 0px;}
+.header-page-top .logo {width: 70px; position: absolute;}
+
+.front-page-colorcolumns {margin-bottom: 30px!important;}
+.front-page-colorcolumns .logo {width: 126px; height: auto; position: absolute; left: 50%; margin-left: -61px; margin-top: 70px;}
+.front-page-header {background: #eaeaea; padding-bottom: 40px;}
+.front-columns .col-md-4 {margin-top: 30px; margin-bottom: 30px;}
+
+.toolbar {margin-bottom: 30px; background: #eaeaea; width: 100%; border-bottom: solid 4px #ff517c;}
+.toolbar h1, .toolbar h2, .front-page-header h1, .front-page-header h3 {text-shadow: #FFF 0px 1px 0px;}
 
 #create-carport-fields {position: absolute; width: 300px; left: 50%; margin-left: -150px;}
 #create-carport-fields h3 {color: white;}
 
 /* Tables */
-.table {display: table; width: 950px; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
+.table {display: table; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
 .table-title {display: table-caption; text-align: center; font-weight: bold; font-size: larger;}
 .table-heading {display: table-row; font-weight: bold; text-align: center;}
 .table-row {display: table-row;}
@@ -33,7 +40,16 @@ p {font-family: 'Open Sans', sans-serif!important;}
 
 /* Admin */
 .admin-nav {background: whitesmoke; border-bottom: solid 1px lightgray; padding: 10px 0; margin-bottom: 20px;}
+.admin-inline-form {display: inline;}
+.admin-inline-form button {margin-right: 10px;}
 
 /* Footer */
-footer {background: #003d76; padding: 30px 0; position: fixed; bottom: 0; width: 100%;}
+footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0;}
 footer p {color: white;}
+
+/* Buttons */
+.fog-button {background: #ffcc00; padding: 20px 40px; font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; border: none; color: #333; text-decoration: none;}
+
+/* popup */
+.popup-container {background: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 100;}
+.popup-content {width: 300px; padding: 20px; border-radius: 4px; background: white; z-index: 101; position: absolute; left: 50%; margin-left: -150px; margin-top: 100px;}

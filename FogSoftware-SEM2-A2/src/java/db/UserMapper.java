@@ -47,7 +47,7 @@ class UserMapper {
 
             if (rs.next()) {
                 user = new User(rs.getInt("userID"), rs.getString("email"),
-                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"));
+                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"), rs.getString("streetName"), rs.getString("city"), rs.getInt("zipCode"));
             }
             con.close();
         } catch (SQLException ex) {
@@ -57,7 +57,7 @@ class UserMapper {
     }
 
     public void createUser(User newUser, String password) {
-        String sql = "insert into user (email, password, firstName, lastName, phone, salt) values (?,?,?,?,?,?)";
+        String sql = "insert into user (email, password, firstName, lastName, phone, salt, streetName, city, zipCode) values (?,?,?,?,?,?,?,?,?)";
 
         try (Connection con = new DBConnector().getConnection();) {
             byte[] salt = HashEncoder.generateSalt();
@@ -69,6 +69,9 @@ class UserMapper {
             stmt.setString(4, newUser.getLastName());
             stmt.setInt(5, newUser.getPhone());
             stmt.setBytes(6, salt);
+            stmt.setString(7, newUser.getStreetName());
+            stmt.setString(8, newUser.getCity());
+            stmt.setInt(9, newUser.getZipCode());
             stmt.executeUpdate();
 
             con.close();
@@ -91,20 +94,53 @@ class UserMapper {
         } catch (Exception e) {
             System.out.println("e");
         }
-        
-        
+
         String sql = "DELETE FROM user WHERE email = ? AND password = ?";
         try (Connection con = new DBConnector().getConnection();) {
             PreparedStatement stmt2 = con.prepareStatement(sql);
             stmt2.setString(1, email);
             stmt2.setString(2, password);
             stmt2.executeUpdate();
-            
+
             con.close();
-            
-        } catch(SQLException ex){
+
+        } catch (SQLException ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+    }
+
+    public User getUserByOrder(int orderID) {
+        User user = null;
+        int userID = 0;
+        String getUserID = "select userID from orders where orderID = ?";
+        try (Connection con = new DBConnector().getConnection();) {
+            PreparedStatement stmt1 = con.prepareStatement(getUserID);
+            stmt1.setInt(1, orderID);
+            ResultSet rs1 = stmt1.executeQuery();
+            if (rs1.next()) {
+                userID = rs1.getInt("userID");
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println("e");
+        }
+
+        String sql = "select * from user where userID = ?";
+
+        try (Connection con = new DBConnector().getConnection();) {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, userID);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User(rs.getInt("userID"), rs.getString("email"),
+                        rs.getString("firstName"), rs.getString("lastName"), rs.getInt("phone"), rs.getBoolean("admin"), rs.getString("streetName"), rs.getString("city"), rs.getInt("zipCode"));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
     }
 }
