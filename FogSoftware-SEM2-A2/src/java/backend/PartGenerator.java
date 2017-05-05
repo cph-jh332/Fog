@@ -53,13 +53,13 @@ public class PartGenerator
         int length = carportLength;
         int rafterDistance = 550;
 
-        int spær = 1;
+        int rafters = 1;
         while (length > rafterDistance)
         {
-            spær++;
+            rafters++;
             length -= rafterDistance;
         }
-        return spær;
+        return rafters;
     }
 
     public int getPillarAmount()
