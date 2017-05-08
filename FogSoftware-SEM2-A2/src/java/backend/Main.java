@@ -5,17 +5,21 @@
  */
 package backend;
 
-import db.OrderMapper;
-import db.UserMapper;
-import java.util.ArrayList;
+import db.DBFacade;
+import java.util.HashMap;
 
 public class Main {
-
+    DBFacade df = new DBFacade();
     public static void main(String[] args) 
     {
-        UserMapper um = new UserMapper();
+        /*UserMapper um = new UserMapper();
         User user = new User("test@joe.dk", "Tester", "Testensen", 22003300);
         um.createUser(user, "");
-        System.out.println(um.loginUser("test@test.dk", "test") == null);
+        System.out.println(um.loginUser("test@test.dk", "test") == null);*/
+        
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        
+        map.put("width", 20);
+        map.put("length", 20);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MaterialMapper {
+class MaterialMapper {
     
     public void addNewMaterial(Material material) {
         String sql = "INSERT INTO materials (materialName) VALUES (?)";
@@ -22,6 +22,20 @@ public class MaterialMapper {
         } catch (SQLException ex) {
             Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public void deleteMaterial(String materialName){
+        String sql = "DELETE FROM materials WHERE materialName = ?";
+        
+        try(Connection con = new DBConnector().getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, materialName);
+            stmt.executeUpdate();
+            
+        }catch(SQLException ex){
+            Logger.getLogger(MaterialMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
     
     public ArrayList getAllMaterials() {

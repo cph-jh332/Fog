@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package commands;
 
 import backend.User;
-import db.UserMapper;
+import db.DBFacade;
 import interfaces.ICommand;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author Bade
- */
 public class SignUpCommand implements ICommand
 {
 
@@ -25,12 +16,15 @@ public class SignUpCommand implements ICommand
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         int phone = Integer.parseInt(request.getParameter("phone"));
+        String streetName = request.getParameter("streetName");
+        String city = request.getParameter("city");
+        int zipCode = Integer.parseInt(request.getParameter("zipCode"));
         String password = request.getParameter("password");
 
-        User newUser = new User(email, firstName, lastName, phone);
+        User newUser = new User(email, firstName, lastName, phone, streetName, city, zipCode);
 
-        UserMapper userMapper = new UserMapper();
-        userMapper.createUser(newUser, password);
+        DBFacade df = new DBFacade();
+        df.createUser(newUser, password);
 
         return request.getRequestDispatcher("index.jsp");
     }

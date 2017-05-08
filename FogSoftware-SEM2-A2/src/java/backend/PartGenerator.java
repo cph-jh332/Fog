@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package backend;
 
-// All lengths are in millimeter //
-
-import db.OrderMapper;
+import db.DBFacade;
 import java.util.ArrayList;
 
 public class PartGenerator 
 {
-    private int carportLength;
-    private int carportWidth;
-    private OrderMapper om = new OrderMapper();
+    private final int carportLength;
+    private final int carportWidth;
+    private final DBFacade df = new DBFacade();
     
     public PartGenerator(int length, int width)
     {
@@ -22,42 +15,30 @@ public class PartGenerator
         carportWidth = width * 10;
     }
     
-    
-    public ArrayList<Material> getMats(){
-       
+    public ArrayList<Material> getMaterials(){
         
-        int[] matID;
-        ArrayList<Material> materials = new ArrayList<>();
+        ArrayList<Material> materials = df.getMaterialID();
         
-        materials = om.getMaterialID();
-        
-        
-            materials.get(0).setAmount(getRafterAmount());
-            materials.get(1).setAmount(getPillarAmount());
-            int[] tiles = getRoofTiles();
-            materials.get(2).setAmount(tiles[0]);   //600
-            materials.get(3).setAmount(tiles[1]);   //360
-            int[] rem = getRem();
-            materials.get(4).setAmount(rem[0]);     //600
-            materials.get(5).setAmount(rem[1]);     //480
-            materials.get(6).setAmount(getShedBoards());
-            int[] understern = getUndersternBrædder();
-            materials.get(7).setAmount(understern[0]);  //540
-            materials.get(8).setAmount(understern[1]);  //360
-            int[] overstern = getOversternBrædder();
-            materials.get(9).setAmount(overstern[0]);   //540
-            materials.get(10).setAmount(overstern[1]);  //360
-            int[] waterboard = getWaterboards();
-            materials.get(11).setAmount(waterboard[0]); //540
-            materials.get(12).setAmount(waterboard[1]); //360
-            
-            
-        
-        
-        
+        materials.get(0).setAmount(getRafterAmount());
+        materials.get(1).setAmount(getPillarAmount());
+        int[] tiles = getRoofTiles();
+        materials.get(2).setAmount(tiles[0]);   //600
+        materials.get(3).setAmount(tiles[1]);   //360
+        int[] rem = getRem();
+        materials.get(4).setAmount(rem[0]);     //600
+        materials.get(5).setAmount(rem[1]);     //480
+        materials.get(6).setAmount(getShedBoards());
+        int[] understern = getUndersternBrædder();
+        materials.get(7).setAmount(understern[0]);  //540
+        materials.get(8).setAmount(understern[1]);  //360
+        int[] overstern = getOversternBrædder();
+        materials.get(9).setAmount(overstern[0]);   //540
+        materials.get(10).setAmount(overstern[1]);  //360
+        int[] waterboard = getWaterboards();
+        materials.get(11).setAmount(waterboard[0]); //540
+        materials.get(12).setAmount(waterboard[1]); //360
+
         return materials;
-        
-        
     }
     
     public int getRafterAmount()
@@ -65,24 +46,23 @@ public class PartGenerator
         int length = carportLength;
         int rafterDistance = 550;
 
-        int spær = 1;
+        int rafters = 1;
         while (length > rafterDistance)
         {
-            spær++;
+            rafters++;
             length -= rafterDistance;
         }
-        return spær;
+        return rafters;
     }
 
     public int getPillarAmount()
     {
-        int length = carportLength;
-        int width = carportWidth;
+        int length = carportLength - 2100; // 2100 is the length of the shed //
 
-        int shedPillars = 4;
+        int shedPillars = 6;
         int extraPillars = 1;
         int num = 2;
-        while ((length - 1000) >= 3100)
+        while (length - 1000 >= 3100)
         {
             num += 2;
             length -= 3100;

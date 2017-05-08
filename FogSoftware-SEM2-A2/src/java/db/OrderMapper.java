@@ -9,10 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OrderMapper {
+class OrderMapper {
 
     int newOrderId;
 
@@ -108,7 +109,7 @@ public class OrderMapper {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Material m = new Material(rs.getInt("materialID"),rs.getString("materialName"));
+                Material m = new Material(rs.getInt("materialID"), rs.getString("materialName"));
                 m.setAmount(rs.getInt("amount"));
                 materials.add(m);
             }
@@ -138,6 +139,77 @@ public class OrderMapper {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         return materials;
+    }
+
+    public HashMap getLengthAndWidth(int orderID) {
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        String sql = "SELECT * FROM orders WHERE orderID = " + orderID;
+
+        try (Connection con = new DBConnector().getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int width = rs.getInt("width");
+                int length = rs.getInt("length");
+                map.put("width", width);
+                map.put("length", length);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return map;
+    }
+    
+    public HashMap getProgress(int orderID){
+        HashMap<String, Boolean> map = new HashMap<String, Boolean>();
+        String sql = "SELECT hasCalled, customerConfirmed FROM orders WHERE orderID = " + orderID;
+        
+        try (Connection con = new DBConnector().getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                boolean hasCalled = rs.getBoolean("hasCalled");
+                boolean customerConfirmed = rs.getBoolean("customerConfirmed");
+                map.put("hasCalled", hasCalled);
+                map.put("customerConfirmed", customerConfirmed);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return map;
+    }
+    
+    public void updateHasCalled(int orderID, boolean hasCalled){
+        String sql = "UPDATE orders SET hasCalled = ? WHERE orderID = " + orderID;
+        
+        try (Connection con = new DBConnector().getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setBoolean(1, hasCalled);
+            
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updateCustomerConfirmed(int orderID, boolean customerConfirmed){
+        String sql = "UPDATE orders SET customerConfirmed = ? WHERE orderID = " + orderID;
+        
+        try (Connection con = new DBConnector().getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setBoolean(1, customerConfirmed);
+            
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

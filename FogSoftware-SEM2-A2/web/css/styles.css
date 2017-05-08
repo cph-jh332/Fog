@@ -1,12 +1,38 @@
 svg {margin-bottom: 50px;}
-h1, h3 {font-family: 'Raleway', sans-serif!important;}
+body {overflow-x: hidden;}
+h1, h3 {font-family: 'Oswald', sans-serif!important; text-transform: uppercase;}
+h1 {margin: 0; padding: 0 0 20px 0;}
+h3 {margin: 0; padding: 0 0 10px 0;}
 p {font-family: 'Open Sans', sans-serif!important;}
 
 .col-border {border: solid 1px lightgray;}
-.svg-container {border: solid 4px #999; overflow: hidden; text-align: center;}
+.svg-container {border: solid 4px #999; overflow: hidden; text-align: center; margin-bottom: 50px;}
+.hide-on-site {display: none;}
+
+/* Design */
+.fog-pink-column {background: #ff517c; padding: 100px 0;}
+.fog-blue-column {background: #00114f; padding: 100px 0;}
+.left {float: left; width: 50%;}
+.right {float: right; width: 50%;}
+.fog-pink-column a, .fog-blue-column a {display: inline-block; padding: 20px 40px; border: solid 2px white; font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: white;}
+
+.header-page-top {padding: 10px 0 15px 0;}
+.header-page-top a {color: #333; font-family: 'Oswald'; font-size: 16px; text-shadow: #FFF 0px 1px 0px;}
+.header-page-top .logo {width: 70px; position: absolute;}
+
+.front-page-colorcolumns {margin-bottom: 30px!important;}
+.front-page-colorcolumns .logo {width: 126px; height: auto; position: absolute; left: 50%; margin-left: -61px; margin-top: 70px;}
+.front-page-header {background: #eaeaea; padding-bottom: 40px;}
+.front-columns .col-md-4 {margin-top: 30px; margin-bottom: 30px;}
+
+.toolbar {margin-bottom: 30px; background: #eaeaea; width: 100%; border-bottom: solid 4px #ff517c;}
+.toolbar h1, .toolbar h2, .front-page-header h1, .front-page-header h3 {text-shadow: #FFF 0px 1px 0px;}
+
+#create-carport-fields {position: absolute; width: 300px; left: 50%; margin-left: -150px;}
+#create-carport-fields h3 {color: white;}
 
 /* Tables */
-.table {display: table; width: 950px; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
+.table {display: table; margin-bottom: 50px; border-top: solid 1px; border-right: solid 1px;}
 .table-title {display: table-caption; text-align: center; font-weight: bold; font-size: larger;}
 .table-heading {display: table-row; font-weight: bold; text-align: center;}
 .table-row {display: table-row;}
@@ -14,3 +40,18 @@ p {font-family: 'Open Sans', sans-serif!important;}
 
 /* Admin */
 .admin-nav {background: whitesmoke; border-bottom: solid 1px lightgray; padding: 10px 0; margin-bottom: 20px;}
+.admin-inline-form {display: inline;}
+.admin-inline-form button {margin-right: 10px;}
+
+/* Footer */
+footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0; margin-top: 50px;}
+footer p {color: white;}
+
+/* Buttons */
+.fog-button {display: inline-block; background: #ffcc00; padding: 20px 40px; font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; border: none; color: #333; text-decoration: none;}
+.fog-button:hover {text-decoration: none; color: #333;}
+
+/* popup */
+.popup-container {background: rgba(0, 0, 0, 0.5); position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 100;}
+.popup-content {width: 300px; padding: 20px; border-radius: 4px; background: white; position: absolute; left: 50%; margin-left: -150px; margin-top: 100px;}
+.close-popup {width: 25px; height: auto; float: right; margin-top: -32px; margin-right: -33px; cursor: pointer; }
