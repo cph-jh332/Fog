@@ -13,7 +13,7 @@ public class AddMaterialCommand implements ICommand {
     @Override
     public RequestDispatcher execute(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if (user.isAdmin()) {
+        if (user != null && user.isAdmin()) {
             String material_name = request.getParameter("material_name");
             Material m = new Material(material_name);
             DBFacade df = new DBFacade();
