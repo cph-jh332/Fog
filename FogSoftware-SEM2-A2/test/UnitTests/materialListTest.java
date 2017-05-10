@@ -139,13 +139,6 @@ public class materialListTest {
     }
 
     @Test
-    public void perforatedBand() {
-        int perforatedBand = pg.getPerforatedBand();
-        int expected = 2;
-        assertEquals(expected, perforatedBand);
-    }
-
-    @Test
     public void materialListFromDB() {
         ArrayList<Material> materials = df.getMaterialID();
 
