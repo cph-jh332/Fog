@@ -1,5 +1,6 @@
 svg {margin-bottom: 50px;}
-body {overflow-x: hidden;}
+body {overflow-x: hidden; display: flex; min-height: 100vh; flex-direction: column;}
+
 h1, h3 {font-family: 'Oswald', sans-serif!important; text-transform: uppercase;}
 h1 {margin: 0; padding: 0 0 20px 0;}
 h3 {margin: 0; padding: 0 0 10px 0;}
@@ -8,6 +9,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .col-border {border: solid 1px lightgray;}
 .svg-container {border: solid 4px #999; overflow: hidden; text-align: center; margin-bottom: 50px;}
 .hide-on-site {display: none;}
+.container {flex: 1;}
 
 /* Design */
 .fog-pink-column {background: #ff517c; padding: 100px 0;}
@@ -44,7 +46,7 @@ p {font-family: 'Open Sans', sans-serif!important;}
 .admin-inline-form button {margin-right: 10px;}
 
 /* Footer */
-footer {background: #003d76; padding: 30px 0; width: 100%; bottom: 0; margin-top: 50px;}
+footer {background: #003d76; padding: 25px 0 15px 0; width: 100%; margin-top: 50px;}
 footer p {color: white;}
 
 /* Buttons */
