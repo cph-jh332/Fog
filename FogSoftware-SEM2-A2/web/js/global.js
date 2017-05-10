@@ -36,7 +36,7 @@ for (let i = 0; i < closePopup.length; i++) {
     closePopup[i].addEventListener("click", removePopup, false);
 }
 
-for (let i = 0; i < closePopup.length; i++) {
+for (let i = 0; i < loginButton.length; i++) {
     loginButton[i].addEventListener("click", showLogin, false);
 }
 
