@@ -10,6 +10,24 @@ var cWidthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 var cLength = document.createElementNS("http://www.w3.org/2000/svg", "path");
 var cLengthTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
+function createObject(x, y, width, height, eleclass, rotation) 
+{
+    var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    object.setAttribute("x", x);
+    object.setAttribute("y", y);
+    object.setAttribute("width", width);
+    object.setAttribute("height", height);
+    object.setAttribute("class", eleclass);
+    object.setAttribute("transform", rotation);
+    
+    return object;
+}
+
+function getDimensions(name) 
+{
+    return document.getElementById(name).innerHTML;
+}
+
 // Carport length
 cWidth.setAttribute("d", "M 125 450 L 800 450");
 cWidth.setAttribute("stroke", "#6495ED");
@@ -38,20 +56,20 @@ var textY = document.createTextNode("Height: 210 cm");
 cLengthTxt.appendChild(textY);
 
 // Append all elements to the drawing
-svg.appendChild(createRect(175, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
-svg.appendChild(createRect(750, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
+svg.appendChild(createObject(175, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
+svg.appendChild(createObject(750, 160, 25, 240, "element", "rotate(0 0 0)")); // pillar
 
-svg.appendChild(createRect(167, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
-svg.appendChild(createRect(767, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
+svg.appendChild(createObject(167, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
+svg.appendChild(createObject(767, 160, 16, 32, "element", "rotate(0 0 0)")); // rem
 
-svg.appendChild(createRect(145, 132, 660, 28, "element", "rotate(0 0 0)")); // Waterbord front
+svg.appendChild(createObject(145, 132, 660, 28, "element", "rotate(0 0 0)")); // Waterbord front
 
-svg.appendChild(createRect(200, 160, 550, 174, "element", "rotate(0 0 0)")); // shed
+svg.appendChild(createObject(200, 160, 550, 174, "element", "rotate(0 0 0)")); // shed
 
 var start = 200;
 for (var i = 0; i < 22; i++) 
 {
-    svg.appendChild(createRect(start, 160, 25, 174, "board", "rotate(0 0 0)"));
+    svg.appendChild(createObject(start, 160, 25, 174, "board", "rotate(0 0 0)"));
     start += 25;
 }
 
