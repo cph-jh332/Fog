@@ -19,7 +19,7 @@ public class ViewOrderCommand implements ICommand {
     @Override
     public RequestDispatcher execute(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if (user.isAdmin()) {
+        if (user != null && user.isAdmin()) {
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             ArrayList<Material> od = df.getOrderDetail(orderID);
             HashMap<String, Integer> map = df.getLengthAndWidth(orderID);
