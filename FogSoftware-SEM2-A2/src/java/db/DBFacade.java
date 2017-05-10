@@ -26,8 +26,8 @@ public class DBFacade {
         return um.loginUser(email, password);
     }
 
-    public void createUser(User newUser, String password) {
-        um.createUser(newUser, password);
+    public boolean createUser(User newUser, String password) {
+        return um.createUser(newUser, password);
     }
 
     public void deleteUser(String email, String password) {

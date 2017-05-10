@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package db;
 
 import backend.HashEncoder;
@@ -15,10 +10,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Bade
- */
 class UserMapper {
 
     public User loginUser(String email, String password) {
@@ -56,7 +47,7 @@ class UserMapper {
         return user;
     }
 
-    public void createUser(User newUser, String password) {
+    public boolean createUser(User newUser, String password) {
         String sql = "insert into user (email, password, firstName, lastName, phone, salt, streetName, city, zipCode) values (?,?,?,?,?,?,?,?,?)";
 
         try (Connection con = new DBConnector().getConnection();) {
@@ -74,9 +65,10 @@ class UserMapper {
             stmt.setInt(9, newUser.getZipCode());
             stmt.executeUpdate();
 
-            con.close();
+            return true;
         } catch (Exception ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 
