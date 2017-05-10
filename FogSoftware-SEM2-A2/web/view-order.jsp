@@ -17,12 +17,12 @@
         </div>
 
         <div class="container text-center">
-            
+
 
             <div class="row">
                 <c:import url="/inc/carport-2d.jsp"/>
             </div>
-            
+
             <div class="row text-center">
                 <h3>3D tegning</h3>
                 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="1170px"></canvas>
@@ -37,7 +37,7 @@
                         errorhandler: null, // arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
                         compatibilitycheck: null,
                         backgroundColor: "#222C36",
-                        splashStyle: "3D/Light",
+                        splashStyle: "Light",
                         dataUrl: "3D/Release/Desktop.data",
                         codeUrl: "3D/Release/Desktop.js",
                         asmUrl: "3D/Release/Desktop.asm.js",
