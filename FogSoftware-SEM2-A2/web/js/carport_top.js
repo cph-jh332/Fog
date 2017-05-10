@@ -15,6 +15,11 @@ svg.style.width = canvasWidth;
 svg.style.height = canvasHeight;
 svg.setAttribute("viewBox", "0 0 " + canvasWidth * widthScale + " " + canvasHeight * lengthScale);
 
+function getHeightScale()
+{
+    return 1;
+}
+
 function getLengthScale()
 {
     var length = parseInt(getDimensions("carport_length"));
@@ -34,7 +39,7 @@ function getFullScale()
     return ((length / baseLength) + (width / baseWidth) / 2);
 }
 
-function createObject(x, y, width, height, eleclass, rotation)
+function createRect(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     object.setAttribute("x", x * widthScale);
@@ -47,7 +52,7 @@ function createObject(x, y, width, height, eleclass, rotation)
     return object;
 }
 
-function createObjectDontScale(x, y, width, height, eleclass, rotation)
+function createRectDontScale(x, y, width, height, eleclass, rotation)
 {
     var object = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     object.setAttribute("x", x * widthScale);
@@ -99,23 +104,23 @@ var textY = document.createTextNode("Length: " + getDimensions("carport_length")
 cLengthTxt.appendChild(textY);
 
 // Append all elements to the drawing
-svg.appendChild(createObject(305, 35, 340, 500, "frame", "rotate(0 0 0)")); // frame
-svg.appendChild(createObject(315, 45, 320, 480, "frame", "rotate(0 0 0)")); // inner-frame
-svg.appendChild(createObject(305, 35, 340, 135, "frame", "rotate(0 0 0)")); // shed
-svg.appendChild(createObject(315, 45, 320, 115, "shed", "rotate(0 0 0)")); // shed inner-frame
-svg.appendChild(createObjectDontScale(305, 35, 16, 16, "pillar", "rotate(0 0 0)"));
-svg.appendChild(createObjectDontScale(469, 35, 16, 16, "pillar", "rotate(0 0 0)"));
-svg.appendChild(createObjectDontScale(629 + 10 * (lengthScale - 1), 35, 16, 16, "pillar", "rotate(0 0 0)"));
-svg.appendChild(createObjectDontScale(305, 159, 16, 16, "pillar", "rotate(0 0 0)"));
-svg.appendChild(createObjectDontScale(469, 159, 16, 16, "pillar", "rotate(0 0 0)"));
-svg.appendChild(createObjectDontScale(629 + 10 * (lengthScale - 1), 159, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRect(305, 35, 340, 500, "frame", "rotate(0 0 0)")); // frame
+svg.appendChild(createRect(315, 45, 320, 480, "frame", "rotate(0 0 0)")); // inner-frame
+svg.appendChild(createRect(305, 35, 340, 135, "frame", "rotate(0 0 0)")); // shed
+svg.appendChild(createRect(315, 45, 320, 115, "shed", "rotate(0 0 0)")); // shed inner-frame
+svg.appendChild(createRectDontScale(305, 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRectDontScale(469, 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRectDontScale(629 + 10 * (lengthScale - 1), 35, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRectDontScale(305, 159, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRectDontScale(469, 159, 16, 16, "pillar", "rotate(0 0 0)"));
+svg.appendChild(createRectDontScale(629 + 10 * (lengthScale - 1), 159, 16, 16, "pillar", "rotate(0 0 0)"));
 
 var startY = 35 + carportLength - 16;
 var pillarDistance = carportLength / (pillars / 2 + 1);
 for (var i = 0; i < pillars; i += 2)
 {
-    svg.appendChild(createObjectDontScale(305, startY, 16, 16, "pillar", "rotate(0 0 0)"));
-    svg.appendChild(createObjectDontScale(645 - 16 + 10 * (lengthScale - 1), startY, 16, 16, "pillar", "rotate(0 0 0)"));
+    svg.appendChild(createRectDontScale(305, startY, 16, 16, "pillar", "rotate(0 0 0)"));
+    svg.appendChild(createRectDontScale(645 - 16 + 10 * (lengthScale - 1), startY, 16, 16, "pillar", "rotate(0 0 0)"));
     startY -= pillarDistance;
 }
 
@@ -123,7 +128,7 @@ var startY = 40;
 var distance = (500 - 10) / (rafters - 1);
 for (var i = 0; i < rafters; i++)
 {
-    svg.appendChild(createObject(295, startY, 360, 4, "scalable_element", "rotate(0 0 0)"));
+    svg.appendChild(createRect(295, startY, 360, 4, "scalable_element", "rotate(0 0 0)"));
     startY += distance;
 }
 svg.appendChild(cWidth);

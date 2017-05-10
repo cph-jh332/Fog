@@ -3,7 +3,7 @@ package commands;
 import backend.User;
 import javax.servlet.http.HttpServletRequest;
 
-public class UserCommand
+public abstract class UserCommand
 {
     public User getSessionUser(HttpServletRequest request)
     {

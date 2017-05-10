@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="3D/TemplateData/style.css">
         <link rel="shortcut icon" href="3D/TemplateData/favicon.ico" />
         <script src="3D/TemplateData/UnityProgress.js"></script>
-        <script type='text/javascript'> document.onmousedown = function() {window.unFocus();}; </script>
         <title>Carport 2D</title>
         <c:import url="/inc/head.jsp"/>
     </head>
