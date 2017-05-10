@@ -4,9 +4,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="3D/TemplateData/style.css">
-        <link rel="shortcut icon" href="3D/TemplateData/favicon.ico" />
-        <script src="3D/TemplateData/UnityProgress.js"></script>
+        <link rel="stylesheet" href="TemplateData/style.css">
+        <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+        <script src="TemplateData/UnityProgress.js"></script>
         <title>Carport 2D</title>
         <c:import url="/inc/head.jsp"/>
     </head>
@@ -28,7 +28,7 @@
                 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="1170px"></canvas>
                 <br>
                 <div class="logo"></div>
-                <div class="fullscreen"><img src="3D/TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+                <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
                 <div class="title">Fog 3D</div>
 
                 <script type='text/javascript'>
@@ -38,13 +38,13 @@
                         compatibilitycheck: null,
                         backgroundColor: "#222C36",
                         splashStyle: "Light",
-                        dataUrl: "3D/Release/Desktop.data",
-                        codeUrl: "3D/Release/Desktop.js",
-                        asmUrl: "3D/Release/Desktop.asm.js",
-                        memUrl: "3D/Release/Desktop.mem",
+                        dataUrl: "Release/3D.data",
+                        codeUrl: "Release/3D.js",
+                        asmUrl: "Release/3D.asm.js",
+                        memUrl: "Release/3D.mem",
                     };
                 </script>
-                <script src="3D/Release/UnityLoader.js"></script>
+                <script src="Release/UnityLoader.js"></script>
             </div>
 
             <c:if test="${user != null}">
