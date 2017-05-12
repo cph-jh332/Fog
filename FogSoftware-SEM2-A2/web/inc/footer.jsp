@@ -4,7 +4,7 @@
     <div class="row">
         <div class="container">
             <div class="col-md-12 text-center">
-                <p>Footer</p>
+                <p>Johannes Fog A/S - Firskovvej 20 - 2800 Lyngby - CVR-nr. 16314439</p>
             </div>
         </div>
     </div>

@@ -1,7 +1,6 @@
 // Variables
 let popupLogin = document.getElementById("login-popup");
 let popupSignup = document.getElementById("signup-popup");
-let signupButton = document.getElementById("signup-button");
 
 let popupContainer = document.getElementsByClassName("popup-container");
 let popupContent = document.getElementsByClassName("popup-content");
@@ -28,15 +27,13 @@ function removePopup(e) {
     }
 }
 
-// Click events 
-signupButton.addEventListener("click", showSignup);
-
+// Click events
 let closePopup = document.getElementsByClassName("close-popup");
 for (let i = 0; i < closePopup.length; i++) {
     closePopup[i].addEventListener("click", removePopup, false);
 }
 
-for (let i = 0; i < closePopup.length; i++) {
+for (let i = 0; i < loginButton.length; i++) {
     loginButton[i].addEventListener("click", showLogin, false);
 }
 

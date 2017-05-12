@@ -88,7 +88,7 @@ public class materialListTest {
 
     @Test
     public void understernTest() {
-        int[] understern = pg.getUndersternBrædder();
+        int[] understern = pg.getUnderstern();
         int understern1 = understern[1];
 
         int expected = 4;
@@ -97,7 +97,7 @@ public class materialListTest {
 
     @Test
     public void oversternTest() {
-        int[] overstern = pg.getOversternBrædder();
+        int[] overstern = pg.getOverstern();
         int overstern1 = overstern[0];
 
         int expected = 2;
@@ -136,13 +136,6 @@ public class materialListTest {
 
         int expected = 2;
         assertEquals(expected, waterBoard);
-    }
-
-    @Test
-    public void perforatedBand() {
-        int perforatedBand = pg.getPerforatedBand();
-        int expected = 2;
-        assertEquals(expected, perforatedBand);
     }
 
     @Test

@@ -24,8 +24,12 @@ public class SignUpCommand implements ICommand
         User newUser = new User(email, firstName, lastName, phone, streetName, city, zipCode);
 
         DBFacade df = new DBFacade();
-        df.createUser(newUser, password);
-
+        if(df.createUser(newUser, password)){
+            request.setAttribute("message", "You've registered");
+        }else{
+            request.setAttribute("message", "The email is already registered");
+        }
+        
         return request.getRequestDispatcher("index.jsp");
     }
 
