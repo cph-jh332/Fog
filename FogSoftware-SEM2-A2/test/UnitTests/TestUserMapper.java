@@ -9,12 +9,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class UserJUnitTest {
+public class TestUserMapper {
 
     DBFacade userMapper = new DBFacade();
     User user;
 
-    public UserJUnitTest() {
+    public TestUserMapper() {
 
     }
 
@@ -45,6 +45,7 @@ public class UserJUnitTest {
          assertEquals(expected,name);
 
     }
+    
     @Test
     public void createUser(){
         String email = "junit@junit.dk";
@@ -61,9 +62,10 @@ public class UserJUnitTest {
         
         firstName = userMapper.loginUser(email, password).getFirstName(); 
         String expected = "mr junit";
-        assertEquals(expected,firstName);
+        assertEquals(expected, firstName);
         
     }
+    
     @Test
     public void deleteUser(){
         String email = "junit@junit.dk";
@@ -73,13 +75,7 @@ public class UserJUnitTest {
         
         user = userMapper.loginUser(email, password);
         
-        
-        
-        
         assertNull(user);
         
     }
-    
-    
-    
 }

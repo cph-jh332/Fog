@@ -56,7 +56,7 @@ class UserMapper {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, newUser.getEmail());
             stmt.setString(2, password);
-            stmt.setString(3, newUser.getName());
+            stmt.setString(3, newUser.getFirstName());
             stmt.setString(4, newUser.getLastName());
             stmt.setInt(5, newUser.getPhone());
             stmt.setBytes(6, salt);
