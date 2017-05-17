@@ -22,6 +22,11 @@ public class DBFacade {
         return mp.getAllMaterials();
     }
     
+    
+    public ArrayList<Material> getMaterialID() {
+        return mp.getMaterialID();
+    }
+    
      public User loginUser(String email, String password) {
         return um.loginUser(email, password);
     }
@@ -46,9 +51,6 @@ public class DBFacade {
         return om.getOrderDetail(orderNum);
     }
 
-    public ArrayList<Material> getMaterialID() {
-        return om.getMaterialID();
-    }
 
     public HashMap getLengthAndWidth(int orderID) {
         return om.getLengthAndWidth(orderID);
