@@ -36,7 +36,7 @@ public class TestUserMapper {
     }
 
     @Test
-    public void getUser() {
+    public void testGetUserFromDB() {
         String userName = "test@test.dk";
         String password = "test";
          user = userMapper.loginUser(userName, password);
@@ -47,7 +47,7 @@ public class TestUserMapper {
     }
     
     @Test
-    public void createUser(){
+    public void testCreateUserInDB(){
         String email = "junit@junit.dk";
         String password = "junit";
         String firstName = "mr junit";
@@ -67,7 +67,7 @@ public class TestUserMapper {
     }
     
     @Test
-    public void deleteUser(){
+    public void testDeleteUserFromDB(){
         String email = "junit@junit.dk";
         String password = "junit";
         

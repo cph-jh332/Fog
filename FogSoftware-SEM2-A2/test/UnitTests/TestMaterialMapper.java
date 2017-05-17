@@ -93,7 +93,7 @@ public class TestMaterialMapper {
     }
     
     @Test
-    public void materialListFromDB() {
+    public void testMaterialListFromDBIsCorrect() {
         ArrayList<Material> materials = df.getMaterialID();
 
         int firstExpected = 1;

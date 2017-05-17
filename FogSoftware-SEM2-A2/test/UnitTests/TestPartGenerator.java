@@ -23,21 +23,21 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void pillarsTest() {
+    public void testPillarAmount() {
         int pillars = pg.getPillarAmount();
         int expected = 11;
         assertEquals(expected, pillars);
     }
 
     @Test
-    public void rafterAmountTest() {
+    public void testRafterAmount() {
         int rafters = pg.getRafterAmount();
         int expected = 15;
         assertEquals(expected, rafters);
     }
 
     @Test
-    public void understernTest() {
+    public void testUndersternAmount() {
         int[] understern = pg.getUnderstern();
         int understern1 = understern[1];
 
@@ -46,7 +46,7 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void oversternTest() {
+    public void testOversternAmount() {
         int[] overstern = pg.getOverstern();
         int overstern1 = overstern[0];
 
@@ -55,14 +55,14 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void shedBoardTest() {
+    public void testShedBoardAmount() {
         int shedBoard = pg.getShedBoards();
         int expected = 200;
         assertEquals(expected, shedBoard);
     }
 
     @Test
-    public void remTest() {
+    public void testRemAmount() {
         int[] rem = pg.getRem();
         int rem1 = rem[0];
 
@@ -71,7 +71,7 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void roofTiles() {
+    public void testRooftileAmount() {
         int[] roofTiles = pg.getRoofTiles();
         int roofTile = roofTiles[0];
 
@@ -80,7 +80,7 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void waterBoard() {
+    public void testWaterboardAmount() {
         int[] waterBoards = pg.getWaterboards();
         int waterBoard = waterBoards[0];
 
@@ -89,7 +89,7 @@ public class TestPartGenerator {
     }
 
     @Test
-    public void materialListFromPartGen() {
+    public void testMaterialListIsCorrect() {
         ArrayList<Material> materials = pg.getMaterials();
 
         int firstExpected = 1;
@@ -98,7 +98,6 @@ public class TestPartGenerator {
         int lastMaterial = materials.get(12).getID();
         assertEquals(firstExpected, firstMaterial);
         assertEquals(lastExpected, lastMaterial);
-
     }
 
 }
