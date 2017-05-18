@@ -122,24 +122,7 @@ class OrderMapper {
 
     }
 
-    public ArrayList<Material> getMaterialID() {
-        String sql = "SELECT materialID FROM materials";
-        ArrayList<Material> materials = new ArrayList<>();
 
-        try (Connection con = new DBConnector().getConnection()) {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Material m = new Material(rs.getInt("materialID"), "test");
-                materials.add(m);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return materials;
-    }
 
     public HashMap getLengthAndWidth(int orderID) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
