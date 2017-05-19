@@ -11,7 +11,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class UserMapper {
-
+/**
+ * This method will retrieve a user from the database. Only if the email and 
+ * password match will a user be returned
+ * 
+ * @param email The email of the user
+ * @param password The password of the user.
+ * @return Returns a User with all information available
+ */
     public User loginUser(String email, String password) {
         User user = null;
         String getSalt = "select salt from user where email = ?";
@@ -46,7 +53,14 @@ class UserMapper {
         }
         return user;
     }
-
+/**
+ * This method creates a new user in the database. 
+ * 
+ * @param newUser The User information is stored here.
+ * @param password The password that the user wish to have on their account.
+ * @return Returns a boolean either true if the operation was succesfull or false
+ * if the operation was unsuccesfull
+ */
     public boolean createUser(User newUser, String password) {
         String sql = "insert into user (email, password, firstName, lastName, phone, salt, streetName, city, zipCode) values (?,?,?,?,?,?,?,?,?)";
 
@@ -71,7 +85,13 @@ class UserMapper {
             return false;
         }
     }
-
+/**
+ * This method attempts to delete a user in the database.
+ * Email and password must match in order to locate the user.
+ * 
+ * @param email The email of the user.
+ * @param password The password of the user.
+ */
     public void deleteUser(String email, String password) {
         String getSalt = "select salt from user where email = ?";
         try (Connection con = new DBConnector().getConnection();) {
@@ -101,7 +121,13 @@ class UserMapper {
         }
 
     }
-
+/**
+ * This method retrieves the user from their orderID.
+ * 
+ * @param orderID The orderID from the order the user, wich is to be retrived, 
+ * has created.
+ * @return Returns the user with all available information.
+ */
     public User getUserByOrder(int orderID) {
         User user = null;
         int userID = 0;
