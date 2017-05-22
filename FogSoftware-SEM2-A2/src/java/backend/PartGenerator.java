@@ -14,6 +14,14 @@ public class PartGenerator
         carportLength = length * 10;
         carportWidth = width * 10;
     }
+    /**
+     * Returns an array with Material class that has the material ID
+     * and the material amount. The ID is retrieved from the database.
+     * 
+     *  @return an ArrayList with Materials
+     * 
+     */
+    
     
     public ArrayList<Material> getMaterials()
     {

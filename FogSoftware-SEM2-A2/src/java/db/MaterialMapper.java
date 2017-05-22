@@ -10,7 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MaterialMapper {
-    
+    /**
+     * This method stores a new material in the database
+     * 
+     * @param material The specified material that is to be stored in the database
+     */
     public void addNewMaterial(Material material) {
         String sql = "INSERT INTO materials (materialName) VALUES (?)";
         
@@ -37,7 +41,12 @@ class MaterialMapper {
         
         
     }
-    
+    /**
+     * This method retrieves all the materials that can be used to construct
+     * a garage.
+     * 
+     * @return returns an array with Materials
+     */
     public ArrayList getAllMaterials() {
         
         ArrayList<String> list = new ArrayList();
@@ -58,7 +67,11 @@ class MaterialMapper {
         
         return list;
     }
-    
+    /**
+     * This method retrieves all material id that can be found on the database
+     * 
+     * @return returns an array of Materials
+     */
         public ArrayList<Material> getMaterialID() {
         String sql = "SELECT materialID FROM materials";
         ArrayList<Material> materials = new ArrayList<>();

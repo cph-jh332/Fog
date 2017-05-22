@@ -19,7 +19,7 @@ public class DBFacade {
     }
     
     public ArrayList getAllMaterials() {
-        return mp.getAllMaterials();
+        return mp.getAllMaterials();        
     }
     
     
