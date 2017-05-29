@@ -14,8 +14,21 @@ import java.util.logging.Logger;
 
 class OrderMapper {
 
-    int newOrderId;
+   private int newOrderId;
 
+   
+   /**
+    * This method stores an order in the database in the 2 tables orders and orderDetails.
+    * 
+    * 
+    * @param user The user class must have an ID stored, else the database cannot store the order.
+    * @param length The length of the garage
+    * @param width The width of the garage
+    * @param materials The arraylist with all the materials needed to construct the garage.
+    * @return a boolean is returned giving true if the operation was succesful, or false
+    * if the operation was not succesful.
+    */
+   
     public boolean storeOrder(User user, int length, int width, ArrayList<Material> materials) {
         String sqlOrder = "INSERT INTO orders (orderID, userID, orderTitle, width, length) VALUES (?, ?, ?, ?, ?);";
         String sqlOrderMat = "INSERT INTO orderDetails (orderID, materialID, amount) VALUES (?,?,?);";
@@ -49,7 +62,6 @@ class OrderMapper {
                 stmt2.setInt(3, m.getAmount());
                 stmt2.executeUpdate();
             }
-
             con.commit();
             return true;
 
@@ -70,13 +82,20 @@ class OrderMapper {
         }
 
     }
-
+/**
+ * 
+ * This method reutns an arraylist with all the orders specified by the parameters.
+ * 
+ * @param incomingSQL given a string either "sqltop10" or "sqlall" will retrieve from the database
+ * either the top 10 orders, or all the orders at once.
+ * @return returns an array with orders
+ */
     public ArrayList getOrders(String incomingSQL) {
 
         ArrayList<Order> orderList = new ArrayList();
 
         String sql = incomingSQL;
-
+        
         if (sql.equalsIgnoreCase("sqltop10")) {
             sql = "SELECT * FROM orders ORDER BY orderDate DESC LIMIT 10";
         }
@@ -98,7 +117,13 @@ class OrderMapper {
 
         return orderList;
     }
-
+/**
+ * This method retrieves from the database all the materials from  a specific order.
+ * 
+ * 
+ * @param orderNum The order number is needed since all the materials are bound by this ordernumber
+ * @return returns an array of the materials with material id and amount.
+ */
     public ArrayList<Material> getOrderDetail(int orderNum) {
         String sql = "SELECT * FROM orderDetails natural join materials WHERE orderID = " + orderNum;
         ArrayList<Material> materials = new ArrayList<>();
