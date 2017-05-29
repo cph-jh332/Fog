@@ -5,7 +5,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="TemplateData/style.css">
-        <link rel="shortcut icon" href="TemplateData/favicon.ico" />
         <script src="TemplateData/UnityProgress.js"></script>
         <title>Carport 2D</title>
         <c:import url="/inc/head.jsp"/>

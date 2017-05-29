@@ -2,7 +2,6 @@ package db;
 
 import backend.HashEncoder;
 import backend.User;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
